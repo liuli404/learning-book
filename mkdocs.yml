@@ -1,7 +1,7 @@
 site_name: Learning Book
 site_url: https://note.liuli.hots/
 theme:
-    name: readthedocs
+    name: mkdocs
     navigation_depth: 4
     sticky_navigation: False
     include_homepage_in_sidebar: False
@@ -14,17 +14,11 @@ theme:
         - python
         - bash
         - shell
+markdown_extensions:
+    - toc:
+        baselevel: 2
 nav:
   - Home: 'index.md'
-  - Python:
-      - '基础语法': 'base.md'
-      - '面向对象': 'object.md'
-      - '多任务编程': 'multi-process.md'
-      - 'TCP 网络应用开发': 'tcp-socket.md'
-      - 'Web 服务器开发': 'web-server.md'
-      - 'Python 高级语法': 'advanced.md'
-      - 'Django 框架': 'django.md'
-      - 'Flask 框架': 'flask.md'
   - Shell:
       - 'Shell 概述': '01-Shell 概述.md'
       - '编辑器': '02-编辑器.md'
@@ -39,3 +33,12 @@ nav:
       - '正则表达式': '11-正则表达式.md'
       - '输入与输出': '12-输入与输出.md'
       - 'Shell 高级应用': '13-Shell 高级应用.md'
+  - Python:
+      - '基础语法': 'base.md'
+      - '面向对象': 'object.md'
+      - '多任务编程': 'multi-process.md'
+      - 'TCP 网络应用开发': 'tcp-socket.md'
+      - 'Web 服务器开发': 'web-server.md'
+      - 'Python 高级语法': 'advanced.md'
+      - 'Django 框架': 'django.md'
+      - 'Flask 框架': 'flask.md'
