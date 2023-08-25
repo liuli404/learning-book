@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh_Hans_CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://note.liuli.hots/Shell/07-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>文本编辑 - Learning Book</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/shell.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Learning Book</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Linux <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Linux/1-1-Linux%20%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="dropdown-item">入门命令</a>
+</li>
+                                    
+<li>
+    <a href="../../Linux/1-2-Linux%20%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" class="dropdown-item">文件管理</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Shell <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01-Shell%20%E6%A6%82%E8%BF%B0/" class="dropdown-item">概述</a>
+</li>
+                                    
+<li>
+    <a href="../02-%E7%BC%96%E8%BE%91%E5%99%A8/" class="dropdown-item">编辑器</a>
+</li>
+                                    
+<li>
+    <a href="../03-%E8%84%9A%E6%9C%AC%E8%AE%BE%E8%AE%A1/" class="dropdown-item">脚本设计</a>
+</li>
+                                    
+<li>
+    <a href="../04-Shell%20%E5%8F%98%E9%87%8F/" class="dropdown-item">变量</a>
+</li>
+                                    
+<li>
+    <a href="../05-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97/" class="dropdown-item">算数运算</a>
+</li>
+                                    
+<li>
+    <a href="../06-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="dropdown-item">流程控制</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">文本编辑</a>
+</li>
+                                    
+<li>
+    <a href="../08-Shell%20%E5%87%BD%E6%95%B0/" class="dropdown-item">函数</a>
+</li>
+                                    
+<li>
+    <a href="../09-Shell%20%E6%95%B0%E7%BB%84/" class="dropdown-item">数组</a>
+</li>
+                                    
+<li>
+    <a href="../10-%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="dropdown-item">字符和字符串</a>
+</li>
+                                    
+<li>
+    <a href="../11-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="dropdown-item">正则表达式</a>
+</li>
+                                    
+<li>
+    <a href="../12-%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" class="dropdown-item">输入与输出</a>
+</li>
+                                    
+<li>
+    <a href="../13-Shell%20%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8/" class="dropdown-item">高级应用</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Go <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../01-Go 开发环境安装配置.md" class="dropdown-item">开发环境安装</a>
+</li>
+                                    
+<li>
+    <a href="../../02-Go 语法基础.md" class="dropdown-item">语法基础</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> 搜索
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../06-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> 上一张
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../08-Shell%20%E5%87%BD%E6%95%B0/" class="nav-link">
+                                    下一张 <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="目录">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">一、系统的文件类型</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#11" class="nav-link">1.1 普通文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#12" class="nav-link">1.2 目录文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#13" class="nav-link">1.3 链接文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#14" class="nav-link">1.4 特殊文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">二、文件存在性测试</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#21" class="nav-link">2.1 内置式测试</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#22" class="nav-link">2.2 交互式测试</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">三、文件应用操作</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#31" class="nav-link">3.1 创建文本文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#32" class="nav-link">3.2 文件备份</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#33" class="nav-link">3.3 重命名与删除</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#34" class="nav-link">3.4 完整性检查</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">四、编辑文本</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#41" class="nav-link">4.1 查阅文本内容</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#42" class="nav-link">4.2 文本内容比较</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#43" class="nav-link">4.3 文本内容重定向</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link">五、特殊用途文件</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#51-dev" class="nav-link">5.1 /dev 目录</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="4"><a href="#511-devnull" class="nav-link">5.1.1 /dev/null</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#512-devzero" class="nav-link">5.1.2 /dev/zero</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#52-proc" class="nav-link">5.2 /proc 目录</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="_1">一、系统的文件类型</h2>
+<p>​   Linux 设计思想为 Linux 下一切皆文件。Linux 文件系统由四类基本文件组成，分别是普通文件、目录文件、链接文件、特殊文件。</p>
+<h3 id="11">1.1 普通文件</h3>
+<p>​   普通文件以 "-" 为标识，后接该文件的权限。格式如下</p>
+<pre><code class="language-bash">[root@192 ~]# ls -l test.sh 
+-rw-r--r--. 1 root root 224 Jul 30 10:44 test.sh
+</code></pre>
+<p>​   普通文件包括文本文件、程序代码文件以及可执行文件等。系统中大部分文件都是普通文件。</p>
+<h3 id="12">1.2 目录文件</h3>
+<p>​   目录文件以 "d" 为标识，Linux 系统的最高目录为（/）目录。Linux 系统的众多目录和其子目录构成了一棵倒置的目录树，理论上子目录的创建是不受限制的，格式如下</p>
+<pre><code class="language-bash">[root@192 ~]# ls -l
+drwxr-xr-x. 2 root root   6 Jul 30 11:57 a
+drwxr-xr-x. 2 root root   6 Jul 30 11:57 dir
+</code></pre>
+<h3 id="13">1.3 链接文件</h3>
+<p>​   链接文件可以分为软连接和硬连接。所谓链接文件，实际就是指向文件的指针，在读取软连接文件的时候，实际是读取指针所指向的源文件。</p>
+<pre><code class="language-bash">[root@192 ~]# ls -l /bin/sh
+lrwxrwxrwx. 1 root root 4 Jul 29 23:10 /bin/sh -&gt; bash
+</code></pre>
+<p>​   链接文件都是以 "l"，为标识的，-&gt; 所指的即为源文件，箭头左边的就是链接文件。</p>
+<h3 id="14">1.4 特殊文件</h3>
+<p>​   特殊文件包括设备文件、套接字文件、以及命名管道文件。</p>
+<ul>
+<li>块设备文件 "b"</li>
+</ul>
+<pre><code class="language-bash">[root@192 ~]# ls -l /dev/sda
+brw-rw----. 1 root disk 8, 0 Jul 29 23:18 /dev/sda
+</code></pre>
+<ul>
+<li>字符设备文件 "c"</li>
+</ul>
+<pre><code class="language-bash">[root@192 ~]# ls -l /dev/tty
+crw-rw-rw-. 1 root tty 5, 0 Jul 29 23:18 /dev/tty
+</code></pre>
+<ul>
+<li>套接字文件  "s"</li>
+</ul>
+<pre><code class="language-bash">[root@192 ~]# ll /var/run/systemd/journal/socket 
+srw-rw-rw-. 1 root root 0 Jul 29 23:18 /var/run/systemd/journal/socket
+</code></pre>
+<ul>
+<li>m命名管道文件 "p"</li>
+</ul>
+<pre><code class="language-bash">[root@192 ~]# ls -l /var/run/dmeventd-server 
+prw-------. 1 root root 0 Jul 29 23:18 /var/run/dmeventd-server
+</code></pre>
+<h2 id="_2">二、文件存在性测试</h2>
+<h3 id="21">2.1 内置式测试</h3>
+<p>​   对于文件系统中的文件，可以通过输出真假值来判断是否存在，也可以通过直接输出提示信息来判断文件是否存在。</p>
+<p>​   判断文件是否存在，一般使用判断式进行判断，最常使用的判断式是单元判断式。</p>
+<pre><code class="language-bash">#!/bin/bash
+
+if [ -f /etc/passwd ]
+then
+    echo &quot;The file is exist&quot;
+else
+    echo &quot;No such file&quot;
+fi
+
+exit 0
+</code></pre>
+<p>​   运行结果</p>
+<pre><code class="language-bash">[root@192 ~]# bash test.sh 
+The file is exist
+</code></pre>
+<h3 id="22">2.2 交互式测试</h3>
+<p>​   在实际工作中，可以写一个可复用的测试脚本，实现灵活的判断文件是否存在功能。</p>
+<pre><code class="language-bash">#!/bin/bash
+
+echo -n &quot;Input a name of file: &quot;
+read f_name
+
+if [ -z $f_name ]
+then
+    echo &quot;No input file name.&quot;
+    exit
+fi
+
+if [ -f $f_name ]
+then
+    echo &quot;$f_name is exist.&quot;
+else
+    echo &quot;No such file&quot;
+fi
+
+exit 0
+</code></pre>
+<p>​   运行结果</p>
+<pre><code class="language-bash">[root@192 ~]# bash test.sh 
+Input a name of file: /etc/passwd
+/etc/passwd is exist.
+[root@192 ~]# bash test.sh 
+Input a name of file: abc.txt
+No such file
+[root@192 ~]# bash test.sh 
+Input a name of file: 
+No input file name.
+</code></pre>
+<h2 id="_3">三、文件应用操作</h2>
+<p>​   文件属于系统非常重要的组成部分之一，它们有这不可忽略的作用，特别是对于一切设备均有文件构成的 Linux 系统。</p>
+<h3 id="31">3.1 创建文本文件</h3>
+<p>​   在 Linux 系统下的同一个目录中，不能存在名称相同的文件。创建文件可以使用 touch 命令创建一个空文件</p>
+<pre><code class="language-bash">[root@192 ~]# touch test
+[root@192 ~]# ls -l test
+-rw-r--r--. 1 root root 0 Jul 30 12:21 test
+[root@192 ~]# touch test1 test2 test3 test4
+[root@192 ~]# ls
+test  test1  test2  test3  test4
+</code></pre>
+<h3 id="32">3.2 文件备份</h3>
+<p>​   可以使用 cp 命令来复制文件，达到备份的目录。</p>
+<pre><code class="language-bash">[root@192 ~]# cp test test_bak
+</code></pre>
+<h3 id="33">3.3 重命名与删除</h3>
+<p>​   文件重命名可以使用 mv 命令，mv 命令可以理解为移动文件到某个位置，并可以重名。</p>
+<pre><code class="language-bash">[root@192 ~]# mv test /root/test_mv
+[root@192 ~]# ls test_mv 
+test_mv
+</code></pre>
+<p>​   文件删除可以使用 rm 命令，使用 -f 可以自动确认删除，使用 -r 可以递归删除目录中的所有文件</p>
+<pre><code class="language-bash">[root@192 ~]# rm test1 
+rm: remove regular empty file ‘test1’? y
+[root@192 ~]# rm -f test2 
+[root@192 ~]# rm -rf /root/*
+</code></pre>
+<h3 id="34">3.4 完整性检查</h3>
+<p>​   在对文件内容完整性检查是，经常使用 MD5 工具。用法如下：</p>
+<pre><code class="language-bash">[root@192 ~]# md5sum /etc/passwd
+4022cc06f1f2fa60d0eecb807417c1c4  /etc/passwd
+</code></pre>
+<p>​   使用 md5 对文件进行校验是，将为所检查的文件产生一个校验码，而且这些被校验的文件，内容产生变动，校验码就会跟着改变。</p>
+<pre><code class="language-bash">[root@192 ~]# echo 1 &gt; test
+[root@192 ~]# md5sum test 
+b026324c6904b2a9cb4b88d6d61c81d1  test
+[root@192 ~]# echo 2 &gt;&gt; test 
+[root@192 ~]# md5sum test 
+6ddb4095eb719e2a9f0a3f95677d24e0  test
+[root@192 ~]# echo 1 &gt; test 
+[root@192 ~]# md5sum test 
+b026324c6904b2a9cb4b88d6d61c81d1  test
+</code></pre>
+<h2 id="_4">四、编辑文本</h2>
+<h3 id="41">4.1 查阅文本内容</h3>
+<p>​   文本文件的主要作用就是存储数据。存储于文本中的数据，包括用户信息，系统配置信息。对于查看文本中的信息，可以使用很多方式。</p>
+<ul>
+<li>cat 命令查看文本全部内容</li>
+</ul>
+<pre><code class="language-bash">[root@192 ~]# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+</code></pre>
+<p>​   执行 cat 后，会将文本的全部内容输出到屏幕上，如果文本内容太多的话，使用 cat 是个不明智的选择。这样我们就需要用其他命令来实现分页阅读。</p>
+<ul>
+<li>more、less 命令分页阅读</li>
+</ul>
+<pre><code class="language-bash">[root@192 ~]# more /var/log/messages 
+Jul 29 23:18:46 192 kernel: gran_size: 64K #011chunk_size: 64K #011num_reg: 2  #011lose cover RAM: 0G
+Jul 29 23:18:46 192 kernel: found SMP MP-table at [mem 0x000f6a70-0x000f6a7f] mapped at [ffffffffff200a70]
+Jul 29 23:18:46 192 kernel: Using GB pages for direct mapping
+Jul 29 23:18:46 192 kernel: RAMDISK: [mem 0x3569c000-0x36b45fff]
+Jul 29 23:18:46 192 kernel: Early table checksum verification disabled
+Jul 29 23:18:46 192 kernel: ACPI: RSDP 00000000000f6a00 00024 (v02 PTLTD )
+Jul 29 23:18:46 192 kernel: ACPI: XSDT 000000003fee965b 0005C (v01 INTEL  440BX    06040000 VMW  01324272)
+Jul 29 23:18:46 192 kernel: ACPI: FACP 000000003fefee73 000F4 (v04 INTEL  440BX    06040000 PTL  000F4240)
+Jul 29 23:18:46 192 kernel: ACPI: DSDT 000000003feeaa08 1446B (v01 PTLTD  Custom   06040000 MSFT 03000001)
+Jul 29 23:18:46 192 kernel: ACPI: FACS 000000003fefffc0 00040
+Jul 29 23:18:46 192 kernel: ACPI: BOOT 000000003feea9e0 00028 (v01 PTLTD  $SBFTBL$ 06040000  LTP 00000001)
+Jul 29 23:18:46 192 kernel: ACPI: APIC 000000003feea29e 00742 (v01 PTLTD  ? APIC   06040000  LTP 00000000)
+--More--(2%)
+</code></pre>
+<pre><code class="language-bash">[root@192 ~]# less /var/log/messages
+Jul 29 23:18:46 192 kernel: gran_size: 64K #011chunk_size: 64K #011num_reg: 2  #011lose cover RAM: 0G
+Jul 29 23:18:46 192 kernel: found SMP MP-table at [mem 0x000f6a70-0x000f6a7f] mapped at [ffffffffff200a70]
+Jul 29 23:18:46 192 kernel: Using GB pages for direct mapping
+Jul 29 23:18:46 192 kernel: RAMDISK: [mem 0x3569c000-0x36b45fff]
+Jul 29 23:18:46 192 kernel: Early table checksum verification disabled
+Jul 29 23:18:46 192 kernel: ACPI: RSDP 00000000000f6a00 00024 (v02 PTLTD )
+Jul 29 23:18:46 192 kernel: ACPI: XSDT 000000003fee965b 0005C (v01 INTEL  440BX    06040000 VMW  01324272)
+Jul 29 23:18:46 192 kernel: ACPI: FACP 000000003fefee73 000F4 (v04 INTEL  440BX    06040000 PTL  000F4240)
+Jul 29 23:18:46 192 kernel: ACPI: DSDT 000000003feeaa08 1446B (v01 PTLTD  Custom   06040000 MSFT 03000001)
+Jul 29 23:18:46 192 kernel: ACPI: FACS 000000003fefffc0 00040
+Jul 29 23:18:46 192 kernel: ACPI: BOOT 000000003feea9e0 00028 (v01 PTLTD  $SBFTBL$ 06040000  LTP 00000001)
+Jul 29 23:18:46 192 kernel: ACPI: APIC 000000003feea29e 00742 (v01 PTLTD  ? APIC   06040000  LTP 00000000)
+</code></pre>
+<ul>
+<li>head 、tail 查看文件的首尾十行</li>
+</ul>
+<pre><code class="language-bash">[root@192 ~]# head /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+[root@192 ~]# tail /etc/passwd
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+</code></pre>
+<h3 id="42">4.2 文本内容比较</h3>
+<pre><code>要比较两个文本内容可以使用 diff 和 cmp 命令。如果两个文件相同，状态码则返回 0，否则就返回 1。
+</code></pre>
+<p>​   另外 vim 自带一个简单好用的文本比较工具，可以可视化的看到那一行文本有区别</p>
+<pre><code class="language-bash">[root@192 ~]# vimdiff passwd /etc/passwd
+</code></pre>
+<p><img alt="image-20220801194609782" src="../img/image-20220801194609782.png" /></p>
+<h3 id="43">4.3 文本内容重定向</h3>
+<p>​   默认情况下系统有三个文件一直处于打开状态，stdin（键盘）、stdout（屏幕）、stderr（错误消息），与其他文本文件一样，他们的内容也可以重定向。</p>
+<pre><code class="language-bash">[root@192 ~]# ls -l /dev/std*
+lrwxrwxrwx. 1 root root 15 Jul 29 23:18 /dev/stderr -&gt; /proc/self/fd/2
+lrwxrwxrwx. 1 root root 15 Jul 29 23:18 /dev/stdin -&gt; /proc/self/fd/0
+lrwxrwxrwx. 1 root root 15 Jul 29 23:18 /dev/stdout -&gt; /proc/self/fd/1
+</code></pre>
+<p>​   简单来说，重定向就是捕捉一个文本文件、命令、程序或脚本，将这些输出作为输入发送到另一个文件中。这些打开的文本文件，分别被分配一个文件描述符，系统默认使用的文件描述符有 0（stdin 标准输入），1（stdout 标准输出），2（stderr 错误消息）。</p>
+<p>​   对于文件的重定向，我们可以使用重定向操作符 &gt;（覆盖重定向）、 &gt;&gt; （追加重定向）来完成。</p>
+<pre><code class="language-bash">[root@192 ~]# date &gt; date.txt
+[root@192 ~]# cat date.txt 
+Sat Jul 30 12:59:01 EDT 2022
+[root@192 ~]# date &gt;&gt; date.txt 
+[root@192 ~]# cat date.txt 
+Sat Jul 30 12:59:01 EDT 2022
+Sat Jul 30 12:59:13 EDT 2022
+[root@192 ~]# date &gt;&gt; date.txt 
+[root@192 ~]# cat date.txt 
+Sat Jul 30 12:59:01 EDT 2022
+Sat Jul 30 12:59:13 EDT 2022
+Sat Jul 30 12:59:19 EDT 2022
+[root@192 ~]# date &gt; date.txt
+[root@192 ~]# cat date.txt 
+Sat Jul 30 12:59:25 EDT 2022
+</code></pre>
+<p>​   重定向的操作还有另一种方式，就是使用 exec 命令。使用 exec 命令进行重定向操作时， 会将 stdin 重新定向到文本中，而 stdin 中的内容都来自使用 exec 命令指定的文本而不是标准输入。</p>
+<pre><code class="language-bash">#!/bin/bash
+
+LOGFILE=logfile
+# 将 fd#6 与 stdout 相连
+exec 6&gt;&amp;1
+# 用 logfile 代替 stdout 输出
+exec &gt; $LOGFILE
+
+echo -n &quot;logfile:&quot;
+date
+echo
+echo &quot;Output of \&quot;ls -al\&quot; command.&quot;;echo
+ls -al
+echo
+echo &quot;Output of \&quot;df -h\&quot; command.&quot;;echo
+df -h
+# 恢复 stdout，之后关闭文件描述符 #6
+exec 1&gt;&amp;6 6&gt;&amp;-
+echo
+echo &quot;======stdout restored to default======&quot;
+ls -al
+echo
+</code></pre>
+<p>​   运行结果</p>
+<pre><code class="language-bash">[root@192 ~]# bash test.sh 
+
+======stdout restored to default======
+total 20
+dr-xr-x---.  2 root root  82 Jul 30 13:08 .
+dr-xr-xr-x. 17 root root 224 Jul 29 23:14 ..
+-rw-r--r--.  1 root root  29 Jul 30 12:59 date.txt
+-rw-r--r--.  1 root root 886 Jul 30 13:09 logfile
+-rw-r--r--.  1 root root 826 Jul 30 12:50 passwd
+-rw-r--r--.  1 root root 265 Jul 30 13:08 test.sh
+-rw-------.  1 root root 973 Jul 30 13:08 .viminfo
+
+[root@192 ~]# cat logfile 
+logfile:Sat Jul 30 13:09:30 EDT 2022
+
+Output of &quot;ls -al&quot; command.
+
+total 20
+dr-xr-x---.  2 root root  82 Jul 30 13:08 .
+dr-xr-xr-x. 17 root root 224 Jul 29 23:14 ..
+-rw-r--r--.  1 root root  29 Jul 30 12:59 date.txt
+-rw-r--r--.  1 root root  67 Jul 30 13:09 logfile
+-rw-r--r--.  1 root root 826 Jul 30 12:50 passwd
+-rw-r--r--.  1 root root 265 Jul 30 13:08 test.sh
+-rw-------.  1 root root 973 Jul 30 13:08 .viminfo
+
+Output of &quot;df -h&quot; command.
+
+Filesystem               Size  Used Avail Use% Mounted on
+devtmpfs                 475M     0  475M   0% /dev
+tmpfs                    487M     0  487M   0% /dev/shm
+tmpfs                    487M  7.7M  479M   2% /run
+tmpfs                    487M     0  487M   0% /sys/fs/cgroup
+/dev/mapper/centos-root   17G  1.7G   16G  10% /
+/dev/sda1               1014M  138M  877M  14% /boot
+tmpfs                     98M     0   98M   0% /run/user/0
+</code></pre>
+<h2 id="_5">五、特殊用途文件</h2>
+<h3 id="51-dev">5.1 /dev 目录</h3>
+<p>​   /dev 目录下文件主要是一些硬件和非硬件的物理设备。我们系统挂载的磁盘就是以文件形式存放在 /dev 目录中</p>
+<pre><code class="language-bash">[root@192 ~]# ls /dev/sda
+/dev/sda
+</code></pre>
+<p>​   在Linux 系统中，还有一些设备被称为 loopback devices（回环设备），这种设备使得普通文件也能具备像块设备一样来进行存取的机制。回环设备存放于 /dev 目录下。</p>
+<p>​   在 /dev 目录下，还有一些用于特殊用途的伪设备，这些设备都是虚拟存在而非真实存在的物理设备。如 /dev/null、/dev/zero、/dev/tcpdiag 等。</p>
+<h4 id="511-devnull">5.1.1 /dev/null</h4>
+<p>​   /dev/null 文件相当于一个只写文件，凡事写到该文件下的数据信息都会永远丢失，而且也很难从它读取任何信息，所以通常将 /dev/null 文件成为"黑洞文件"。我们可以将所有不需要的信息、日志丢进黑洞文件，节省空间。</p>
+<p>​   通过黑洞文件的特性，可以禁止内容输出到 stdout 上，或是进制 stderr 的输出。例如使用重定向符，将 stdout、stderr 导入到 /dev/null 中，就可以禁止显示信息。</p>
+<pre><code class="language-bash">[root@192 ~]#  echo &quot;hello linux&quot;
+hello linux
+[root@192 ~]#  echo &quot;hello linux&quot; &gt; /dev/null
+</code></pre>
+<h4 id="512-devzero">5.1.2 /dev/zero</h4>
+<p>​   我们可以通过 /dev/zero 文件创建一个指定长度且用于初始化的空文本。例如生成一个 10 G 大小的空文件。</p>
+<pre><code class="language-bash">[root@192 ~]# dd if=/dev/zero of=/root/file_10GB bs=10M count=1024
+1024+0 records in
+1024+0 records out
+10737418240 bytes (11 GB) copied, 16.2237 s, 662 MB/s
+[root@192 ~]# du -sh file_10GB 
+10G file_10GB
+</code></pre>
+<h3 id="52-proc">5.2 /proc 目录</h3>
+<p>​   实际上，/proc 是一个伪文件系统，在该目录下存放的是当前系统运行和内核进程以及他们相关信息和统计的文本文件。各种数字目录名称都是一个个的 pid 进程信息。</p>
+<ul>
+<li>查看系统的分区信息</li>
+</ul>
+<pre><code class="language-bash">[root@192 ~]# cat /proc/partitions 
+major minor  #blocks  name
+
+   8        0   20971520 sda
+   8        1    1048576 sda1
+   8        2   19921920 sda2
+  11        0    1048575 sr0
+ 253        0   17821696 dm-0
+ 253        1    2097152 dm-1
+</code></pre>
+<ul>
+<li>查看各种设备信息</li>
+</ul>
+<pre><code class="language-bash">[root@192 ~]# cat /proc/devices 
+Character devices:
+  1 mem
+  4 /dev/vc/0
+  4 tty
+  4 ttyS
+  5 /dev/tty
+  5 /dev/console
+  5 /dev/ptmx
+  7 vcs
+ 10 misc
+ 13 input
+ 14 sound
+Block devices:
+259 blkext
+  8 sd
+  9 md
+ 11 sr
+ 65 sd
+ 66 sd
+ 67 sd
+ 68 sd
+ 69 sd
+ 70 sd
+ 71 sd
+128 sd
+129 sd
+130 sd
+131 sd
+</code></pre>
+<ul>
+<li>查看 CPU 相关信息</li>
+</ul>
+<pre><code class="language-bash">[root@192 ~]# cat /proc/cpuinfo 
+processor   : 0
+vendor_id   : GenuineIntel
+cpu family  : 6
+model       : 142
+model name  : Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz
+stepping    : 10
+microcode   : 0xb4
+cpu MHz     : 1991.998
+cache size  : 8192 KB
+physical id : 0
+siblings    : 1
+core id     : 0
+cpu cores   : 1
+apicid      : 0
+initial apicid  : 0
+fpu     : yes
+fpu_exception   : yes
+cpuid level : 22
+wp      : yes
+flags       : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 arat md_clear spec_ctrl intel_stibp flush_l1d arch_capabilities
+bogomips    : 3983.99
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 45 bits physical, 48 bits virtual
+power management:
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>用<a href="https://www.mkdocs.org/">MkDocs</a>建立的文档。</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+                <p>从这里你可以搜索这些文件。在下面输入您的搜索内容。</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="在此输入搜索内容">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="没有搜索到结果"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">键盘热键</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">键</th>
+                    <th>动作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>打开这个帮助</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>下一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>上一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>搜索</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

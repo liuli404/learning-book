@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh_Hans_CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://note.liuli.hots/Shell/02-%E7%BC%96%E8%BE%91%E5%99%A8/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>编辑器 - Learning Book</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/shell.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Learning Book</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Linux <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Linux/1-1-Linux%20%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="dropdown-item">入门命令</a>
+</li>
+                                    
+<li>
+    <a href="../../Linux/1-2-Linux%20%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" class="dropdown-item">文件管理</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Shell <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01-Shell%20%E6%A6%82%E8%BF%B0/" class="dropdown-item">概述</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">编辑器</a>
+</li>
+                                    
+<li>
+    <a href="../03-%E8%84%9A%E6%9C%AC%E8%AE%BE%E8%AE%A1/" class="dropdown-item">脚本设计</a>
+</li>
+                                    
+<li>
+    <a href="../04-Shell%20%E5%8F%98%E9%87%8F/" class="dropdown-item">变量</a>
+</li>
+                                    
+<li>
+    <a href="../05-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97/" class="dropdown-item">算数运算</a>
+</li>
+                                    
+<li>
+    <a href="../06-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="dropdown-item">流程控制</a>
+</li>
+                                    
+<li>
+    <a href="../07-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" class="dropdown-item">文本编辑</a>
+</li>
+                                    
+<li>
+    <a href="../08-Shell%20%E5%87%BD%E6%95%B0/" class="dropdown-item">函数</a>
+</li>
+                                    
+<li>
+    <a href="../09-Shell%20%E6%95%B0%E7%BB%84/" class="dropdown-item">数组</a>
+</li>
+                                    
+<li>
+    <a href="../10-%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="dropdown-item">字符和字符串</a>
+</li>
+                                    
+<li>
+    <a href="../11-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="dropdown-item">正则表达式</a>
+</li>
+                                    
+<li>
+    <a href="../12-%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" class="dropdown-item">输入与输出</a>
+</li>
+                                    
+<li>
+    <a href="../13-Shell%20%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8/" class="dropdown-item">高级应用</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Go <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../01-Go 开发环境安装配置.md" class="dropdown-item">开发环境安装</a>
+</li>
+                                    
+<li>
+    <a href="../../02-Go 语法基础.md" class="dropdown-item">语法基础</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> 搜索
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../01-Shell%20%E6%A6%82%E8%BF%B0/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> 上一张
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../03-%E8%84%9A%E6%9C%AC%E8%AE%BE%E8%AE%A1/" class="nav-link">
+                                    下一张 <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="目录">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#linux" class="nav-link">一、Linux 编辑器</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#11" class="nav-link">1.1 使用编辑器的益处</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#12-linux" class="nav-link">1.2 主要的 Linux 编辑器</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#vi" class="nav-link">二、vi 编辑器</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#21-vi-vim" class="nav-link">2.1 vi 与 vim</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#22" class="nav-link">2.2 工作模式</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#vi_1" class="nav-link">三、vi 操作命令</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#31" class="nav-link">3.1 光标移动</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#32" class="nav-link">3.2 文本插入</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#33" class="nav-link">3.3 删除字符</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#34" class="nav-link">3.4 复制操作</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#35" class="nav-link">3.5 保存退出</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="linux">一、Linux 编辑器</h2>
+<h3 id="11">1.1 使用编辑器的益处</h3>
+<p>​   在 Linux 操作系统中，虽然系统提供文本环境和图形环境两种不同的系统工作环境。但是对于系统管理员，文本环境下工作效率更高，节省大量系统资源。</p>
+<h3 id="12-linux">1.2 主要的 Linux 编辑器</h3>
+<p>​   <strong>1、NEdit 编辑器</strong></p>
+<p>​   NEdit 编辑器的界面非常整洁，几乎是为专业程序员设计的。功能强大，但不适用于文本编辑。</p>
+<p>​   <strong>2、Gedit 编辑器</strong></p>
+<p>​   Gedit 编辑器是 Linux GNOME 桌面上的文本编辑器，支持多种文件类型的彩色编码语句，也可以自定义特性和拼写检查。</p>
+<p>​   <strong>3、Emacs 编辑器</strong></p>
+<p>​   Emacs 是一款可拓展、可定制、自定义文档化的实时显示编辑器。</p>
+<p>​   <strong>4、vi 编辑器</strong></p>
+<p>​   在 Linux 操作系统中，vi 是一款在自负模式下运行的最为基本的文本编辑器。由于没有图形界面，使得它在处理文本时具有很高的效率。同时 vi 附有多个快捷操作命令。</p>
+<h2 id="vi">二、vi 编辑器</h2>
+<h3 id="21-vi-vim">2.1 vi 与 vim</h3>
+<p>​   在大多数 Linux 系统中，都有 vi 编辑器。在各种编辑器中 vi 用户最多，而且 vi 拥有升级版 vim，使得使用更为方便。</p>
+<p>​   vim 是 vi 的改良版，在 vi 的基础上增加了很多新特性，如根据程序代码显示不同的颜色。</p>
+<p>​   vi（vim）的使用方法非常简单，只需输入 vi 加上要编辑的文件名即可。如果文件不存在，则新建一个文件编辑。</p>
+<h3 id="22">2.2 工作模式</h3>
+<p>vi 的基本工作模式有三种：一般模式、插入（编辑）模式、底行模式</p>
+<ul>
+<li>一般模式：vi 打开文件后的默认模式</li>
+<li>插入模式：也叫编辑模式，可以对文本进行修改操作</li>
+<li>底行模式：可以用于反馈编辑结果</li>
+</ul>
+<p><img alt="img" src="../img/vim.png" /></p>
+<p>​   <strong>1、一般模式</strong></p>
+<p>​   也叫命令行模式，在该模式下可以控制光标、字符和行的删除，以及对某段落的复制剪切等操作。在命令行模式下，可以通过各种命令来修改文件的内容，同时显示在屏幕上。</p>
+<p>​   <strong>2、插入模式</strong></p>
+<p>​   也叫编辑模式，是用来编辑、存盘和退出文件内容的模式，在该模式下的任何操作都会保存并显示在屏幕上。</p>
+<p>​   <strong>3、底行模式</strong></p>
+<p>​   也叫末尾模式，是指在屏幕底部的一行，用于反馈编辑操作结果，各种状态都会在此显示。是以 ":"和"/"命令为标志。</p>
+<h2 id="vi_1">三、vi 操作命令</h2>
+<h3 id="31">3.1 光标移动</h3>
+<p>当前处于一般模式：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ctrl + f</td>
+<td>向后翻一页</td>
+</tr>
+<tr>
+<td>ctrl + d</td>
+<td>向后翻半页</td>
+</tr>
+<tr>
+<td>ctrl + b</td>
+<td>向前翻一页</td>
+</tr>
+<tr>
+<td>ctrl + u</td>
+<td>向前翻半页</td>
+</tr>
+<tr>
+<td>e</td>
+<td>光标跳到下一个字符串的末尾</td>
+</tr>
+<tr>
+<td>G</td>
+<td>光标移动到文本末尾</td>
+</tr>
+<tr>
+<td>gg</td>
+<td>光标移动到文本的开始处</td>
+</tr>
+<tr>
+<td>h</td>
+<td>光标向左移动一个字符</td>
+</tr>
+<tr>
+<td>l</td>
+<td>光标向右移动一个字符</td>
+</tr>
+<tr>
+<td>k</td>
+<td>光标想上移动一个字符</td>
+</tr>
+<tr>
+<td>j</td>
+<td>光标向下移动一个字符</td>
+</tr>
+<tr>
+<td>H</td>
+<td>光标移至文本的顶部</td>
+</tr>
+<tr>
+<td>L</td>
+<td>光标移至文本的底部</td>
+</tr>
+<tr>
+<td>M</td>
+<td>光标移至文本的中部</td>
+</tr>
+<tr>
+<td>$</td>
+<td>光标移至所在行的末尾处</td>
+</tr>
+<tr>
+<td>^</td>
+<td>光标移至所在行的行首处</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32">3.2 文本插入</h3>
+<p>当前处于一般模式：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>在光标所在行尾插入</td>
+</tr>
+<tr>
+<td>a（append）</td>
+<td>在光标所在后插入</td>
+</tr>
+<tr>
+<td>I</td>
+<td>在光标所在行首插入</td>
+</tr>
+<tr>
+<td>i（insert）</td>
+<td>在光标所在处插入</td>
+</tr>
+<tr>
+<td>O</td>
+<td>在当前所在行上面一行插入</td>
+</tr>
+<tr>
+<td>o</td>
+<td>在当前所在行下面一行插入</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33">3.3 删除字符</h3>
+<p>当前处于一般模式：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>每按一次删除光标所在处的后一个字符</td>
+</tr>
+<tr>
+<td>nx</td>
+<td>删除光标所在处的后 n 个字符</td>
+</tr>
+<tr>
+<td>X</td>
+<td>每按一次删除光标所在处的前一个字符</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>删除光标所在行</td>
+</tr>
+<tr>
+<td>ndd</td>
+<td>从光标所在行往下删除 n 行</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34">3.4 复制操作</h3>
+<p>当前处于一般模式：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p</td>
+<td>将缓冲区内的字符，粘贴到光标所在处的位置</td>
+</tr>
+<tr>
+<td>yw</td>
+<td>将光标所在处的字符复制到缓冲区</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>将光标所在行复制到缓冲区</td>
+</tr>
+<tr>
+<td>nyy</td>
+<td>包含光标所在行的下 n 行，复制到缓冲区</td>
+</tr>
+</tbody>
+</table>
+<h3 id="35">3.5 保存退出</h3>
+<p>当前处于一般模式：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:x</td>
+<td>退出 vi 并保存</td>
+</tr>
+<tr>
+<td>:m</td>
+<td>保存退出，忽略拥有者的只读权</td>
+</tr>
+<tr>
+<td>:q</td>
+<td>不保存并退出</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>不保存并强制退出</td>
+</tr>
+<tr>
+<td>:w</td>
+<td>将当前内容保存</td>
+</tr>
+<tr>
+<td>:w file_name</td>
+<td>将当前内容保存到指定文件中</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td>保存退出</td>
+</tr>
+<tr>
+<td>:wq!</td>
+<td>保存并强制退出</td>
+</tr>
+</tbody>
+</table></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>用<a href="https://www.mkdocs.org/">MkDocs</a>建立的文档。</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+                <p>从这里你可以搜索这些文件。在下面输入您的搜索内容。</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="在此输入搜索内容">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="没有搜索到结果"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">键盘热键</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">键</th>
+                    <th>动作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>打开这个帮助</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>下一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>上一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>搜索</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

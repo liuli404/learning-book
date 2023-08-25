@@ -5,7 +5,7 @@ theme:
     navigation_depth: 4
     sticky_navigation: False
     include_homepage_in_sidebar: False
-    collapse_navigation: False
+    collapse_navigation: True
     titles_only: False
     locale: zh_CN
     highlightjs: true
@@ -14,31 +14,28 @@ theme:
         - python
         - bash
         - shell
+
 markdown_extensions:
     - toc:
         baselevel: 2
 nav:
-  - Home: 'index.md'
-  - Shell:
-      - 'Shell 概述': '01-Shell 概述.md'
-      - '编辑器': '02-编辑器.md'
-      - '脚本设计': '03-脚本设计.md'
-      - 'Shell 变量': '04-Shell 变量.md'
-      - '算数运算': '05-算数运算.md'
-      - '流程控制': '06-流程控制.md'
-      - '文本编辑': '07-文本编辑.md'
-      - 'Shell 函数': '08-Shell 函数.md'
-      - 'Shell 数组': '09-Shell 数组.md'
-      - '字符和字符串': '10-字符和字符串.md'
-      - '正则表达式': '11-正则表达式.md'
-      - '输入与输出': '12-输入与输出.md'
-      - 'Shell 高级应用': '13-Shell 高级应用.md'
-  - Python:
-      - '基础语法': 'base.md'
-      - '面向对象': 'object.md'
-      - '多任务编程': 'multi-process.md'
-      - 'TCP 网络应用开发': 'tcp-socket.md'
-      - 'Web 服务器开发': 'web-server.md'
-      - 'Python 高级语法': 'advanced.md'
-      - 'Django 框架': 'django.md'
-      - 'Flask 框架': 'flask.md'
+    - Linux: 
+        - '入门命令': 'Linux/1-1-Linux 基本命令.md'
+        - '文件管理': 'Linux/1-2-Linux 文件管理.md'
+    - Shell:
+        - '概述': 'Shell/01-Shell 概述.md'
+        - '编辑器': 'Shell/02-编辑器.md'
+        - '脚本设计': 'Shell/03-脚本设计.md'
+        - '变量': 'Shell/04-Shell 变量.md'
+        - '算数运算': 'Shell/05-算数运算.md'
+        - '流程控制': 'Shell/06-流程控制.md'
+        - '文本编辑': 'Shell/07-文本编辑.md'
+        - '函数': 'Shell/08-Shell 函数.md'
+        - '数组': 'Shell/09-Shell 数组.md'
+        - '字符和字符串': 'Shell/10-字符和字符串.md'
+        - '正则表达式': 'Shell/11-正则表达式.md'
+        - '输入与输出': 'Shell/12-输入与输出.md'
+        - '高级应用': 'Shell/13-Shell 高级应用.md'
+    - Go:
+        - '开发环境安装': 01-Go 开发环境安装配置.md
+        - '语法基础': 02-Go 语法基础.md

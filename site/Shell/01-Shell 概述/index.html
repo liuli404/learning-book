@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh_Hans_CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://note.liuli.hots/Shell/01-Shell%20%E6%A6%82%E8%BF%B0/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>概述 - Learning Book</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/shell.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Learning Book</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Linux <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Linux/1-1-Linux%20%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="dropdown-item">入门命令</a>
+</li>
+                                    
+<li>
+    <a href="../../Linux/1-2-Linux%20%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" class="dropdown-item">文件管理</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Shell <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">概述</a>
+</li>
+                                    
+<li>
+    <a href="../02-%E7%BC%96%E8%BE%91%E5%99%A8/" class="dropdown-item">编辑器</a>
+</li>
+                                    
+<li>
+    <a href="../03-%E8%84%9A%E6%9C%AC%E8%AE%BE%E8%AE%A1/" class="dropdown-item">脚本设计</a>
+</li>
+                                    
+<li>
+    <a href="../04-Shell%20%E5%8F%98%E9%87%8F/" class="dropdown-item">变量</a>
+</li>
+                                    
+<li>
+    <a href="../05-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97/" class="dropdown-item">算数运算</a>
+</li>
+                                    
+<li>
+    <a href="../06-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="dropdown-item">流程控制</a>
+</li>
+                                    
+<li>
+    <a href="../07-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" class="dropdown-item">文本编辑</a>
+</li>
+                                    
+<li>
+    <a href="../08-Shell%20%E5%87%BD%E6%95%B0/" class="dropdown-item">函数</a>
+</li>
+                                    
+<li>
+    <a href="../09-Shell%20%E6%95%B0%E7%BB%84/" class="dropdown-item">数组</a>
+</li>
+                                    
+<li>
+    <a href="../10-%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="dropdown-item">字符和字符串</a>
+</li>
+                                    
+<li>
+    <a href="../11-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="dropdown-item">正则表达式</a>
+</li>
+                                    
+<li>
+    <a href="../12-%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" class="dropdown-item">输入与输出</a>
+</li>
+                                    
+<li>
+    <a href="../13-Shell%20%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8/" class="dropdown-item">高级应用</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Go <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../01-Go 开发环境安装配置.md" class="dropdown-item">开发环境安装</a>
+</li>
+                                    
+<li>
+    <a href="../../02-Go 语法基础.md" class="dropdown-item">语法基础</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> 搜索
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../Linux/1-2-Linux%20%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> 上一张
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../02-%E7%BC%96%E8%BE%91%E5%99%A8/" class="nav-link">
+                                    下一张 <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="目录">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#shell" class="nav-link">一、Shell 概念</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#11-shell" class="nav-link">1.1 Shell 的作用</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#12-shell" class="nav-link">1.2 使用 Shell 的原因</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#13-shell" class="nav-link">1.3 Shell 模式</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#shell_1" class="nav-link">二、Shell 工作原理</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#shell_2" class="nav-link">三、Shell 类型</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#31-shell" class="nav-link">3.1 常见的 Shell</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#32-shell" class="nav-link">3.2 Shell 切换</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#shell_3" class="nav-link">四、Shell 环境平台构造</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#41" class="nav-link">4.1 命令编修能力</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#42" class="nav-link">4.2 命令补全功能</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#43" class="nav-link">4.3 命令别名设置</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#44-bash" class="nav-link">4.4 bash 升级</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#shell_4" class="nav-link">五、Shell 脚本包装</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#51-awk" class="nav-link">5.1 用 awk 包装</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#52-sed" class="nav-link">5.2 用 sed 包装</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="shell">一、Shell 概念</h2>
+<p>​   shell 是一种解释器，也是一种脚本语言，每个 shell 脚本中包含一个或多个命令。多数系统默认使用的 shell 为 bash。</p>
+<h3 id="11-shell">1.1 Shell 的作用</h3>
+<p>​   shell 是指为使用者提供使用界面的软件。接收来自用户的命令，然后调用相应的应用程序处理用户键入的命令。</p>
+<p>​   同时 shell 也是一种程序设计语言，作为程序设计语言的 shell，使用交互或非交互的方式执行预先设定好的一连串指令。</p>
+<p>​   简单来说，shell 是 Linux 内核与用户之间的接口，为用户提供使用操作系统的界面，如下图所示：</p>
+<p><img alt="Shell interface to the kernal." src="../img/01-shells.svg" /></p>
+<h3 id="12-shell">1.2 使用 Shell 的原因</h3>
+<p>​   shell 是用户登录后执行的第一个程序，用户是无法与计算机进行交流的，这就需要一个中间角色来负责将用户的输入命令传达给计算机，使得计算机能够完成各种指令的操作。</p>
+<h3 id="13-shell">1.3 Shell 模式</h3>
+<p>​   shell 的模式可分为交互模式和非交互模式。交互模式下的 shell，通常在用户终端读取输入；非交互模式下的 shell，则可自动完成读取而不需要用户输入。</p>
+<p>​   <strong>1、交互模式</strong></p>
+<p>​       处于交互模式下的 shell，会等待用户的输入，然后读取并执行用户所提交的命令。</p>
+<pre><code class="language-bash">#!/bin/bash
+CAT(){
+    cat /etc/passwd | head -$line
+}
+echo -n &quot;Input the number of lines:&quot;
+read line
+limit=6
+
+if [ $limit -gt $line ]
+then 
+  while [ -n $line ]
+  do
+    CAT
+    break 2
+  done
+
+  echo -n &quot;Continue?(answer yes/no):&quot;
+  read answer
+  if [ $answer = 'yes' ]
+  then
+    let line=line+1
+    CAT
+  fi
+fi
+exit 0
+</code></pre>
+<p>​   <strong>2、非交互模式</strong></p>
+<p>​   非交互模式下，shell 不与用户进行交互，二十读取并执行预先在文件中设定的命令。当命令执行完成后，shell 即终止并退出。</p>
+<pre><code class="language-bash">#!/bin/bash
+
+CAT(){
+    cat /etc/passwd | head -$line
+}
+limit=6
+line=2
+if [ $limit -gt $line ]
+then
+    while [ -n $line ]
+    do 
+      CAT
+      break 2
+    done
+
+    echo
+    let line=line+1
+    CAT
+fi
+exit 0
+</code></pre>
+<h2 id="shell_1">二、Shell 工作原理</h2>
+<p>​   shell 是 Linux 系统提供给用户最为重要的命令解释程序，它以用户态方式在内核之外运行，其最基本的功能就是解释并执行用户输入的各种命令，实现用户与 Linux 系统内核之间的信息交流。</p>
+<p>​   用户在 shell 提示符下输入命令后，shell 会将读取的命令翻译成内核能够识别的代码，之后将这些代码传送到内核中去执行，以此来控制计算机硬件进行工作。并在执行完成后将结果输送到标准输出上显示出来。</p>
+<p><img alt="img" src="../img/4dbf34717d434bb692683937feb52fea.png" /></p>
+<h2 id="shell_2">三、Shell 类型</h2>
+<h3 id="31-shell">3.1 常见的 Shell</h3>
+<p>​   目前，在多数 Linux 系统中默认都使用 bash（Bourne Again shell）。在用户登陆系统后，要使用的 shell 是由 <code>/etc/passwd</code> 中对应的记录字段来决定的。</p>
+<pre><code class="language-bash">[root@192 ~]# cat /etc/passwd | head -1
+root:x:0:0:root:/root:/bin/bash
+</code></pre>
+<p>​   若要了解系统中都有那些 shell。可以通过查看 <code>/etc/shells</code> 来获取相关信息。</p>
+<pre><code class="language-bash">[root@192 ~]# cat /etc/shells 
+/bin/sh
+/bin/bash
+/usr/bin/sh
+/usr/bin/bash
+</code></pre>
+<p>​   目前除了 Bash，最长久的 shell 有三种：Bourne shell（sh）、C shell（csh）、Korn shell（ksh）</p>
+<p>​   <strong>1、Bourne shell 概述</strong></p>
+<p>​   Bourne shell 是 UNIX 系统上最初使用的 shell，而且在不同版本的 UNIX 系统上都可以使用。Bourne shell 虽然在 shell 编程方面相当优秀，不过在与用户的交互方面不如其他几种 shell。bash 就是 bourne shell 的扩展，与 bourne shell 完全兼容。</p>
+<p>​   bash 位于 /bin 目录中，他增加了许多 Bourne shell 不具备的功能，包括命令补全、命令编辑和命令历史表等。而事实上，bash 也具备了 C shell 和 korn shell 的许多优点，二他在拥有灵活和强大的编程接口外，同时也有很好的用户的界面。</p>
+<p>​   <strong>2、C shell 概述</strong></p>
+<p>​   Linux C shell 是一种比 Bourne shell 更适合编程的 shell，C shell 的名称来源与其语法与 C 语言相似。</p>
+<p>​   与 Bourne shell 相比，C shell 新增了不少特别的功能，包括命令行编辑、别名、命令行补全、拼写矫正、历史命令替换、作业控制等语法。</p>
+<p>​   <strong>3、Korn shell 概述</strong></p>
+<p>​   Korn shell 是一个交互式的命令解释器和命令编程语言，他可以使用交互式的方式从终端或文件中执行命令。Korn shell 集合了 C shell 和 Bourne shell 的优点和其他的功能，而且与 Bourne shell 完全兼容。</p>
+<h3 id="32-shell">3.2 Shell 切换</h3>
+<p>通过查看 <code>/etc/default/useradd</code> 文件，查看创建用户的默认 shell</p>
+<pre><code class="language-bash">cat /etc/default/useradd 
+# useradd defaults file
+GROUP=100
+HOME=/home
+INACTIVE=-1
+EXPIRE=
+SHELL=/bin/bash
+SKEL=/etc/skel
+CREATE_MAIL_SPOOL=yes
+</code></pre>
+<p>还可通过 env 查看环境变量，获取当前用户的 shell</p>
+<pre><code class="language-bash">[root@192 ~]# env | grep SHELL
+SHELL=/bin/bash
+</code></pre>
+<p>切换其他 shell，直接输入 shell 名称即可，如切换 sh 环境</p>
+<pre><code class="language-bash">[root@192 ~]# sh
+sh-4.2#
+</code></pre>
+<h2 id="shell_3">四、Shell 环境平台构造</h2>
+<h3 id="41">4.1 命令编修能力</h3>
+<p>​   bash 能够记忆使用过的命令，只需要使用方向键上下查找即可，对于默认记忆指令的数量为 1000 个，被记录的指令均放在家目录下的 <code>.bash_history</code> 中</p>
+<pre><code class="language-bash">[root@192 ~]# cat ~/.bash_history 
+od
+env
+env | grep SHELL
+shell
+csh
+ksh
+</code></pre>
+<h3 id="42">4.2 命令补全功能</h3>
+<p>​   bash 具有命令补全功能，使其在使用命令操作时非常方便，例如，若要执行某个长命令时，只需输入前几个字符，然后使用 Tab 键补全。如果前半部分有相同的命令，则按两次 Tab 键，会列出这些命令</p>
+<pre><code class="language-bash">[root@192 ~]# tail
+tail   tailf
+[root@192 ~]# vi
+vi         view       vigr       vim        vimdiff    vimtutor   vipw       virt-what  visudo  
+</code></pre>
+<h3 id="43">4.3 命令别名设置</h3>
+<p>​   bash 命令别名，其实就是将系统命令改成一个适合自己的名字，定义别名使用 <code>alias</code> 指令。</p>
+<pre><code class="language-bash">[root@192 ~]# alias rm='rm -i'
+</code></pre>
+<h3 id="44-bash">4.4 bash 升级</h3>
+<p>查看当前 bash 版本</p>
+<pre><code class="language-bash">[root@192 ~]# bash --version
+GNU bash, version 4.2.46(2)-release (x86_64-redhat-linux-gnu)
+Copyright (C) 2011 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+</code></pre>
+<p>bash 软件包官网：http://ftp.gnu.org/gnu/bash/，下载软件包</p>
+<pre><code class="language-bash">[root@192 ~]# wget http://ftp.gnu.org/gnu/bash/bash-5.1.16.tar.gz
+</code></pre>
+<p>解压安装包</p>
+<pre><code class="language-bash">[root@192 ~]# tar -zxvf bash-5.1.16.tar.gz 
+</code></pre>
+<p>使用 gcc 工具执行编译安装</p>
+<pre><code class="language-bash">[root@192 ~]# cd bash-5.1.16/
+[root@192 bash-5.1.16]# yum install -y gcc make
+[root@192 bash-5.1.16]# ./configure
+[root@192 bash-5.1.16]# make
+[root@192 bash-5.1.16]# make install
+</code></pre>
+<p>查看升级后的 bash 版本</p>
+<pre><code class="language-bash">[root@192 bash-5.1.16]# bash --version
+GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+</code></pre>
+<h2 id="shell_4">五、Shell 脚本包装</h2>
+<p>​   对脚本进行包装，可以保证脚本在传递参数时的完整性。对脚本进行包装后，可以使原先很复杂的脚本简单化。</p>
+<h3 id="51-awk">5.1 用 awk 包装</h3>
+<p>​   通过管道输出到 awk 命令中的内容，会被保存为可执行文件，此可执行文件可以通过修改其调用的格式来实现重复调用，而不必在提示符下对此输入同样的命令。</p>
+<pre><code class="language-bash">#!/bin/bash
+
+echo &quot;decimal hex character&quot;
+for ((i=20;i&lt;=36;i++))
+  do
+    echo $i | awk '{printf(&quot;%3d %2x %c\n&quot;,$1,$1,$1)}'
+  done
+exit 0
+</code></pre>
+<h3 id="52-sed">5.2 用 sed 包装</h3>
+<pre><code class="language-bash">#!/bin/bash
+
+sed -e '/^$/d' $1
+exit 0
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>用<a href="https://www.mkdocs.org/">MkDocs</a>建立的文档。</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+                <p>从这里你可以搜索这些文件。在下面输入您的搜索内容。</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="在此输入搜索内容">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="没有搜索到结果"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">键盘热键</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">键</th>
+                    <th>动作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>打开这个帮助</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>下一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>上一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>搜索</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

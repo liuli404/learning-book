@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="zh_Hans_CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://note.liuli.hots/Linux/1-2-Linux%20%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>文件管理 - Learning Book</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/shell.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Learning Book</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Linux <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../1-1-Linux%20%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="dropdown-item">入门命令</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">文件管理</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Shell <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Shell/01-Shell%20%E6%A6%82%E8%BF%B0/" class="dropdown-item">概述</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/02-%E7%BC%96%E8%BE%91%E5%99%A8/" class="dropdown-item">编辑器</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/03-%E8%84%9A%E6%9C%AC%E8%AE%BE%E8%AE%A1/" class="dropdown-item">脚本设计</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/04-Shell%20%E5%8F%98%E9%87%8F/" class="dropdown-item">变量</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/05-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97/" class="dropdown-item">算数运算</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/06-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="dropdown-item">流程控制</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/07-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" class="dropdown-item">文本编辑</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/08-Shell%20%E5%87%BD%E6%95%B0/" class="dropdown-item">函数</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/09-Shell%20%E6%95%B0%E7%BB%84/" class="dropdown-item">数组</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/10-%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="dropdown-item">字符和字符串</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/11-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="dropdown-item">正则表达式</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/12-%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" class="dropdown-item">输入与输出</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/13-Shell%20%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8/" class="dropdown-item">高级应用</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Go <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../01-Go 开发环境安装配置.md" class="dropdown-item">开发环境安装</a>
+</li>
+                                    
+<li>
+    <a href="../../02-Go 语法基础.md" class="dropdown-item">语法基础</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> 搜索
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../1-1-Linux%20%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> 上一张
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../Shell/01-Shell%20%E6%A6%82%E8%BF%B0/" class="nav-link">
+                                    下一张 <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="目录">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">一、文件命名规则</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#11" class="nav-link">1.1 可以使用哪些字符</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#12" class="nav-link">1.2 文件名的长度</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#13" class="nav-link">1.3 文件名的大小写</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#14-linux" class="nav-link">1.4 Linux 文件扩展名</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">二、文件管理</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#21" class="nav-link">2.1 目录创建</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="4"><a href="#211" class="nav-link">2.1.1 创建目录</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#212" class="nav-link">2.1.2 递归创建目录</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#213" class="nav-link">2.1.3 同时创建多个目录</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#22" class="nav-link">2.2 目录删除</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="4"><a href="#221" class="nav-link">2.2.1 移除空目录</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#222" class="nav-link">2.2.2 递归删除空目录</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#223" class="nav-link">2.2.3 同时删除多个空目录</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#23" class="nav-link">2.3 文件创建</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="4"><a href="#231" class="nav-link">2.3.1 创建文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#232" class="nav-link">2.3.2 同时创建多个文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#233" class="nav-link">2.3.3 根据序号同时创建多个文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#24" class="nav-link">2.4 文件删除</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#25" class="nav-link">2.5 复制操作</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="4"><a href="#251" class="nav-link">2.5.1 复制</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#252" class="nav-link">2.5.2 复制并重命名文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#253" class="nav-link">2.5.3 复制文件夹到指定路径</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#26" class="nav-link">2.6 剪切操作</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#27" class="nav-link">2.7 重命名操作</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#28" class="nav-link">2.8 打包、压缩与解压缩</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="4"><a href="#281" class="nav-link">2.8.1 几个概念</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#282" class="nav-link">2.8.2 打包操作</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#283-tar-tf-tar-uf" class="nav-link">2.8.3 tar -tf 以及 tar -uf</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#284" class="nav-link">2.8.4 打包并压缩</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#285" class="nav-link">2.8.5 对压缩包进行解压</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#29-zip-unzip" class="nav-link">2.9 zip 与 unzip</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="4"><a href="#291-zip" class="nav-link">2.9.1 zip 压缩</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#292-unzip" class="nav-link">2.9.2 unzip 解压缩</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">三、文本处理</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#31" class="nav-link">3.1 查看文件内容</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="4"><a href="#311-cat" class="nav-link">3.1.1 cat 查看及合并</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#312-more" class="nav-link">3.1.2 more 分屏显示文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#313-less" class="nav-link">3.1.3 less 分屏显示文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#314" class="nav-link">3.1.4 三者的对比</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#315-head" class="nav-link">3.1.5 head 显示文件开头行</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#316-tail" class="nav-link">3.1.6 tail 显示文件结尾行</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#32" class="nav-link">3.2 统计文本信息</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="4"><a href="#321-wc" class="nav-link">3.2.1 wc 统计文件内容数量</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#322-du" class="nav-link">3.2.2 du 统计文件大小</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#33" class="nav-link">3.3 文本处理</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="4"><a href="#331-find" class="nav-link">3.3.1 find 文件查找</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#332-grep" class="nav-link">3.3.2 grep 搜索文件内容</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="_1">一、文件命名规则</h2>
+<h3 id="11">1.1 可以使用哪些字符</h3>
+<p>理论上<strong>除了字符“/”之外，所有的字符都可以使用</strong>，但是要注意，在目录名或文件名中，不建议使用某些特殊字符，例如， &lt;、&gt;、？、* 等，尽量避免使用。</p>
+<p>工作时文件的命名规则：</p>
+<p>① 由于 Linux 严格区分大小写，所以<strong>尽量都用小写字母</strong></p>
+<p>② 如果必须<strong>对文件名进行分割，建议使用"_"</strong>，例如：nginx_error_2020.log</p>
+<p><font color='green'>_ 下划线，在 Linux 操作系统中，可以使用 Shift 键 + 减号</font></p>
+<h3 id="12">1.2 文件名的长度</h3>
+<p>目录名或文件名的长度不能超过 255 个字符</p>
+<p><font color='green'>尽量不要太长，另外文件名称一定要见名知意，可以使用英文单词</font></p>
+<h3 id="13">1.3 文件名的大小写</h3>
+<p>Linux 目录名或文件名是区分大小写的。如 yunwei 和 Yunwei ，是互不相同的目录名或文件名。</p>
+<p>个人建议：</p>
+<p>不要使用字符大小写来区分不同的文件或目录。
+建议文件名<strong>一律使用小写字母</strong></p>
+<h3 id="14-linux">1.4 Linux 文件扩展名</h3>
+<p>Linux 文件的扩展名对  Linux  操作系统没有特殊的含义， Linux  系统并不以文件的扩展名开分区文件类型。例如，liuli.exe 只是一个文件，其扩展名 .exe 并不代表此文件就一定是可执行的。</p>
+<p>在 Linux 系统中，文件扩展名的用途为了<strong>使运维人员更好的区分不同的文件类型</strong>。</p>
+<p><font color='green'>在 Linux 操作系统中，文件的类型是依靠权限位的标识符来进行区分的。当然也可以通过颜色，如黑色普通文件，天蓝色文件夹</font></p>
+<h2 id="_2">二、文件管理</h2>
+<h3 id="21">2.1 目录创建</h3>
+<h4 id="211">2.1.1 创建目录</h4>
+<p>基本语法：</p>
+<pre><code class="language-bash">mkdir 目录名称
+</code></pre>
+<p>主要功能：就是根据目录的名称创建一个目录</p>
+<p><font color='green'>mkdir = make directory</font></p>
+<p>案例：在家目录下创建一个 liuli 的文件夹</p>
+<pre><code class="language-bash">mkdir liuli
+</code></pre>
+<h4 id="212">2.1.2 递归创建目录</h4>
+<p>基本语法：</p>
+<pre><code class="language-bash"># mkdir -p /usr/local/nginx/conf
+选项说明：
+-p：递归创建，从左边的路径开始一级一级创建目录，直到路径结束
+</code></pre>
+<p>案例：在已知目录（/usr/local）下创建多级目录（nginx/conf）</p>
+<pre><code class="language-bash"># mkdir /usr/local/nginx/conf
+报错：mkdir: cannot create directory ‘/usr/local/nginx/conf’: No such file or directory
+mkdir：不能创建目录 conf，为什么呢？因为 /usr/local 目录下并没有 nginx
+</code></pre>
+<p>解决方案：如果我们想同时创建多级目录，必须使用 -p 选项，其会从左向右一级一级创建目录。</p>
+<pre><code class="language-bash">mkdir -p /usr/local/nginx/conf
+</code></pre>
+<h4 id="213">2.1.3 同时创建多个目录</h4>
+<pre><code class="language-bash">mkdir 目录名称1 目录名称2 目录名称3 ...
+</code></pre>
+<p>案例：在当前目录下创建a、b、c三个目录</p>
+<pre><code class="language-bash">mkdir a
+mkdir b
+mkdir c
+# 或
+mkdir a b c
+</code></pre>
+<h3 id="22">2.2 目录删除</h3>
+<h4 id="221">2.2.1 移除空目录</h4>
+<p>基本语法：</p>
+<pre><code class="language-bash">rmdir 目录名称
+</code></pre>
+<p><font color='green'>rmdir = remove  directory，移除目录</font></p>
+<p>案例：把家目录下的 liuli 删除（空目录）</p>
+<pre><code class="language-bash">rmdir liuli
+</code></pre>
+<h4 id="222">2.2.2 递归删除空目录</h4>
+<p>基本语法：</p>
+<pre><code class="language-bash">rmdir -p 目录名称1/目录名称2/目录名称3/...
+</code></pre>
+<p>主要功能：从右向左一级一级删除空目录</p>
+<p>案例：递归删除 liuli 文件夹中的 yunwei 文件夹中的 shenzhen3</p>
+<pre><code class="language-bash">rmdir -p liuli/yunwei/shenzhen3
+</code></pre>
+<h4 id="223">2.2.3 同时删除多个空目录</h4>
+<pre><code class="language-bash">rmdir 目录名称1 目录名称2 目录名称3 ...
+</code></pre>
+<p>案例：删除家目录中的a、b、c三个空目录</p>
+<pre><code class="language-bash">rmdir a b c
+</code></pre>
+<h3 id="23">2.3 文件创建</h3>
+<h4 id="231">2.3.1 创建文件</h4>
+<p>基本语法：</p>
+<pre><code class="language-bash">touch 文件名称
+</code></pre>
+<p>主要功能：在 Linux 系统中的当前目录下创建一个空文件</p>
+<p>案例：在当前目录下创建一个 readme.txt 文件</p>
+<pre><code class="language-bash">touch readme.txt
+</code></pre>
+<h4 id="232">2.3.2 同时创建多个文件</h4>
+<p>基本语法：</p>
+<pre><code class="language-bash">touch 文件名称1 文件名称2 文件名称3 ...
+</code></pre>
+<p>案例：创建一个 shop 商城文件夹，然后在内部创建 index.php、admin.php、config.php 三个文件</p>
+<pre><code class="language-bash">mkdir shop
+touch shop/index.php
+touch shop/admin.php
+touch shop/config.php
+# 或
+touch shop/index.php shop/admin.php shop/config.php
+</code></pre>
+<h4 id="233">2.3.3 根据序号同时创建多个文件</h4>
+<p>基本语法：</p>
+<pre><code class="language-bash"># touch 文件名称{开始序号..结束序号}
+含义：
+根据提供的开始序号~结束序号，一个一个创建文件
+</code></pre>
+<p>案例：创建 file1、file2、file3、file4、file5 共 5 个文件</p>
+<pre><code class="language-bash">touch file1
+touch file2
+touch file3
+touch file4
+touch file5
+# 或
+touch file{1..5}
+</code></pre>
+<h3 id="24">2.4 文件删除</h3>
+<p>基本语法：</p>
+<pre><code class="language-bash"># rm [选项] 文件或文件夹的名称
+选项说明：
+-r：针对文件夹，代表递归删除，先把目录下的所有文件删除，然后在删除文件夹
+-f：强制删除，不提示，初学者一定要慎重！！！
+</code></pre>
+<p>案例：删除 readme.txt 文件</p>
+<pre><code class="language-bash"># rm readme.txt
+rm: remove regular empty file ‘readme.txt’? 这里可以回复y or n
+y 代表确认删除
+n 代表取消删除
+</code></pre>
+<p>案例：强制删除 admin.php，不提示（慎重）</p>
+<pre><code class="language-bash">rm -f admin.php
+</code></pre>
+<p>案例：删除非空的文件夹（-rf 强制递归删除，不提示）</p>
+<pre><code class="language-bash">rm -rf shop
+</code></pre>
+<p>扩展：rm -rf /*，一定要慎重</p>
+<pre><code class="language-bash"># rm -rf /*    代表删除根目录下的所有文件（如果没有备份，恢复的几率不高）
+rm ：删除
+-r ：递归删除（无论文件夹是否为空）
+-f ：强制删除不提示
+/  ：代表根分区
+*  ：所有
+</code></pre>
+<h3 id="25">2.5 复制操作</h3>
+<h4 id="251">2.5.1 复制</h4>
+<p>基本语法：</p>
+<pre><code class="language-bash"># cp [选项] 源文件或文件夹 目标路径
+选项说明：
+-r ：递归复制，主要针对文件夹
+</code></pre>
+<p><font color='green'>cp = copy复制</font></p>
+<p>案例：把 readme.txt 文件从当前目录复制一份放到 /tmp 文件夹中</p>
+<pre><code class="language-bash">cp readme.txt /tmp/
+</code></pre>
+<h4 id="252">2.5.2 复制并重命名文件</h4>
+<p>基本语法：</p>
+<pre><code class="language-bash">cp [选项] 源文件或文件夹 目标路径/新文件或文件夹的名称
+</code></pre>
+<p>案例：把 readme.txt 文件从当前目录复制一份放到 /tmp 文件夹中并重命名为 readme.txt.bak</p>
+<pre><code class="language-bash">cp readme.txt /tmp/readme.txt.bak
+</code></pre>
+<h4 id="253">2.5.3 复制文件夹到指定路径</h4>
+<pre><code class="language-bash">cp -r 源文件夹名称 目标路径/
+</code></pre>
+<p>案例：把 shop 目录连通其内部的文件统一复制到 /tmp 目录下</p>
+<pre><code class="language-bash">mkdir shop
+touch shop/index.php shop/admin.php shop/config.php
+cp -r shop /tmp/
+</code></pre>
+<h3 id="26">2.6 剪切操作</h3>
+<p>基本语法：</p>
+<pre><code class="language-bash">mv 源文件或文件夹 目标路径/
+</code></pre>
+<p><font color='green'>mv = move，剪切、移动的含义</font></p>
+<p>案例：把 readme.txt 文件剪切到 /tmp 目录下</p>
+<pre><code class="language-bash">mv readme.txt /tmp/
+</code></pre>
+<p>案例：把 shop 文件夹移动到 /usr/local/nginx 目录下</p>
+<pre><code class="language-bash">mkdir /usr/local/nginx
+mv shop /usr/local/nginx/
+</code></pre>
+<h3 id="27">2.7 重命名操作</h3>
+<p>什么是重命名？简单来说，就是给一个文件或文件夹更改名称</p>
+<p>基本语法：</p>
+<pre><code class="language-bash">mv 源文件或文件夹名称 新文件或文件夹的名称
+</code></pre>
+<p>案例：把 readme.txt 文件更名为 README.md 文件</p>
+<pre><code class="language-bash">mv readme.txt README.md
+</code></pre>
+<p>案例：把 shop 文件目录更名为 wechat 目录</p>
+<pre><code class="language-bash">mkdir shop
+mv shop wechat
+</code></pre>
+<h3 id="28">2.8 打包、压缩与解压缩</h3>
+<h4 id="281">2.8.1 几个概念</h4>
+<p><strong>打包</strong>：默认情况下， Linux 的压缩概念一次只能压缩一个文件。针对多文件或文件夹无法进行直接压缩。所以需要提前对多个文件或文件夹进行打包，这样才可以进行压缩操作。</p>
+<p><font color='green'>打包只是把多个文件或文件夹打包放在一个文件中，但是并没有进行压缩，所以其大小还是原来所有文件的总和。</font></p>
+<p><strong>压缩</strong>：也是一个文件和目录的集合，且这个集合也被存储在一个文件中，但它们的不同之处在于，压缩文件所占用的磁盘空间<strong>比集合中所有文件大小的总和要小。</strong></p>
+<h4 id="282">2.8.2 打包操作</h4>
+<p>基本语法：</p>
+<pre><code class="language-bash"># tar [选项] 打包后的名称.tar 多个文件或文件夹
+选项说明：
+-c：打包
+-f：filename，打包后的文件名称
+-v：显示打包的进度
+-u：update缩写，更新原打包文件中的文件（了解）
+-t：查看打包的文件内容（了解）
+</code></pre>
+<p>案例：把 a.txt、b.txt、c.txt 文件打包到 abc.tar 文件中</p>
+<pre><code class="language-bash">tar -cvf abc.tar a.txt b.txt c.txt
+</code></pre>
+<p>案例：把 wechat 文件夹进行打包 wechat.tar</p>
+<pre><code class="language-bash">tar -cvf wechat.tar wechat
+</code></pre>
+<h4 id="283-tar-tf-tar-uf">2.8.3 tar -tf 以及 tar -uf</h4>
+<pre><code class="language-bash"># tar -tf 打包后的文件名称
+</code></pre>
+<p>主要功能：查看 tar 包中的文件信息</p>
+<p>案例：查看 abc.tar 包中的文件信息</p>
+<pre><code class="language-bash">tar -tf abc.tar
+</code></pre>
+<p>如果还想往 tar 包中更新或追加内容都可以通过-u选项</p>
+<pre><code class="language-bash">tar -uf 打包后的文件名称
+</code></pre>
+<p><font color='green'>u = update</font></p>
+<p>案例：向 abc.tar 包中添加一个 d.txt 文件</p>
+<pre><code class="language-bash">touch d.txt
+tar -uf abc.tar d.txt
+# 查看是否添加成功
+tar -tf abc.tar
+</code></pre>
+<p>扩展：如何把tar包中的文件释放出来</p>
+<pre><code class="language-bash"># 打包
+tar -cf abc.tar a.txt b.txt c.txt
+
+# 释放
+tar -xf abc.tar
+</code></pre>
+<h4 id="284">2.8.4 打包并压缩</h4>
+<p>基本语法：</p>
+<pre><code class="language-bash"># tar [选项] 压缩后的压缩包名称 要压缩的文件或文件夹
+
+选项说明：
+-cf：对文件或文件夹进行打包
+-v：显示压缩进度
+-z：使用gzip压缩工具把打包后的文件压缩为.gz
+-j：使用bzip2压缩工具把打包后的文件压缩为.bz2
+-J：使用xz压缩工具把打包后的文件压缩为.xz
+</code></pre>
+<p>案例：把 a.txt、b.txt、c.txt 文件打包并压缩为 abc.tar.gz</p>
+<pre><code class="language-bash">tar -zcf abc.tar.gz a.txt b.txt c.txt
+</code></pre>
+<p>案例：把 wechat 文件夹压缩为 wechat.tar.gz 格式的压缩包</p>
+<pre><code class="language-bash">tar -zcf wechat.tar.gz wechat
+</code></pre>
+<h4 id="285">2.8.5 对压缩包进行解压</h4>
+<p>解压过程非常简单，就是把压缩的参数中的 c 换成 x 就可以实现解压缩了</p>
+<pre><code class="language-bash"># *.tar.gz 格式的压缩包
+tar -zxf 名称.tar.gz
+
+# *.tar.bz2 格式的压缩包
+tar -jxf 名称.tar.bz2
+
+# *.tar.xz 格式的压缩包
+tar -Jxf 名称.tar.xz
+</code></pre>
+<p>案例：把 abc.tar.gz 格式的压缩包进行解压缩操作</p>
+<pre><code class="language-bash">tar -zxf abc.tar.gz
+</code></pre>
+<p>案例：把 wechat.tar.gz 格式的压缩包进行解压缩操作</p>
+<pre><code class="language-bash">tar -zxf wechat.tar.gz
+</code></pre>
+<h3 id="29-zip-unzip">2.9 zip 与 unzip</h3>
+<h4 id="291-zip">2.9.1 zip 压缩</h4>
+<p>基本语法：</p>
+<pre><code class="language-bash"># zip [选项] 压缩后的文件名称.zip 文件或文件夹
+选项说明：
+-r ：递归压缩，主要针对的是文件夹
+</code></pre>
+<p><font color='green'> Linux 下已经有 gzip、bzip2 以及 xz 压缩命令了，为什么还需要使用 zip 压缩呢？</font></p>
+<p><font color='green'>答：zip 格式在 Windows 以及 Linux 中都是可以正常使用的。</font></p>
+<p>案例：把 a.txt、b.txt、c.txt 进行压缩为 abc.zip</p>
+<pre><code class="language-bash">zip abc.zip a.txt b.txt c.txt
+</code></pre>
+<p>案例：把 wechat 文件夹压缩为 wechat.zip</p>
+<pre><code class="language-bash">zip -r wechat.zip wechat
+</code></pre>
+<h4 id="292-unzip">2.9.2 unzip 解压缩</h4>
+<p>基本语法：</p>
+<pre><code class="language-bash">unzip 压缩包名称                  # 解压到当前目录
+unzip 压缩包名称 -d 指定路径       # 解压到指定路径下
+</code></pre>
+<p>案例：对abc.zip文件进行解压缩</p>
+<pre><code class="language-bash">unzip abc.zip
+</code></pre>
+<p>案例：把 wechat.zip 解压到 /usr/local/nginx 目录下</p>
+<pre><code class="language-bash">unzip wechat.zip -d /usr/local/nginx/
+</code></pre>
+<h2 id="_3">三、文本处理</h2>
+<h3 id="31">3.1 查看文件内容</h3>
+<h4 id="311-cat">3.1.1 cat 查看及合并</h4>
+<p>命令：cat</p>
+<p>作用：查看文件内容</p>
+<p>语法：<code>cat 文件名称</code></p>
+<p>​            <code>cat 文件1 文件2 &gt; 文件3</code></p>
+<pre><code class="language-bash"># 用法一：cat 文件名
+cat 1.txt
+含义：显示 1.txt 文件的内容
+特别注意：cat 命令用于查看文件内容时，不论文件内容有多少，都会一次性显示。如果文件非常大，那么文件开头的内容就看不到了。cat 命令适合查看不太大的文件。
+
+# 用法二：cat 文件1 文件2 &gt; 文件3
+cat 1.txt 2.txt &gt; 3.txt
+含义：将 1.txt 和 2.txt 文件内容合并后，输出到 3.txt
+</code></pre>
+<h4 id="312-more">3.1.2 more 分屏显示文件</h4>
+<p>命令：more</p>
+<p>作用：分屏查看文件</p>
+<p>语法：<code>more 文件名</code></p>
+<p>流程：more 在读取文件时，默认已经加载文件的全部内容。</p>
+<pre><code class="language-bash">more /var/log/boot.log
+含义：分页显示 /var/log/boot.log 文件的内容
+</code></pre>
+<p>more 命令的执行会打开一个交互界面，下面是一些常用交互命令：</p>
+<table>
+<thead>
+<tr>
+<th>回车键</th>
+<th>向下移动一行。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>d</td>
+<td>向下移动半页。</td>
+</tr>
+<tr>
+<td>空格键</td>
+<td>向下移动一页。</td>
+</tr>
+<tr>
+<td>b</td>
+<td>向上移动一页。</td>
+</tr>
+<tr>
+<td>/ 字符串</td>
+<td>搜索指定的字符串。</td>
+</tr>
+<tr>
+<td>:f</td>
+<td>显示当前文件的文件名和行号。</td>
+</tr>
+<tr>
+<td>q 或 Q</td>
+<td>退出   more。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="313-less">3.1.3 less 分屏显示文件</h4>
+<p>命令：less</p>
+<p>作用：分屏查看文件</p>
+<p>语法：<code>less 文件名</code></p>
+<p>流程：不是加载整个文件，而是一点一点进行加载，相对而言，读取大文件时，效率比较高。</p>
+<pre><code class="language-bash">less /var/log/boot.log
+含义：分页显示 /var/log/boot.log 文件的内容
+</code></pre>
+<p>less 命令的执行也会打开一个交互界面，下面是一些常用交互命令（和more相同）：</p>
+<table>
+<thead>
+<tr>
+<th>回车键</th>
+<th>向下移动一行。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>d</td>
+<td>向下移动半页。</td>
+</tr>
+<tr>
+<td>空格键</td>
+<td>向下移动一页。</td>
+</tr>
+<tr>
+<td>b</td>
+<td>向上移动一页。</td>
+</tr>
+<tr>
+<td>/ 字符串</td>
+<td>搜索指定的字符串。</td>
+</tr>
+<tr>
+<td>:f</td>
+<td>显示当前文件的文件名和行号。</td>
+</tr>
+<tr>
+<td>q 或 Q</td>
+<td>退出   more。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="314">3.1.4 三者的对比</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>cat</th>
+<th>more</th>
+<th>less</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>作用</td>
+<td>显示小文件（一屏以内）</td>
+<td>显示大文件（超过一屏）</td>
+<td>显示大文件（超过一屏）</td>
+</tr>
+<tr>
+<td>交互命令</td>
+<td>无</td>
+<td>有</td>
+<td>有</td>
+</tr>
+<tr>
+<td>上下键翻行</td>
+<td>无</td>
+<td>无</td>
+<td>有</td>
+</tr>
+</tbody>
+</table>
+<h4 id="315-head">3.1.5 head 显示文件开头行</h4>
+<p>命令：head</p>
+<p>作用：查看一个文件的前 n 行，如果不指定 n，则默认显示前 10 行。</p>
+<p>语法：<code>head [参数选项] 文件名</code></p>
+<p>常见参数：-n 表示显示前 n 行的内容，n 等于行数</p>
+<pre><code class="language-bash"># 用法一：head 文件名
+head /var/log/boot.log
+含义：显示 /var/log/boot.log 文件的内容，默认为前 10 行
+
+# 用法二：head -n 文件名
+head -3 /var/log/boot.log
+含义：显示 /var/log/boot.log 文件的前 3 行内容
+</code></pre>
+<h4 id="316-tail">3.1.6 tail 显示文件结尾行</h4>
+<p>命令：tail</p>
+<p>作用：查看一个文件的最后n 行，如果n 不指定默认显示最后10 行</p>
+<p>语法：<code>tail -n 文件路径</code>【n 表示数字】</p>
+<p>常见参数：-n 显示最后 n 行的内容，n 等于行数</p>
+<p>​                    -f 输出文件变化后新增加的数据</p>
+<pre><code class="language-bash"># 用法一：tail 文件名
+tail /var/log/boot.log
+含义：显示 /var/log/boot.log 文件的内容，默认为最后 10 行
+
+# 用法二：tail -n 文件名
+tail -5 /var/log/boot.log
+含义：显示 /var/log/boot.log 文件的最后 5 行内容
+
+# 用法三：tail -f 文件名
+tail -f /var/log/messages
+含义：显示 /var/log/messages 文件中，执行 tail -f 命令后，新增的数据。
+注意：作用相当于查看一个文件动态变化的内容，一般用于查看系统的日志的变化，按下 ctrl+c 可以退出查看状态
+</code></pre>
+<h3 id="32">3.2 统计文本信息</h3>
+<h4 id="321-wc">3.2.1 wc 统计文件内容数量</h4>
+<p>命令：wc（wc = word count）</p>
+<p>作用：用于统计文件内容信息（包含行数、单词数、字节数）</p>
+<p>语法：<code>wc [参数选项] 文件名</code></p>
+<p>常见参数：</p>
+<p>-l：表示 lines，行数（以回车/换行符为标准）</p>
+<p>-w：表示 words，单词数 依照空格来判断单词数量</p>
+<p>-c：表示 bytes，字节数（空格，回车，换行）</p>
+<pre><code class="language-bash">wc -lwc /var/log/boot.log
+含义：统计 /var/log/boot.log 文件的行数，单词数，字节数
+注意：wc命令选项可以混在一起搭配使用，但选项的顺序不影响输出结果，第一个是行数，第二个是单词数，第三个数字节数。
+</code></pre>
+<h4 id="322-du">3.2.2 du 统计文件大小</h4>
+<p>命令：du</p>
+<p>作用：查看文件或目录（会递归显示子目录）占用磁盘空间大小</p>
+<p>语法：<code>du [参数选项] 文件名或目录名</code></p>
+<p>常见参数：</p>
+<p>-s ：summaries，只显示汇总的大小，统计文件夹的大小</p>
+<p>-h：human，表示以人类高可读性的形式进行显示，如果不写 -h，默认以 KB 的形式显示文件大小</p>
+<pre><code class="language-bash"># 用法一：du 文件名
+du /var/log/boot.log
+含义：统计 /var/log/boot.log 文件的大小
+
+# 用法二：du -h 文件名
+du -h /var/log/boot.log
+含义：统计 /var/log/boot.log 文件的大小，以高可读性显示
+
+# 用法三：du 目录名
+du /var/log/
+含义：统计 /var/log/ 目录的大小，包含目录下每一个单独文件的大小
+
+# 用法四：du -s 目录名
+du -s /var/log/
+含义：统计/var/log/boot.log文件的大小，汇总只显示目录大小
+
+# 用法五：du -sh 目录名
+du -sh /var/log/
+含义：统计 /var/log/boot.log 文件的大小，汇总只显示目录大小，并采用高可读性
+</code></pre>
+<h3 id="33">3.3 文本处理</h3>
+<h4 id="331-find">3.3.1 find 文件查找</h4>
+<p>命令：find</p>
+<p>作用：用于查找文档</p>
+<p>语法：<code>find 路径范围 选项1 选项1的值 [选项2 选项2的值…]</code></p>
+<p>常用参数：</p>
+<p>-name：按照文档名称进行搜索（支持模糊搜索）</p>
+<p>-type：按照文档的类型进行搜索，文档类型的值，f（file）表示文件，d（directory）表示文件夹</p>
+<pre><code class="language-bash"># 用法一：find 路径范围 选项1 选项1的值 选项2 选项2的值
+find /var/ -name boot.log -type f
+含义：在 /var/ 目录下，查找名称等于 boot.log，类型是文件的文档
+
+# 用法二：find 路径范围 选项1 选项1的值 选项2 选项2的值
+find /var/log -name &quot;*.log&quot; -type f
+含义：在 /var/log 目录下，查找所有 .log 结尾，类型是文件的文档，*.log 需要用引号引起来。
+
+# 用法三：find 路径范围 选项1 选项1的值
+find /var/log -type d
+含义：在 /var/log 目录下，查找所有文件夹
+</code></pre>
+<h4 id="332-grep">3.3.2 grep 搜索文件内容</h4>
+<p>命令：grep</p>
+<p>作用：在文件中直接找到包含指定信息的那些行，并把这些信息显示出来</p>
+<p>语法：<code>grep 要查找的内容 文件名</code></p>
+<pre><code class="language-bash"># 用法一：grep 查找的内容 文件名
+grep network boot.log
+含义：在 boot.log 文件中，查找包含 network 的行
+
+# 用法二：grep 查找的内容 多个文件
+grep network /var/log/*
+含义：在 /var/log 目录下的所有文件中，查找包含 network 的行
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>用<a href="https://www.mkdocs.org/">MkDocs</a>建立的文档。</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+                <p>从这里你可以搜索这些文件。在下面输入您的搜索内容。</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="在此输入搜索内容">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="没有搜索到结果"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">键盘热键</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">键</th>
+                    <th>动作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>打开这个帮助</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>下一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>上一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>搜索</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
