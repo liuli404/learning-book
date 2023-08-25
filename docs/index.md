@@ -1,7 +1,69 @@
-<h1 id="mkdocs">Learning Books</h1>
-<p>欢迎来到我的学习笔记</p>
-<hr />
+# 学习笔记
 
-- Linux 基础学习：
-- Shell 脚本学习：
-- Go 语言学习：
+欢迎来到我的学习笔记
+
+---
+
+[个人博客](https://blog.liuli.host/)
+
+[CSDN博客](https://blog.csdn.net/qq_39680564)
+
+[GitHub主页](https://github.com/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
