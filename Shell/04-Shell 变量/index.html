@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh_Hans_CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://note.liuli.hots/Shell/04-Shell%20%E5%8F%98%E9%87%8F/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>变量 - Learning Book</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/shell.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Learning Book</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Linux <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Linux/1-1-Linux%20%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="dropdown-item">入门命令</a>
+</li>
+                                    
+<li>
+    <a href="../../Linux/1-2-Linux%20%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" class="dropdown-item">文件管理</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Shell <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01-Shell%20%E6%A6%82%E8%BF%B0/" class="dropdown-item">概述</a>
+</li>
+                                    
+<li>
+    <a href="../02-%E7%BC%96%E8%BE%91%E5%99%A8/" class="dropdown-item">编辑器</a>
+</li>
+                                    
+<li>
+    <a href="../03-%E8%84%9A%E6%9C%AC%E8%AE%BE%E8%AE%A1/" class="dropdown-item">脚本设计</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">变量</a>
+</li>
+                                    
+<li>
+    <a href="../05-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97/" class="dropdown-item">算数运算</a>
+</li>
+                                    
+<li>
+    <a href="../06-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="dropdown-item">流程控制</a>
+</li>
+                                    
+<li>
+    <a href="../07-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" class="dropdown-item">文本编辑</a>
+</li>
+                                    
+<li>
+    <a href="../08-Shell%20%E5%87%BD%E6%95%B0/" class="dropdown-item">函数</a>
+</li>
+                                    
+<li>
+    <a href="../09-Shell%20%E6%95%B0%E7%BB%84/" class="dropdown-item">数组</a>
+</li>
+                                    
+<li>
+    <a href="../10-%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="dropdown-item">字符和字符串</a>
+</li>
+                                    
+<li>
+    <a href="../11-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="dropdown-item">正则表达式</a>
+</li>
+                                    
+<li>
+    <a href="../12-%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" class="dropdown-item">输入与输出</a>
+</li>
+                                    
+<li>
+    <a href="../13-Shell%20%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8/" class="dropdown-item">高级应用</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Go <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../01-Go 开发环境安装配置.md" class="dropdown-item">开发环境安装</a>
+</li>
+                                    
+<li>
+    <a href="../../02-Go 语法基础.md" class="dropdown-item">语法基础</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> 搜索
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../03-%E8%84%9A%E6%9C%AC%E8%AE%BE%E8%AE%A1/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> 上一张
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../05-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97/" class="nav-link">
+                                    下一张 <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="目录">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">一、变量概述</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">二、变量的类型</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#21" class="nav-link">2.1 局部变量</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#22" class="nav-link">2.2 环境变量</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#23" class="nav-link">2.3 特殊变量</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">三、系统内置变量</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">四、变量的设置</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#41-etcprofile" class="nav-link">4.1 在 /etc/profile 文件中定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#42-bash_profile" class="nav-link">4.2 在 ~/.bash_profile 文件中定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#43-export" class="nav-link">4.3 使用 export 命令定义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link">五、变量应用</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#51" class="nav-link">5.1 变量的赋值</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#52" class="nav-link">5.2 变量引用与转义</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="_1">一、变量概述</h2>
+<p>​   变量是一段有名字的连续存储空间，是程序中数据的临时存放场所。一般在代码中是通过定义变量来申请并命名这样的存储空间，并通过索定义的变量名来使用多个变量。</p>
+<p>​   变量中所存储的被定义的数据，被称为变量值，他们一般是暂时存在的。shell 中的变量是没有整型、浮点型变量区分的，若要指定变量形态，可以使用 declare 指令。</p>
+<p>​   在 shell 中的变量值，只对当前的 shell 有效。也就是说在当前 shell 中所定义的变量，不能在其他的 shell 中找到并使用。</p>
+<p>​   当然，在系统中也有已定义的变量存在，这些变量为用户提供一个初始化的工作环境，而用户则可根据实际需求改变变量值，并保存在指定的变量中。</p>
+<h2 id="_2">二、变量的类型</h2>
+<p>​   在 Linux 系统中，一般情况下有两种类型的变量，即环境变量和局部变量，但还有一种变量称为特殊变量，此变量以只读的形式存在。</p>
+<h3 id="21">2.1 局部变量</h3>
+<p>​   局部变量即存在生命周期的变量，局部变量只在局部进程中可见，若是 shell 中启动新的进程或是退出。则此变量值将不存在。</p>
+<p>​   可以使用 set 命令查看当前系统中定义的局部变量</p>
+<pre><code class="language-bash">[root@192 ~]# set 
+BASH=/bin/bash
+BASHOPTS=checkwinsize:cmdhist:expand_aliases:extquote:force_fignore:histappend:hostcomplete:interactive_comments:login_shell:progcomp:promptvars:sourcepath
+BASH_ALIASES=()
+BASH_ARGC=()
+BASH_ARGV=()
+BASH_CMDS=()
+BASH_LINENO=()
+BASH_SOURCE=()
+BASH_VERSINFO=([0]=&quot;4&quot; [1]=&quot;2&quot; [2]=&quot;46&quot; [3]=&quot;2&quot; [4]=&quot;release&quot; [5]=&quot;x86_64-redhat-linux-gnu&quot;)
+BASH_VERSION='4.2.46(2)-release'
+COLUMNS=236
+DIRSTACK=()
+EUID=0
+GROUPS=()
+HISTCONTROL=ignoredups
+HISTFILE=/root/.bash_history
+HISTFILESIZE=1000
+HISTSIZE=1000
+HOME=/root
+HOSTNAME=192.168.124.45
+HOSTTYPE=x86_64
+</code></pre>
+<h3 id="22">2.2 环境变量</h3>
+<p>​   在 Linux 中，通常使用环境变量存储会话和工作环境的信息。存储于环境变量中的数据，是一些永久性的数据，如系统配置信息，用户账号信息以及其他数据信息等。</p>
+<p>​   使用 env 命令查看当前系统中的环境变量</p>
+<pre><code class="language-bash">[root@192 ~]# env
+XDG_SESSION_ID=8
+HOSTNAME=192.168.124.45
+SELINUX_ROLE_REQUESTED=
+TERM=xterm
+SHELL=/bin/bash
+HISTSIZE=1000
+SSH_CLIENT=192.168.124.21 63719 22
+SELINUX_USE_CURRENT_RANGE=
+SSH_TTY=/dev/pts/0
+USER=root
+</code></pre>
+<h3 id="23">2.3 特殊变量</h3>
+<p>​   shell 脚本中经常出现一些特殊参数，如 $0、$1、$2。其中 $0 表示脚本文件名称，而 $1 表示第一个参数，$2 表示第二个参数。当参数超过十个就需要用 {} 括起来，如 ${10}。</p>
+<p>​   还有两个特殊变量：$*、$@，他们表示所有的位置参数，实例如下</p>
+<pre><code class="language-bash">#!/bin/bash
+
+echo &quot;The name of this script is $0&quot;
+echo 
+
+if [ -n $1 ]
+then
+    echo &quot;The first parameter is $1.&quot;
+fi
+
+if [ -n $2 ]
+then
+    echo &quot;The first parameter is $2.&quot;
+fi
+
+if [ -n $3 ]
+then
+    echo &quot;The first parameter is $3.&quot;
+fi
+
+echo
+echo &quot;All the command_line parameters arg is &quot;$*&quot;.&quot;
+
+exit 0
+</code></pre>
+<p>执行结果</p>
+<pre><code class="language-bash">[root@192 ~]# bash test.sh a b c d e f g
+The name of this script is test.sh
+
+The first parameter is a.
+The first parameter is b.
+The first parameter is c.
+
+All the command_line parameters arg is a b c d e f g.
+</code></pre>
+<h2 id="_3">三、系统内置变量</h2>
+<p>​   在 bash 中默认定义了许多内置变量，这些内置变量的设置使用，直接影响到 bash 脚本的行为。以下列举一些常用的内置变量：</p>
+<ol>
+<li>$HISTFILE，记录历史命令文件的路径</li>
+</ol>
+<pre><code class="language-bash">[root@192 ~]# echo $HISTFILE
+/root/.bash_history
+</code></pre>
+<ol>
+<li>$HISTFILESIZE，记录历史命令的行数</li>
+</ol>
+<pre><code class="language-bash">[root@192 ~]# echo $HISTFILESIZE
+1000
+</code></pre>
+<ol>
+<li>$HOSTNAME，当前主机名</li>
+</ol>
+<pre><code class="language-bash">[root@192 ~]# echo $HOSTNAME
+192.168.124.45
+</code></pre>
+<ol>
+<li>$HOME，当前用户的家目录</li>
+</ol>
+<pre><code class="language-bash">[root@192 ~]# echo $HOME
+/root
+</code></pre>
+<ol>
+<li>$HOSTTYPE，当前主机的类型</li>
+</ol>
+<pre><code class="language-bash">[root@192 ~]# echo $HOSTTYPE
+x86_64
+</code></pre>
+<ol>
+<li>$LANG，当前系统的语言类型</li>
+</ol>
+<pre><code class="language-bash">[root@192 ~]# echo $LANG
+en_US.UTF-8
+</code></pre>
+<ol>
+<li>$LOGNAME，当前登陆的用户名</li>
+</ol>
+<pre><code class="language-bash">[root@192 ~]# echo $LOGNAME
+root
+</code></pre>
+<ol>
+<li>$LINENO，记录当前 shell 脚本中的行号</li>
+</ol>
+<pre><code class="language-bash">  1 #!/bin/bash
+  2 
+  3 echo &quot;line number is $LINENO&quot;
+  4 echo &quot;line number is $LINENO&quot;
+  5 
+  6 exit 0
+</code></pre>
+<pre><code class="language-bash">[root@192 ~]# bash 1.sh 
+line number is 3
+line number is 4
+</code></pre>
+<ol>
+<li>$PATH，定义外部命令的路径，为了安全起见，一般不把当前目录加到 PATH 中，且执行程序时，一般使用 ./ 的方式执行。</li>
+</ol>
+<pre><code class="language-bash">[root@192 ~]# echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+</code></pre>
+<ol>
+<li>$PWD，当前的工作目录，与 pwd 命令效果一样</li>
+</ol>
+<pre><code class="language-bash">[root@192 ~]# echo $PWD
+/root
+[root@192 ~]# pwd
+/root
+</code></pre>
+<ol>
+<li>$SECONDS，记录某个脚本的运行时间，单位为秒</li>
+</ol>
+<pre><code class="language-bash"> #!/bin/bash
+
+time_limit=6
+time_interval=1
+
+while [ &quot;$SECONDS&quot; -le &quot;$time_limit&quot; ]
+do
+        if [ $SECONDS -lt 7 ]
+        then
+                second=1
+                let seconds+=1
+        fi
+        echo &quot;This script already running $seconds s&quot;
+        sleep $time_interval
+done
+
+echo &quot;Total spends time $SECONDS s&quot;
+exit 0
+</code></pre>
+<ol>
+<li>$RANDOM，随机输出一个随机数</li>
+</ol>
+<pre><code class="language-BASH">[root@192 ~]# echo $RANDOM
+4479
+[root@192 ~]# echo $RANDOM
+11519
+</code></pre>
+<h2 id="_4">四、变量的设置</h2>
+<p>​   在 Linux 系统中，变量值按变量的生存周期来划分，可以分为两类，即永久变量和临时变量。若需要定义永久变量，则应该修改配置文件，以使变量永久生效；而临时变量，可以使用 export 命令声明，所声明的临时变量在关闭 shell 时失效。</p>
+<h3 id="41-etcprofile">4.1 在 /etc/profile 文件中定义</h3>
+<p>​   在 <code>/etc/profile</code> 文件中定义变量，对 Linux 下的所有用户都有效，并且是永久性存在的变量。</p>
+<pre><code class="language-bash">[root@192 ~]# echo &quot;export JAVA_PATH=/opt/java/bin&quot; &gt;&gt; /etc/profile
+</code></pre>
+<p>​   在添加了变量后，不会立即生效，需要重启系统后或刷新环境变量才会生效</p>
+<pre><code class="language-bash">[root@192 ~]# echo $JAVA_PATH
+
+[root@192 ~]# source /etc/profile
+[root@192 ~]# echo $JAVA_PATH
+/opt/java/bin
+</code></pre>
+<h3 id="42-bash_profile">4.2 在 ~/.bash_profile 文件中定义</h3>
+<p>​   在 <code>~/.bash_profile</code> 中定义的变量只对单用户生效，也就是修改了哪个用户家目录下的文件，则只对这个用户生效。由于该文件引用 <code>~/.bashrc</code> 文件，所以修改 <code>~/.bashrc</code> 文件达到的效果一致。</p>
+<pre><code class="language-bash">[root@192 ~]# echo &quot;NODE_HOME=/opt/node/bin&quot; &gt;&gt; ~/.bash_profile 
+</code></pre>
+<p>​   同样需要刷新文件生效</p>
+<pre><code class="language-bash">[root@192 ~]# echo $NODE_HOME
+
+[root@192 ~]# source ~/.bash_profile 
+[root@192 ~]# echo $NODE_HOME
+/opt/node/bin
+</code></pre>
+<h3 id="43-export">4.3 使用 export 命令定义</h3>
+<p>​   使用 export 设置的变量只对当前 shell 终端生效，为临时变量。</p>
+<pre><code class="language-bash">[root@192 ~]# export myname=jack
+[root@192 ~]# echo $myname
+jack
+</code></pre>
+<h2 id="_5">五、变量应用</h2>
+<h3 id="51">5.1 变量的赋值</h3>
+<p>​   对于变量的赋值，可以用 "=" 号来实现，需要注意的是 "=" 两边不可以有空格，更不能与 -eq 来混合使用。</p>
+<p>​   变量的赋值方式可以直接使用 "=" 赋值，也可以搭配 let 赋值。</p>
+<pre><code class="language-bash">#!/bin/bash
+
+var1=3
+echo &quot;The value of var1 is $var1&quot;
+echo
+
+let var2=2+2
+echo &quot;The value of var2 is $var2&quot;
+echo
+
+for var3 in {7..9}
+do
+    echo &quot;The value of var3 is $var3&quot;
+    echo
+done
+
+exit 0
+</code></pre>
+<p>​   运行结果</p>
+<pre><code class="language-bash">[root@192 ~]# bash test.sh 
+The value of var1 is 3
+
+The value of var2 is 4
+
+The value of var3 is 7
+
+The value of var3 is 8
+
+The value of var3 is 9
+</code></pre>
+<p>​   如果是定义字符串字符，最好使用引号将变量值引起来</p>
+<pre><code class="language-bash">[root@192 ~]# h=&quot;hello linux&quot;
+[root@192 ~]# echo $h
+hello linux
+[root@192 ~]# h='hello linux'
+[root@192 ~]# echo $h
+hello linux
+</code></pre>
+<h3 id="52">5.2 变量引用与转义</h3>
+<p>​   使用双引号来引用变量表达式，可以防止所引用的变量被分割，这些双引号内的变量会被系统作为一个参数进行传递。</p>
+<pre><code class="language-bash">#!/bin/bash
+
+var1=&quot;The first variable&quot;
+echo $var1
+
+var2=&quot;The second variable&quot;
+echo $var2
+
+var3=&quot;The        third variable&quot;
+echo $var3
+
+echo $var2 $var3
+echo &quot;$var2 $var3&quot;
+
+exit 0
+</code></pre>
+<p>​   运行结果</p>
+<pre><code class="language-bash">[root@192 ~]# bash test.sh 
+The first variable
+The second variable
+The third variable
+The second variable The third variable
+The second variable The        third variable
+</code></pre>
+<p>​   转义是指在 shell 中，有一些字符，在前面加上反斜杠 \ 后，便具有了特殊意义。如字符 n，加上反斜杠后就表示换行。其中 \n 被成为转义序列，\ 被称为转义字符。使用 -e 可以打印转义字符。</p>
+<table>
+<thead>
+<tr>
+<th>转义序列</th>
+<th>相关说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\a</td>
+<td>表示蜂鸣，操作出现某种错误时会提示响声</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>删除</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>tab 制表符</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直 tab</td>
+</tr>
+<tr>
+<td>\0xx</td>
+<td>转换成 8 进制 ASCLL码</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-bash">#!/bin/bash
+
+echo &quot;Vertical list:&quot;
+echo -e &quot;\v\v\v&quot;
+
+echo -e &quot;\042&quot;
+
+echo &quot;new line and beep&quot;
+echo -e &quot;\n&quot;
+echo -e &quot;\a&quot;
+
+exit 0
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>用<a href="https://www.mkdocs.org/">MkDocs</a>建立的文档。</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+                <p>从这里你可以搜索这些文件。在下面输入您的搜索内容。</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="在此输入搜索内容">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="没有搜索到结果"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">键盘热键</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">键</th>
+                    <th>动作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>打开这个帮助</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>下一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>上一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>搜索</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

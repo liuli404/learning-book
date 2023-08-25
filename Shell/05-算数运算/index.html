@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh_Hans_CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://note.liuli.hots/Shell/05-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>算数运算 - Learning Book</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/shell.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Learning Book</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Linux <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Linux/1-1-Linux%20%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="dropdown-item">入门命令</a>
+</li>
+                                    
+<li>
+    <a href="../../Linux/1-2-Linux%20%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" class="dropdown-item">文件管理</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Shell <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01-Shell%20%E6%A6%82%E8%BF%B0/" class="dropdown-item">概述</a>
+</li>
+                                    
+<li>
+    <a href="../02-%E7%BC%96%E8%BE%91%E5%99%A8/" class="dropdown-item">编辑器</a>
+</li>
+                                    
+<li>
+    <a href="../03-%E8%84%9A%E6%9C%AC%E8%AE%BE%E8%AE%A1/" class="dropdown-item">脚本设计</a>
+</li>
+                                    
+<li>
+    <a href="../04-Shell%20%E5%8F%98%E9%87%8F/" class="dropdown-item">变量</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">算数运算</a>
+</li>
+                                    
+<li>
+    <a href="../06-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="dropdown-item">流程控制</a>
+</li>
+                                    
+<li>
+    <a href="../07-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" class="dropdown-item">文本编辑</a>
+</li>
+                                    
+<li>
+    <a href="../08-Shell%20%E5%87%BD%E6%95%B0/" class="dropdown-item">函数</a>
+</li>
+                                    
+<li>
+    <a href="../09-Shell%20%E6%95%B0%E7%BB%84/" class="dropdown-item">数组</a>
+</li>
+                                    
+<li>
+    <a href="../10-%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="dropdown-item">字符和字符串</a>
+</li>
+                                    
+<li>
+    <a href="../11-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="dropdown-item">正则表达式</a>
+</li>
+                                    
+<li>
+    <a href="../12-%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" class="dropdown-item">输入与输出</a>
+</li>
+                                    
+<li>
+    <a href="../13-Shell%20%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8/" class="dropdown-item">高级应用</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Go <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../01-Go 开发环境安装配置.md" class="dropdown-item">开发环境安装</a>
+</li>
+                                    
+<li>
+    <a href="../../02-Go 语法基础.md" class="dropdown-item">语法基础</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> 搜索
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../04-Shell%20%E5%8F%98%E9%87%8F/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> 上一张
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../06-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="nav-link">
+                                    下一张 <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="目录">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">一、算术运算的概念</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">二、加减乘除</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#21" class="nav-link">2.1 加法</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#22" class="nav-link">2.2 减法</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#23" class="nav-link">2.3 乘除</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">三、数值大小比较</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">四、逻辑运算</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#41" class="nav-link">4.1 布尔运算符</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#42" class="nav-link">4.2 逻辑运算符</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="_1">一、算术运算的概念</h2>
+<p>​   算数式有运算符和操作数组组成，如 3+6。其中运算符为 + 号，操作数有 3、6，而得到的映射新量为 9。</p>
+<p>​   在运算中，如果数字是以 0 开头的则被认为是 8 进制数，如果是 0x、0X 开头则是 16 进制数字。另外一种特殊数值表示方法：基数#数字，其中基数范围为：2-64，数字则值超过九就是用字母表示，如 a=10、b=11 以此类推。</p>
+<p>​   例如：15 进制数：15#1a，值为 1x15+10; 2 进制数：2#1010，值为 1x2^3+1x2^1</p>
+<p>​   在算数运算中有优先级之分，bash 中的优先级如下</p>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>i++ 运算后加 1 、i-- 运算后减 1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>++i 运算前加 1、--i 运算前减 1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>- 负号、+ 正号</td>
+</tr>
+<tr>
+<td>4</td>
+<td>！逻辑非、~ 位的反置</td>
+</tr>
+<tr>
+<td>5</td>
+<td>** 乘方</td>
+</tr>
+<tr>
+<td>6</td>
+<td>* 乘、/ 除、% 取余</td>
+</tr>
+<tr>
+<td>7</td>
+<td>+ 加、- 减</td>
+</tr>
+<tr>
+<td>8</td>
+<td>&lt;&lt; 向左移位、&gt;&gt; 向右移位</td>
+</tr>
+<tr>
+<td>9</td>
+<td>&lt;= 小于等于、 &gt;= 大于等于、 &lt;&gt; 不等于</td>
+</tr>
+<tr>
+<td>14</td>
+<td>&amp;&amp; 逻辑与</td>
+</tr>
+<tr>
+<td>15</td>
+<td>|| 逻辑或</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">二、加减乘除</h2>
+<p>下表列出了常用的算术运算符，假定变量 a 为 10，变量 b 为 20：</p>
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">说明</th>
+<th align="left">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">+</td>
+<td align="left">加法</td>
+<td align="left"><code>expr $a + $b</code> 结果为 30。</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">减法</td>
+<td align="left"><code>expr $a - $b</code> 结果为 -10。</td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td align="left">乘法</td>
+<td align="left"><code>expr $a \* $b</code> 结果为  200。</td>
+</tr>
+<tr>
+<td align="left">/</td>
+<td align="left">除法</td>
+<td align="left"><code>expr $b / $a</code> 结果为 2。</td>
+</tr>
+<tr>
+<td align="left">%</td>
+<td align="left">取余</td>
+<td align="left"><code>expr $b % $a</code> 结果为 0。</td>
+</tr>
+<tr>
+<td align="left">=</td>
+<td align="left">赋值</td>
+<td align="left">a=$b 把变量 b 的值赋给 a。</td>
+</tr>
+<tr>
+<td align="left">==</td>
+<td align="left">相等。用于比较两个数字，相同则返回 true。</td>
+<td align="left">[ $a == $b ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">!=</td>
+<td align="left">不相等。用于比较两个数字，不相同则返回 true。</td>
+<td align="left">[ $a != $b ] 返回 true。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="21">2.1 加法</h3>
+<p>​   如下是一个简单的加法例子</p>
+<pre><code class="language-bash">[root@192 ~]# echo $((3+6))
+9
+</code></pre>
+<p>​   在一个有变量的算数运算式中，在引用变量的值时需要先定义，然后变量才可以被引用，若变量没有被赋值，则在引用时将其视为 0</p>
+<pre><code class="language-bash">#!/bin/bash
+
+declare -i x
+declare -i y=4
+echo $((x+y))
+
+exit 0
+</code></pre>
+<p>​   运算结果</p>
+<pre><code class="language-bash">[root@192 ~]# bash test.sh 
+4
+</code></pre>
+<p>​   在进行算数运算时，有时也使用算数拓展，算数拓展提供了一种强大的工具。算数拓展使用反引号 (``) 进行，通常与 expr 命令结合使用。这里的两个操作数需要与 + 保留空格。</p>
+<pre><code class="language-bash">[root@192 ~]# var=`expr 2 + 2`
+[root@192 ~]# echo $var
+4
+</code></pre>
+<h3 id="22">2.2 减法</h3>
+<p>​   数值相减与加法运算相反，语法结构非常相似。</p>
+<pre><code class="language-bash">[root@192 ~]# echo $((3-1))
+2
+</code></pre>
+<p>​   如果不提前赋予变量值，则得到的结果为常量</p>
+<pre><code class="language-bash">[root@192 ~]# echo $((8-i))
+8
+[root@192 ~]# echo $((j-5))
+-5
+[root@192 ~]# i=7
+[root@192 ~]# echo $((i-3))
+4
+</code></pre>
+<h3 id="23">2.3 乘除</h3>
+<p>​   乘除与加减类似，只需要将运算符修改，并注意除数与被除数的一些数学问题即可。</p>
+<pre><code class="language-bash">[root@192 ~]# echo $((3*3))
+9
+[root@192 ~]# i=4
+[root@192 ~]# echo $((3*i))
+12
+[root@192 ~]# echo $((12/i))
+3
+</code></pre>
+<p>​   如果变量不提前赋予，则会被视为 0 值</p>
+<pre><code class="language-bash">[root@192 ~]# echo $((3*j))
+0
+[root@192 ~]# echo $((12/j))
+-bash: 12/j: division by 0 (error token is &quot;j&quot;)
+</code></pre>
+<p>​   为了避免除数为 0 导致运算出错，这里可以使用默认变量方式赋值</p>
+<pre><code class="language-bash">[root@192 ~]# i=4
+[root@192 ~]# echo $((8/${i:-2}))
+2
+[root@192 ~]# unset i
+[root@192 ~]# echo $((8/${i:-2}))
+4
+</code></pre>
+<p>​   这里若变量 i 存在，则 8 / i 运算；若 i 没有赋值，则默认 i=2 ，用来进行运算。</p>
+<h2 id="_3">三、数值大小比较</h2>
+<p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字。</p>
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th>全拼</th>
+<th align="left">说明</th>
+<th align="left">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-eq</td>
+<td>equal</td>
+<td align="left">检测两个数是否相等，相等返回 true。</td>
+<td align="left">[ $a -eq $b ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-ne</td>
+<td>not equal</td>
+<td align="left">检测两个数是否不相等，不相等返回 true。</td>
+<td align="left">[ $a -ne $b ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-gt</td>
+<td>greater than</td>
+<td align="left">检测左边的数是否大于右边的，如果是，则返回 true。</td>
+<td align="left">[ $a -gt $b ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-lt</td>
+<td>less than</td>
+<td align="left">检测左边的数是否小于右边的，如果是，则返回 true。</td>
+<td align="left">[ $a -lt $b ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-ge</td>
+<td>greater equal</td>
+<td align="left">检测左边的数是否大于等于右边的，如果是，则返回 true。</td>
+<td align="left">[ $a -ge $b ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-le</td>
+<td>less equal</td>
+<td align="left">检测左边的数是否小于等于右边的，如果是，则返回 true。</td>
+<td align="left">[ $a -le $b ] 返回 true。</td>
+</tr>
+</tbody>
+</table>
+<p>​   示例</p>
+<pre><code class="language-bash">#!/bin/bash
+
+a=10
+b=20
+
+if [ $a != $b ]
+then
+   echo &quot;$a != $b : a 不等于 b&quot;
+else
+   echo &quot;$a == $b: a 等于 b&quot;
+fi
+if [ $a -lt 100 -a $b -gt 15 ]
+then
+   echo &quot;$a 小于 100 且 $b 大于 15 : 返回 true&quot;
+else
+   echo &quot;$a 小于 100 且 $b 大于 15 : 返回 false&quot;
+fi
+if [ $a -lt 100 -o $b -gt 100 ]
+then
+   echo &quot;$a 小于 100 或 $b 大于 100 : 返回 true&quot;
+else
+   echo &quot;$a 小于 100 或 $b 大于 100 : 返回 false&quot;
+fi
+if [ $a -lt 5 -o $b -gt 100 ]
+then
+   echo &quot;$a 小于 5 或 $b 大于 100 : 返回 true&quot;
+else
+   echo &quot;$a 小于 5 或 $b 大于 100 : 返回 false&quot;
+fi
+</code></pre>
+<p>​   运算结果</p>
+<pre><code class="language-bash">[root@192 ~]# bash test.sh 
+10 != 20 : a 不等于 b
+10 小于 100 且 20 大于 15 : 返回 true
+10 小于 100 或 20 大于 100 : 返回 true
+10 小于 5 或 20 大于 100 : 返回 false
+</code></pre>
+<h2 id="_4">四、逻辑运算</h2>
+<h3 id="41">4.1 布尔运算符</h3>
+<p>下表列出了常用的布尔运算符，假定变量 a 为 10，变量 b 为 20：</p>
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">说明</th>
+<th align="left">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">!</td>
+<td align="left">非运算，表达式为 true 则返回 false，否则返回 true。</td>
+<td align="left">[ ! false ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-o</td>
+<td align="left">或运算，有一个表达式为 true 则返回 true。</td>
+<td align="left">[ $a -lt 20 -o $b -gt 100 ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-a</td>
+<td align="left">与运算，两个表达式都为 true 才返回 true。</td>
+<td align="left">[ $a -lt 20 -a $b -gt 100 ] 返回 false。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42">4.2 逻辑运算符</h3>
+<p>以下介绍 Shell 的逻辑运算符，假定变量 a 为 10，变量 b 为 20:</p>
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">说明</th>
+<th align="left">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">&amp;&amp;</td>
+<td align="left">逻辑的 AND</td>
+<td align="left">[[ $a -lt 100 &amp;&amp; $b -gt 100 ]] 返回 false</td>
+</tr>
+<tr>
+<td align="left">||</td>
+<td align="left">逻辑的 OR</td>
+<td align="left">[[ $a -lt 100 || $b -gt 100 ]] 返回 true</td>
+</tr>
+</tbody>
+</table>
+<p>​   示例</p>
+<pre><code class="language-bash">#!/bin/bash
+
+a=10
+b=20
+
+if [[ $a -lt 100 &amp;&amp; $b -gt 100 ]]
+then
+   echo &quot;返回 true&quot;
+else
+   echo &quot;返回 false&quot;
+fi
+
+if [[ $a -lt 100 || $b -gt 100 ]]
+then
+   echo &quot;返回 true&quot;
+else
+   echo &quot;返回 false&quot;
+fi
+</code></pre>
+<p>​   运行结果</p>
+<pre><code class="language-bash">[root@192 ~]# bash test.sh 
+返回 false
+返回 true
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>用<a href="https://www.mkdocs.org/">MkDocs</a>建立的文档。</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+                <p>从这里你可以搜索这些文件。在下面输入您的搜索内容。</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="在此输入搜索内容">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="没有搜索到结果"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">键盘热键</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">键</th>
+                    <th>动作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>打开这个帮助</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>下一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>上一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>搜索</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh_Hans_CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://note.liuli.hots/Linux/1-1-Linux%20%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>入门命令 - Learning Book</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/shell.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Learning Book</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Linux <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">入门命令</a>
+</li>
+                                    
+<li>
+    <a href="../1-2-Linux%20%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" class="dropdown-item">文件管理</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Shell <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Shell/01-Shell%20%E6%A6%82%E8%BF%B0/" class="dropdown-item">概述</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/02-%E7%BC%96%E8%BE%91%E5%99%A8/" class="dropdown-item">编辑器</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/03-%E8%84%9A%E6%9C%AC%E8%AE%BE%E8%AE%A1/" class="dropdown-item">脚本设计</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/04-Shell%20%E5%8F%98%E9%87%8F/" class="dropdown-item">变量</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/05-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97/" class="dropdown-item">算数运算</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/06-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="dropdown-item">流程控制</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/07-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/" class="dropdown-item">文本编辑</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/08-Shell%20%E5%87%BD%E6%95%B0/" class="dropdown-item">函数</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/09-Shell%20%E6%95%B0%E7%BB%84/" class="dropdown-item">数组</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/10-%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="dropdown-item">字符和字符串</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/11-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="dropdown-item">正则表达式</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/12-%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" class="dropdown-item">输入与输出</a>
+</li>
+                                    
+<li>
+    <a href="../../Shell/13-Shell%20%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8/" class="dropdown-item">高级应用</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Go <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../01-Go 开发环境安装配置.md" class="dropdown-item">开发环境安装</a>
+</li>
+                                    
+<li>
+    <a href="../../02-Go 语法基础.md" class="dropdown-item">语法基础</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> 搜索
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> 上一张
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../1-2-Linux%20%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" class="nav-link">
+                                    下一张 <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="目录">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#linux" class="nav-link">一、 Linux 系统使用注意</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#11" class="nav-link">1.1 严格区分大小写</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#12" class="nav-link">1.2 文件扩展名</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#13" class="nav-link">1.3 一切皆文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#14" class="nav-link">1.4 设备须挂载后才可用</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#linux_1" class="nav-link">二、Linux 系统的目录结构</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#21-linux-windows" class="nav-link">2.1 Linux 与 Windows 分区</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#22-linux" class="nav-link">2.2 Linux 系统文件架构</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#23-linux" class="nav-link">2.3 Linux 系统的文件目录</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#linux_2" class="nav-link">三、Linux 入门级命令</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#31-linux" class="nav-link">3.1 Linux 命令格式</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#32-linux" class="nav-link">3.2 Linux 下的命令补全</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#33" class="nav-link">3.3 切换用户</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#34-uname" class="nav-link">3.4 uname 命令</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#35-ls" class="nav-link">3.5 ls 命令</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#36-pwd" class="nav-link">3.6 pwd 命令</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#37-cd" class="nav-link">3.7 cd 命令</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#38-clear" class="nav-link">3.8 clear 命令</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#39-reboot" class="nav-link">3.9 reboot 命令</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#310-shutdown" class="nav-link">3.10 shutdown 命令</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#311-type" class="nav-link">3.11 type 命令</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#312-history" class="nav-link">3.12 history 命令</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#313-hostnamectl" class="nav-link">3.13 hostnamectl 命令</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="4"><a href="#_1" class="nav-link">瞬态主机名称</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#_2" class="nav-link">静态主机名称</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#_3" class="nav-link">灵活主机名称</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="linux">一、 Linux 系统使用注意</h2>
+<h3 id="11">1.1 严格区分大小写</h3>
+<p>Linux 和 Windows 不同， Linux 严格区分大小写的，包括文件名和目录名、命令、命令选项、配置文件设置选项等。</p>
+<p>例如，Win7 系统桌面上有文件夹叫做 Test，当我们在桌面上再新建一个名为 test 的文件夹时，系统会提示文件夹命名冲突：</p>
+<ul>
+<li>Windows 演示：</li>
+</ul>
+<p><img alt="image-20200312104935449" src="../media/image-20200312104935449.png" /></p>
+<ul>
+<li>Linux 演示：</li>
+</ul>
+<p><img alt="image-20200312105002814" src="../media/image-20200312105002814.png" /></p>
+<p>由以上图解可知： Linux 是一个非常严谨的操作系统，严格区分大小写。</p>
+<h3 id="12">1.2 文件扩展名</h3>
+<p><font color='green'>在 Linux 操作系统中，与 Windows 不同，其文件的类型不是通过扩展名来进行区分的！</font></p>
+<p>我们都知道， Windows 是依赖扩展名区分文件类型的，比如，".txt" 是文本文件、". exe " 是执行文件，但 Linux 不是。</p>
+<p>Linux 系统通过<strong>权限位标识</strong>来确定文件类型，常见的文件类型有普通文件、目录、链接文件、块设备文件、字符设备文件等几种。 Linux 的可执行文件就是普通文件被赋予了可执行权限。</p>
+<p><img alt="image-20200312105800243" src="../media/image-20200312105800243.png" /></p>
+<p>Linux 中的一些特殊文件还是要求写 "扩展名" 的，但 Linux 不依赖扩展名来识别文件类型，写这些扩展名是为了帮助运维人员来区分不同的文件类型。这样的文件扩展名主要有以下几种：</p>
+<ul>
+<li>压缩包：Linux 下常见的压缩文件名有 *.gz、*.bz2、*.zip、*.tar.gz、*.tar.bz2、*.tgz 等。</li>
+<li>二进制软件包：CentOS 中所使用的二进制安装包是 RPM 包，所有的 RPM 包都用".rpm"扩展名结尾，目的同样是让管理员一目了然。=&gt; 类似 Windows 中的 exe 文件</li>
+<li>程序文件：Shell 脚本一般用 ".sh" 扩展名结尾。=&gt; check_network.sh</li>
+<li>网页文件：网页文件一般使用 ".php" 等结尾，不过这是网页服务器的要求，而不是 Linux 的要求。例如：.html/.css/.js/.jsp/.php/.py =&gt;网页文件</li>
+</ul>
+<p><font color='green'>① Linux 操作系统不以"扩展名"来判断文件的类型，而是通过权限位标识符来进行判断。</font></p>
+<p><font color='green'>② 有一些特殊的文件，有扩展名称=&gt;压缩包、二进制软件包、程序文件、网页文件。</font></p>
+<h3 id="13">1.3 一切皆文件</h3>
+<p>在 Linux 系统中，一切皆文件！</p>
+<p><font color='green'>在 Windows 是文件的，在 Linux 下也是文件。在 Windows 中不是文件的，在 Linux 系统中也是文件。</font></p>
+<p>普通文件：通过 ls 命令查看时，如果显示<font color="red">黑色</font>，代表其是一个普通的文件。</p>
+<p>文件夹：通过 ls 命令查看时，如果显示<font color="red">天蓝色</font>，代表是一个文件夹。</p>
+<h3 id="14">1.4 设备须挂载后才可用</h3>
+<p><img alt="image-20200312114423821" src="../media/image-20200312114423821.png" /></p>
+<p>Windows ：分区+格式化</p>
+<p>Linux 操作系统：分区+格式化+挂载，存储设备必须挂载后才能使用（硬盘、光盘、U盘）</p>
+<pre><code class="language-bash">mount /dev/sda1 /mnt/file
+</code></pre>
+<h2 id="linux_1">二、Linux 系统的目录结构</h2>
+<h3 id="21-linux-windows">2.1 Linux 与 Windows 分区</h3>
+<p>Linux 系统不同于 Windows ，没有 C 盘、D 盘、E 盘那么多的盘符，只有一个<strong>根目录（/）</strong>，所有的文件（资源）都存储在以<strong>根目录（/）</strong>为树根的<strong>树形</strong>目录结构中。</p>
+<p>Windows ：</p>
+<p><img alt="image-20200312115814989" src="../media/image-20200312115814989.png" /></p>
+<p>Linux ：</p>
+<p><img alt="image-20200312115750006" src="../media/image-20200312115750006.png" /></p>
+<h3 id="22-linux">2.2 Linux 系统文件架构</h3>
+<p><img alt="image-20200312115851811" src="../media/image-20200312115851811.png" /></p>
+<p>在 Linux 根目录（/）下包含很多的子目录，称为一级目录。例如 bin、boot、dev 等。</p>
+<p>同时，各一级目录下还含有很多子目录，称为二级目录。例如 /bin/bash、/bin/ed 等。</p>
+<h3 id="23-linux">2.3 Linux 系统的文件目录</h3>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/bin</td>
+<td>系统命令目录</td>
+</tr>
+<tr>
+<td>/sbin</td>
+<td>超级命令目录，只能超级管理员可以执行的命令</td>
+</tr>
+<tr>
+<td>/boot</td>
+<td>系统目录，类似于 Windows 中的 C 盘</td>
+</tr>
+<tr>
+<td>/dev</td>
+<td>设备文件目录，硬盘、光驱、U盘都属于设备文件，/dev/sr0 代表光驱设备。注意，次目录下的文件没有办法直接使用，必须先挂载</td>
+</tr>
+<tr>
+<td>/etc</td>
+<td>非常重要，代表系统的配置文件目录。大部分软件安装完成后，其配置文件都存放在此目录</td>
+</tr>
+<tr>
+<td>/home</td>
+<td>普通用户的家目录，用户登录后会自动切换到此目录</td>
+</tr>
+<tr>
+<td>/root</td>
+<td>超级管理员的家目录，超级管理员登录后会自动切换到此目录</td>
+</tr>
+<tr>
+<td>/media</td>
+<td>挂载目录，早期 Linux 挂载目录，用于挂载光盘以及软盘</td>
+</tr>
+<tr>
+<td>/mnt</td>
+<td>挂载目录，用来挂载额外的设备，如 U 盘、移动硬盘和其他操作系统的分区</td>
+</tr>
+<tr>
+<td>/opt</td>
+<td>第三方软件目录，这个目录是放置和安装其他软件的位置，手工安装的源码包软件都可以安装到这个目录中。不过笔者还是习惯把软件放到 /usr/local/ 目录中，也就是说，/usr/local/ 目录也可以用来安装软件</td>
+</tr>
+<tr>
+<td>/usr</td>
+<td>系统程序目录，类似 Windows 中的Program Files</td>
+</tr>
+<tr>
+<td>/proc</td>
+<td>虚拟文件系统。该目录中的数据并不保存在硬盘上，而是保存到内存中。主要保存系统的内核、进程、外部设备状态和网络状态等。</td>
+</tr>
+<tr>
+<td>/tmp</td>
+<td>临时文件目录，在该目录下，所有用户都可以访问和写入。建议此目录中不能保存重要数据，最好每次开机都把该目录清理</td>
+</tr>
+<tr>
+<td>/var</td>
+<td>经常变化的文件目录，网页文件、数据文件、日志文件</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linux_2">三、Linux 入门级命令</h2>
+<h3 id="31-linux">3.1 Linux 命令格式</h3>
+<p>一个完整的命令的标准格式： Linux 通用的格式</p>
+<pre><code class="language-bash">命令（空格） [选项]（空格）[参数]
+</code></pre>
+<p>但是有些命令比较特殊，可能没有选项也没有参数</p>
+<pre><code class="language-bash">pwd
+</code></pre>
+<p>还有一些命令，有命令有选项，但是没有参数</p>
+<pre><code class="language-bash">ls -l
+</code></pre>
+<p>还有一些命令，命令+选项+参数全都有</p>
+<pre><code class="language-bash">tail -n 3 readme.txt
+</code></pre>
+<h3 id="32-linux">3.2 Linux 下的命令补全</h3>
+<p>键盘上有一个按键：Tab 键</p>
+<p><img alt="image-20200312151903965" src="../media/image-20200312151903965.png" /></p>
+<p>当我们在 Linux 系统的终端中，输入命令时，可以无需完整的命令，只需要记住命令的前几个字母即可，然后按 Tab 键，系统会自动进行补全操作。</p>
+<pre><code class="language-bash"># syste + Tab 或 systemc + Tab
+自动补全为 =&lt;font color='green'&gt;systemctl
+</code></pre>
+<p>有些命令可能都以某几个字母开头，这个时候，只需要按两次Tab键，其就会显示所有命令。</p>
+<pre><code class="language-bash"># clea + Tab + Tab
+</code></pre>
+<p><font color='green'>Tab 键的功能特别强大：其不仅可以补全命令还可以补全 Linux 的文件路径</font></p>
+<h3 id="33">3.3 切换用户</h3>
+<p>基本语法：</p>
+<pre><code class="language-bash">su - root
+Password:123456
+[root@localhost ~]# 切换成功
+</code></pre>
+<p><font color='green'>扩展：- 横杠作用是什么？答：- 横杠代表切换用户的同时，切换用户的家目录</font></p>
+<h3 id="34-uname">3.4 uname 命令</h3>
+<p>主要功能：获取计算机操作系统相关信息</p>
+<p>基本语法：</p>
+<pre><code class="language-bash"># uname -a
+选项说明：
+-a：all 缩写，代表显示所有信息，获取全部的系统信息（类型、全部主机名、内核版本、发布时间、开源计划）
+</code></pre>
+<h3 id="35-ls">3.5 ls 命令</h3>
+<ul>
+<li>用法一</li>
+</ul>
+<p>主要功能：ls（list show），以平铺的形式显示当前目录下的文件信息</p>
+<p>基本语法：</p>
+<pre><code class="language-bash">ls 
+</code></pre>
+<ul>
+<li>用法二</li>
+</ul>
+<p>主要功能：显示其他目录下的文件信息</p>
+<pre><code class="language-bash">ls 其他目录的绝对路径或相对路径
+</code></pre>
+<p><font color='green'>扩展：ls 后面跟的路径既可以是绝对路径也可以是相对路径</font></p>
+<p><font color="red">绝对路径必须以左斜杠开头，一级一级向下访问，不能越级</font></p>
+<ul>
+<li>用法三</li>
+</ul>
+<p>基本语法：</p>
+<pre><code class="language-bash"># ls [选项] [路径]
+选项说明：
+-l：ls -l，代表以详细列表的形式显示当前或其他目录下的文件信息(简写命令=&gt;ll)
+-h：ls -lh，通常与-l结合一起使用，代表以较高的可读性显示文件的大小(kb/mb/gb)
+-a：ls -a，a是all缩写，代表显示所有文件（也包含隐藏文件=&gt;大部分以.开头）
+</code></pre>
+<h3 id="36-pwd">3.6 pwd 命令</h3>
+<p>主要功能：pwd（print working directory），打印当前工作目录（告诉我们当前所处位置）</p>
+<p>基本语法：</p>
+<pre><code class="language-bash">pwd
+</code></pre>
+<h3 id="37-cd">3.7 cd 命令</h3>
+<p>主要功能：cd（change directory），切换目录（从一个目录跳转到另外一个目录）</p>
+<p>基本语法：</p>
+<pre><code class="language-bash"># cd [路径]
+选项说明：
+路径既可以是绝对路径，也可以是相对路径
+</code></pre>
+<p>案例一：切换到 /usr/local 这个程序目录</p>
+<pre><code class="language-bash">cd /usr/local
+</code></pre>
+<p>案例二：当我们在某个路径下，如何快速回到自己的家目录</p>
+<pre><code class="language-bash">cd
+# 或
+cd ~
+</code></pre>
+<h3 id="38-clear">3.8 clear 命令</h3>
+<p>主要功能：清屏</p>
+<p>基本语法：</p>
+<pre><code class="language-bash">clear
+</code></pre>
+<p>快捷键</p>
+<pre><code class="language-bash">Ctrl + L
+</code></pre>
+<h3 id="39-reboot">3.9 reboot 命令</h3>
+<p>主要功能：立即重启计算机</p>
+<p>基本语法：</p>
+<pre><code class="language-bash">reboot
+</code></pre>
+<h3 id="310-shutdown">3.10 shutdown 命令</h3>
+<p>主要功能：立即关机或延迟关机</p>
+<p>立即关机基本语法：</p>
+<pre><code class="language-bash">shutdown -h 0 或 now
+shutdown -h 0
+shutdown -h now
+# 选项说明：
+# -h ：halt 缩写，代表关机
+</code></pre>
+<p><font color='green'>在 Linux 系统中，立即关机除了使用 shutdown -h 0 以外还可以使用 halt -p 命令</font></p>
+<p>延迟关机基本语法：</p>
+<pre><code class="language-bash">shutdown -h 分钟数
+# 代表多少分钟后，自动关机
+</code></pre>
+<p>案例1：10分钟后自动关机</p>
+<pre><code class="language-bash">shutdown -h 10
+</code></pre>
+<p>案例2：后悔了，取消关机</p>
+<pre><code class="language-bash"># 光标一直不停的闪，取消关机
+# 按 Ctrl + C（CentOS6，中断关机。CentOS7 中还需要使用 shutdown -c 命令）
+shutdown -c
+</code></pre>
+<h3 id="311-type">3.11 type 命令</h3>
+<p>主要功能：主要用来结合 help 命令，用于判断命令的类型（属于内部命令还是外部命令）</p>
+<p>基本语法：</p>
+<pre><code class="language-bash">type 命令
+# 内部命令：命令 is a shell builtin
+# 外部命令：没有显示以上信息的就是外部命令
+</code></pre>
+<h3 id="312-history">3.12 history 命令</h3>
+<p>主要功能：显示系统以前输入的前1000条命令</p>
+<p>基本语法：</p>
+<pre><code class="language-bash">history
+</code></pre>
+<h3 id="313-hostnamectl">3.13 hostnamectl 命令</h3>
+<p>主要功能：用于设置计算机的主机名称（给计算机起个名字），此命令是 CentOS 7 新增的命令。</p>
+<p>hostnamectl = hostname + control</p>
+<ul>
+<li>获取计算机的主机名称</li>
+</ul>
+<pre><code class="language-bash">hostname     --CentOS 6
+hostnamectl  --CentOS 7
+</code></pre>
+<ul>
+<li>设置计算机的主机名称</li>
+</ul>
+<p>CentOS 7 中主机名分 3 类，静态的（static）、瞬态的（transient）、和灵活的（pretty）。</p>
+<p>① 静态 static 主机名称：电脑关机或重启后，设置的名称亦然有效</p>
+<p>② 瞬态 transient 主机名称：临时主机名称，电脑关机或重启后，设置的名称就失效了</p>
+<p>③ 灵活 pretty 主机名称：可以包含一些特殊字符</p>
+<p>CentOS 7 中和主机名有关的文件为 <code>/etc/hostname</code>，它是在系统初始化的时候被读取的，并且内核根据它的内容设置瞬态主机名。</p>
+<p><font color='green'>更改主机名称，让其永久生效？① 使用静态的 ② 改 <code>/etc/hostname</code>文件</font></p>
+<h4 id="_1">瞬态主机名称</h4>
+<pre><code class="language-bash">hostnamectl --transient set-hostname 主机名称
+# 主机名称 建议遵循 FQDN协议（功能+公司域名）
+# web01.baidu.com
+# web02.baidu.com
+</code></pre>
+<p>案例：临时设置主机名称为 yunwei.baidu.com</p>
+<pre><code class="language-bash">hostnamectl --transient set-hostname yunwei.baidu.com
+su
+# su 命令立即生效
+</code></pre>
+<h4 id="_2">静态主机名称</h4>
+<pre><code class="language-bash">hostnamectl --static set-hostname 主机名称
+# 温馨提示：--static 也可以省略不写
+</code></pre>
+<p>案例：把计算机的主机名称永久设置为 yunwei.baidu.com</p>
+<pre><code class="language-bash">hostnamectl --static set-hostname yunwei.baidu.com
+su
+# su 命令立即生效
+</code></pre>
+<h4 id="_3">灵活主机名称</h4>
+<pre><code class="language-bash">hostnamectl --pretty set-hostname 主机名称（包含特殊字符）
+</code></pre>
+<p>案例：把计算机的主机名称通过灵活设置，设置为 yunwei's server01</p>
+<pre><code class="language-bash">hostnamectl --pretty set-hostname &quot;yunwei's server01&quot;
+# 查看灵活的主机名称
+hostnamectl --pretty
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>用<a href="https://www.mkdocs.org/">MkDocs</a>建立的文档。</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">搜索</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+                <p>从这里你可以搜索这些文件。在下面输入您的搜索内容。</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="搜索..." id="mkdocs-search-query" title="在此输入搜索内容">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="没有搜索到结果"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">键盘热键</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">键</th>
+                    <th>动作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>打开这个帮助</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>下一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>上一页面</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>搜索</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
