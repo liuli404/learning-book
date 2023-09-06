@@ -6,7 +6,7 @@
 2. 利用"性能"和"用户"标签来判断服务器的健康状态；
 3. 在"应用程序"和"进程"标签中强制中止任务和进程；
 
-<img src="media/jincheng04.jpg" style="width:960px" />
+![](media/jincheng04.jpg)
 
 # 一、什么是进程和程序
 
@@ -16,11 +16,7 @@
 
 **举例**：谷歌浏览器是一个程序，当我们打开谷歌浏览器，就会在系统中看到一个浏览器的进程，当程序被执行时，程序的代码都会被加载入内存，操作系统给这个进程分配一个 ID，称为 **PID**（进程 ID）。我们打开多个谷歌浏览器，就有多个浏览器子进程，但是这些进程使用的程序，都是chrome
 
-<img src="media/jincheng06.jpg" style="width:960px" />
-
-
-
-<img src="media/jincheng05.jpg" style="width:960px" />
+![](./media/jincheng05.jpg)
 
 # 二、进程管理命令
 
@@ -359,15 +355,15 @@ NI  优先级，数值越小优先级越高。
 
 步骤1：运行 top 命令，按 r，会提示输入希望修改优先级的进程的 PID，这里输入 6451，表示想修改 firewalld 进程的优先级
 
-<img src="media/youxianji01.jpg" style="width:960px" />
+![](./media/youxianji01.jpg)
 
 步骤2：输入6451后回车，提示希望修改的具体数字，这个数字是从-20到19，这里输入5，数字越大，优先级别越低，所以，这里是降低了firewalld的优先级
 
-<img src="media/youxianji02.jpg" style="width:960px" />
+![](./media/youxianji02.jpg)
 
 步骤3：输入5后，按回车，会发现6451进程的NI, 从0变成了5，PR从20变成了25
 
-<img src="media/youxianji03.jpg" style="width:960px" />
+![](./media/youxianji03.jpg)
 
 - 命令行使用`renice`调整
 
