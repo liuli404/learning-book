@@ -63,6 +63,15 @@ EOF
 echo "0" > /proc/sys/vm/swappiness
 ```
 
+# 配置阿里云 YUM 源
+
+```bash
+mv /etc/yum.repos.d/CentOS-* /tmp/ \
+&& curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo \
+&& curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo \
+&& yum makecache && yum clean all 
+```
+
 # 打印各种时间格式
 
 ```bash
