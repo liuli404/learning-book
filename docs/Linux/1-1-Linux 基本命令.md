@@ -18,7 +18,7 @@ Linux 和 Windows 不同， Linux 严格区分大小写的，包括文件名和�
 
 ## 1.2 文件扩展名
 
-<font color='green'>在 Linux 操作系统中，与 Windows 不同，其文件的类型不是通过扩展名来进行区分的！</font>
+> 在 Linux 操作系统中，与 Windows 不同，其文件的类型不是通过扩展名来进行区分的！
 
 我们都知道， Windows 是依赖扩展名区分文件类型的，比如，".txt" 是文本文件、". exe " 是执行文件，但 Linux 不是。
 
@@ -33,15 +33,15 @@ Linux 中的一些特殊文件还是要求写 "扩展名" 的，但 Linux 不依
 - 程序文件：Shell 脚本一般用 ".sh" 扩展名结尾。=> check_network.sh
 - 网页文件：网页文件一般使用 ".php" 等结尾，不过这是网页服务器的要求，而不是 Linux 的要求。例如：.html/.css/.js/.jsp/.php/.py =>网页文件
 
-<font color='green'>① Linux 操作系统不以"扩展名"来判断文件的类型，而是通过权限位标识符来进行判断。</font>
-
-<font color='green'>② 有一些特殊的文件，有扩展名称=>压缩包、二进制软件包、程序文件、网页文件。</font>
+> Linux 操作系统不以"扩展名"来判断文件的类型，而是通过权限位标识符来进行判断。
+>
+> 有一些特殊的文件，有扩展名称=>压缩包、二进制软件包、程序文件、网页文件。
 
 ## 1.3 一切皆文件
 
 在 Linux 系统中，一切皆文件！
 
-<font color='green'>在 Windows 是文件的，在 Linux 下也是文件。在 Windows 中不是文件的，在 Linux 系统中也是文件。</font>
+在 Windows 是文件的，在 Linux 下也是文件。在 Windows 中不是文件的，在 Linux 系统中也是文件。
 
 普通文件：通过 ls 命令查看时，如果显示<font color="red">黑色</font>，代表其是一个普通的文件。
 
@@ -107,7 +107,7 @@ mount /dev/sda1 /mnt/file
 一个完整的命令的标准格式： Linux 通用的格式
 
 ```bash
-命令（空格） [选项]（空格）[参数]
+命令（空格）[选项]（空格）[参数]
 ```
 
 但是有些命令比较特殊，可能没有选项也没有参数
@@ -137,8 +137,8 @@ tail -n 3 readme.txt
 当我们在 Linux 系统的终端中，输入命令时，可以无需完整的命令，只需要记住命令的前几个字母即可，然后按 Tab 键，系统会自动进行补全操作。
 
 ```bash
-# syste + Tab 或 systemc + Tab
-自动补全为 =<font color='green'>systemctl
+syste + Tab 或 systemc + Tab
+# 自动补全为 systemctl
 ```
 
 有些命令可能都以某几个字母开头，这个时候，只需要按两次Tab键，其就会显示所有命令。
@@ -147,103 +147,72 @@ tail -n 3 readme.txt
 # clea + Tab + Tab
 ```
 
-<font color='green'>Tab 键的功能特别强大：其不仅可以补全命令还可以补全 Linux 的文件路径</font>
+> Tab 键的功能特别强大：其不仅可以补全命令还可以补全 Linux 的文件路径
 
 ## 3.3 切换用户
 
-基本语法：
+基本语法：`su [选项] [-] [用户名]`
 
 ```bash
-su - root
-Password:123456
-[root@localhost ~]# 切换成功
+[root@localhost ~]# su - zhangsan
 ```
 
-<font color='green'>扩展：- 横杠作用是什么？答：- 横杠代表切换用户的同时，切换用户的家目录</font>
+> `-` 横杠代表切换用户的同时，切换到家目录，并且新启动一个终端 shell ，加载用户的全部环境变量。
 
 ## 3.4 uname 命令
 
 主要功能：获取计算机操作系统相关信息
 
-基本语法：
+基本语法：`uname [选项]`
+
+选项说明：
+
+- -a：all 缩写，代表显示所有信息，获取全部的系统信息（类型、全部主机名、内核版本、发布时间、开源计划）
 
 ```bash
 # uname -a
-选项说明：
--a：all 缩写，代表显示所有信息，获取全部的系统信息（类型、全部主机名、内核版本、发布时间、开源计划）
+Linux centos.novalocal 3.10.0-1160.83.1.el7.x86_64 #1 SMP Wed Jan 25 16:41:43 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
 ## 3.5 ls 命令
 
-- 用法一
-
 主要功能：ls（list show），以平铺的形式显示当前目录下的文件信息
 
-基本语法：
+基本语法：`ls [选项] [路径]`
 
-```bash
-ls 
-```
-
-- 用法二
-
-主要功能：显示其他目录下的文件信息
-
-```bash
-ls 其他目录的绝对路径或相对路径
-```
-
-<font color='green'>扩展：ls 后面跟的路径既可以是绝对路径也可以是相对路径</font>
-
-<font color="red">绝对路径必须以左斜杠开头，一级一级向下访问，不能越级</font>
-
-- 用法三
-
-基本语法：
-
-```bash
-# ls [选项] [路径]
 选项说明：
--l：ls -l，代表以详细列表的形式显示当前或其他目录下的文件信息(简写命令=>ll)
--h：ls -lh，通常与-l结合一起使用，代表以较高的可读性显示文件的大小(kb/mb/gb)
--a：ls -a，a是all缩写，代表显示所有文件（也包含隐藏文件=>大部分以.开头）
-```
+
+- -l：ls -l，代表以详细列表的形式显示当前或其他目录下的文件信息(简写命令=>ll)
+- -h：ls -lh，通常与-l结合一起使用，代表以较高的可读性显示文件的大小(kb/mb/gb)
+- -a：ls -a，a是all缩写，代表显示所有文件（也包含隐藏文件=>大部分以.开头）
+
+> ls 后面跟的路径既可以是绝对路径也可以是相对路径
+>
+> 绝对路径必须以左斜杠开头，一级一级向下访问，不能越级
 
 ## 3.6 pwd 命令
 
 主要功能：pwd（print working directory），打印当前工作目录（告诉我们当前所处位置）
 
-基本语法：
-
-```bash
-pwd
-```
-
-
+基本语法：`pwd`
 
 ## 3.7 cd 命令
 
 主要功能：cd（change directory），切换目录（从一个目录跳转到另外一个目录）
 
-基本语法：
+基本语法：`cd [路径]`
 
-```bash
-# cd [路径]
 选项说明：
-路径既可以是绝对路径，也可以是相对路径
-```
 
-案例一：切换到 /usr/local 这个程序目录
+- 路径既可以是绝对路径，也可以是相对路径
 
 ```bash
+# 切换到 /usr/local 这个程序目录
 cd /usr/local
-```
 
-案例二：当我们在某个路径下，如何快速回到自己的家目录
-
-```bash
-cd
-# 或
+# 当我们在某个路径下，如何快速回到自己的家目录
+cd  
+# 或者
 cd ~
 ```
 
@@ -251,60 +220,34 @@ cd ~
 
 主要功能：清屏
 
-基本语法：
+基本语法：`clear`
 
-```bash
-clear
-```
-
-快捷键
-
-```bash
-Ctrl + L
-```
+快捷键 `Ctrl + L`
 
 ## 3.9 reboot 命令
 
 主要功能：立即重启计算机
 
-基本语法：
-
-```bash
-reboot
-```
+基本语法：`reboot`
 
 ## 3.10 shutdown 命令
 
 主要功能：立即关机或延迟关机
 
-立即关机基本语法：
+立即关机基本语法：`shutdown -h 0 或者 shutdown -h now`
 
-```bash
-shutdown -h 0 或 now
-shutdown -h 0
-shutdown -h now
-# 选项说明：
-# -h ：halt 缩写，代表关机
-```
+选项说明：
 
-<font color='green'>在 Linux 系统中，立即关机除了使用 shutdown -h 0 以外还可以使用 halt -p 命令</font>
+- -h ：halt 缩写，代表关机
+
+> 在 Linux 系统中，立即关机除了使用 shutdown -h 0 以外还可以使用 halt -p 命令
 
 延迟关机基本语法：
 
 ```bash
-shutdown -h 分钟数
-# 代表多少分钟后，自动关机
-```
-
-案例1：10分钟后自动关机
-
-```bash
+# 10分钟后自动关机
 shutdown -h 10
-```
-
-案例2：后悔了，取消关机
-
-```bash
+# 后悔了，取消关机
 # 光标一直不停的闪，取消关机
 # 按 Ctrl + C（CentOS6，中断关机。CentOS7 中还需要使用 shutdown -c 命令）
 shutdown -c
@@ -314,29 +257,21 @@ shutdown -c
 
 主要功能：主要用来结合 help 命令，用于判断命令的类型（属于内部命令还是外部命令）
 
-基本语法：
+基本语法：`type 命令`
 
-```bash
-type 命令
-# 内部命令：命令 is a shell builtin
-# 外部命令：没有显示以上信息的就是外部命令
-```
+内部命令：命令 is a shell builtin
+
+外部命令：没有显示以上信息的就是外部命令
 
 ## 3.12 history 命令
 
 主要功能：显示系统以前输入的前1000条命令
 
-基本语法：
-
-```bash
-history
-```
+基本语法：`history`
 
 ## 3.13 hostnamectl 命令
 
 主要功能：用于设置计算机的主机名称（给计算机起个名字），此命令是 CentOS 7 新增的命令。
-
-hostnamectl = hostname + control
 
 - 获取计算机的主机名称
 
