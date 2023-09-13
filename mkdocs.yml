@@ -19,7 +19,7 @@ markdown_extensions:
     - toc:
         baselevel: 2
 nav:
-    - Linux: 
+    - Linux 基础: 
         - '入门命令': 'Linux/1-1-Linux 基本命令.md'
         - '文件管理': 'Linux/1-2-Linux 文件管理.md'
         - '用户管理': 'Linux/1-3-Linux 用户管理.md'
@@ -27,7 +27,15 @@ nav:
         - '进程检测': 'Linux/1-5-Linux 进程检测.md'
         - '高级命令拓展': 'Linux/1-6-Linux 高级命令拓展.md'
         - 'YUM 仓库': 'Linux/1-7-Linux YUM 源仓库.md'
-    - Shell:
+    - 系统服务:
+        - 'NTP 时间同步服务': 'Linux/2-1-NTP 服务.md'
+        - 'SSH 远程登录服务': 'Linux/2-2-SSH 服务.md'
+        - 'RSYNC 文件同步服务': 'Linux/2-3-RSYNC 服务.md'
+        - 'FTP 文件共享服务': 'Linux/2-4-FTP 服务'
+        - 'NFS 文件共享服务': 'Linux/2-5-NFS 服务.md'
+        - 'SAMBA 文件共享服务': 'Linux/2-6-SAMBA 服务.md'
+        - 'DNS 域名解析服务': 'Linux/2-7-DNS 服务.md'
+    - Shell 编程:
         - '概述': 'Shell/01-Shell 概述.md'
         - '编辑器': 'Shell/02-编辑器.md'
         - '脚本设计': 'Shell/03-脚本设计.md'
@@ -41,7 +49,7 @@ nav:
         - '正则表达式': 'Shell/11-正则表达式.md'
         - '输入与输出': 'Shell/12-输入与输出.md'
         - '高级应用': 'Shell/13-Shell 高级应用.md'
-    - Go:
+    - Go 编程:
         - '开发环境安装': 'Go/01-Go 开发环境安装配置.md'
         - '语法基础': 'Go/02-Go 语法基础.md'
         - '分支循环': 'Go/03-Go 分支循环.md'
