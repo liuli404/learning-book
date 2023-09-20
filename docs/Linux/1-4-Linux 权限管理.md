@@ -390,6 +390,7 @@ passwd: Authentication token manipulation error
 ```powershell
 # 含义：给 /data 目录增加粘滞位权限
 chmod o+t /data
+chmod 1770 /data
 
 drwxrwxrwt   3 root root      53248 Jul 26 15:43 data     
 ```
