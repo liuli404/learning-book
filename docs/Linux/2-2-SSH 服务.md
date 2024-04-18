@@ -340,7 +340,7 @@ code@11.1.1.100's password:123456
 # ssh -p 3721 code@11.1.1.100
 ```
 
-### 3.2.2修改 authorized_keys 方式
+### 3.2.2 修改 authorized_keys 方式
 
 ① 生成公钥与私钥
 
