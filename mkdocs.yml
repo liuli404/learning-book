@@ -26,8 +26,8 @@ nav:
         - '权限管理': 'Linux/1-4-Linux 权限管理.md'
         - '进程检测': 'Linux/1-5-Linux 进程检测.md'
         - '高级命令拓展': 'Linux/1-6-Linux 高级命令拓展.md'
-        - 'YUM 仓库': 'Linux/1-7-Linux YUM 源仓库.md'
     - 系统服务:
+        - 'YUM 软件仓库': 'Linux/1-7-Linux YUM 源仓库.md'
         - 'NTP 时间同步服务': 'Linux/2-1-NTP 服务.md'
         - 'SSH 远程登录服务': 'Linux/2-2-SSH 服务.md'
         - 'RSYNC 文件同步服务': 'Linux/2-3-RSYNC 服务.md'
@@ -68,3 +68,5 @@ nav:
         - '序列化与反序列化': Go/16-序列化与反序列化.md'
         - '时间格式化': 'Go/17-时间.md'
         - '包管理': 'Go/18-包管理.md'
+        - '日志输出': 'Go/19-日志输出.md'
+        - '进程与线程': 'Go/20-进程与线程.md'
