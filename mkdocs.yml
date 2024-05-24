@@ -51,6 +51,13 @@ nav:
         - '高级应用': 'Shell/13-Shell 高级应用.md'
     - Python 编程:
         - 'Python 基础': 'Python/index.html'
+        - 'Django 基础使用': 'Python/Django01/04_Web框架之Django一.md'
+        - 'Django 类视图与模板': 'Python/Django02/05_Web框架之Django二.md'
+        - 'Django ORM使用': 'Python/Django03/06_Web框架之Django三.md'
+    - Web 编程:
+        - 'HTML\CSS': 'Web/HTML-CSS/01_Web开发基础之HTML+CSS.md'
+        - 'JavaScript': 'Web/JavaScript/02_Web开发基础之JavaScript.md'
+        - 'jQuery\Bootstrap\Ajax': 'Web/jQuery-Bootstrap-Ajax/03_Web开发基础之综合应用.md'
     - Go 编程:
         - '开发环境安装': 'Go/01-Go 开发环境安装配置.md'
         - '语法基础': 'Go/02-Go 语法基础.md'
