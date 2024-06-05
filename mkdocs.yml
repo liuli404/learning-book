@@ -79,3 +79,5 @@ nav:
         - '包管理': 'Go/18-包管理.md'
         - '日志输出': 'Go/19-日志输出.md'
         - '进程与线程': 'Go/20-进程与线程.md'
+        - 'TCP编程': 'Go/21-TCP编程基础.md'
+        - 'Goroutine协程': 'Go/22-Goroutine协程.md'
