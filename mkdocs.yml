@@ -26,7 +26,6 @@ nav:
         - '权限管理': 'Linux/1-4-Linux 权限管理.md'
         - '进程检测': 'Linux/1-5-Linux 进程检测.md'
         - '高级命令拓展': 'Linux/1-6-Linux 高级命令拓展.md'
-    - 系统服务:
         - 'YUM 软件仓库': 'Linux/1-7-Linux YUM 源仓库.md'
         - 'NTP 时间同步服务': 'Linux/2-1-NTP 服务.md'
         - 'SSH 远程登录服务': 'Linux/2-2-SSH 服务.md'
@@ -49,9 +48,6 @@ nav:
         - '正则表达式': 'Shell/11-正则表达式.md'
         - '输入与输出': 'Shell/12-输入与输出.md'
         - '高级应用': 'Shell/13-Shell 高级应用.md'
-    - OpenStack:
-    - Docker:
-    - Kubernetes:
     - Python 编程:
         - 'Python 基础': 'Python/index.html'
         - 'Django 基础使用': 'Python/Django01/04_Web框架之Django一.md'
