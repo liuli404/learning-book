@@ -34,6 +34,10 @@ nav:
         - 'NFS 文件共享服务': 'Linux/2-5-NFS 服务.md'
         - 'SAMBA 文件共享服务': 'Linux/2-6-SAMBA 服务.md'
         - 'DNS 域名解析服务': 'Linux/2-7-DNS 服务.md'
+        - 'MySQL 数据库': 'Linux/3-1-MySQL 数据库.md'
+        - 'Redis 缓存数据库': 'Linux/3-2-Redis.md'
+        - 'Nginx 服务器': 'Linux/3-3-Nginx.md'
+        - 'Kafka 消息队列': 'Linux/3-4-Kafka.md'
     - Shell 编程:
         - '概述': 'Shell/01-Shell 概述.md'
         - '编辑器': 'Shell/02-编辑器.md'
