@@ -49,6 +49,9 @@ nav:
         - '正则表达式': 'Shell/11-正则表达式.md'
         - '输入与输出': 'Shell/12-输入与输出.md'
         - '高级应用': 'Shell/13-Shell 高级应用.md'
+    - OpenStack:
+    - Docker:
+    - Kubernetes:
     - Python 编程:
         - 'Python 基础': 'Python/index.html'
         - 'Django 基础使用': 'Python/Django01/04_Web框架之Django一.md'
