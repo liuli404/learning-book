@@ -267,7 +267,7 @@ chmod -R a=rwx quanxianfolder
 
 权限与数字对应详解
 
-<img src="media/quanxian05.png" style="width:960px" />
+<img src="media/quanxian05.png" />
 
 | 数字 | 权限    | 作用                     |
 | ---- | ------- | ------------------------ |

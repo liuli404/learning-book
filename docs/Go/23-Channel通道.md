@@ -2,7 +2,7 @@
 
 # 一、channel 基础
 
-<img src="./23-Channel%E9%80%9A%E9%81%93/go-channels.png" alt="Understanding Go Channels: An Overview for Beginners" style="zoom:67%;" />
+![Understanding Go Channels: An Overview for Beginners](./23-Channel%E9%80%9A%E9%81%93/go-channels.png)
 
 Channel 是 Go 中的一个核心类型，你可以把它看成一个管道，通过它并发核心单元就可以发送或者接收数据进行通讯(communication)。它的操作符是箭头`<-` （箭头的指向就是数据的流向）。
 
@@ -126,7 +126,7 @@ func main() {
 
 ## 3.1 无缓冲通道
 
-<img src="./23-Channel%E9%80%9A%E9%81%93/3.png" alt="img" style="zoom: 67%;" />
+![img](./23-Channel%E9%80%9A%E9%81%93/3.png)
 
 ```go
 func main() {
@@ -164,7 +164,7 @@ func main() {
 
 ## 3.2 有缓冲通道
 
-<img src="./23-Channel%E9%80%9A%E9%81%93/4.png" alt="img" style="zoom:67%;" />
+![img](./23-Channel%E9%80%9A%E9%81%93/4.png)
 
 只要通道的容量大于零，那么该通道就是有缓冲的通道，通道的容量表示通道中能存放元素的数量。
 
