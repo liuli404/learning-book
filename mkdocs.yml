@@ -85,6 +85,7 @@ nav:
         - 'TCP编程': 'Go/21-TCP编程基础.md'
         - 'Goroutine协程': 'Go/22-Goroutine协程.md'
         - 'Channel通道': 'Go/23-Channel通道.md'
+        - 'MySQL开发与Gorm': 'Go/24-MySQL开发与Gorm.md'
     - SQL:
         - '标准SQL': 'SQL/01-SQL.md'
     - 网络基础:
