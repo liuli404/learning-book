@@ -16,11 +16,11 @@ VLAN具备以下优点：
 | 功能                          | 命令                               |
 | ----------------------------- | ---------------------------------- |
 | 进入系统配置视图              | system-view                        |
-| 创建VLAN                      | vlan \<vlan_id>                    |
+| 创建VLAN                      | vlan <vlan_id>                     |
 | 查看存在的VLAN列表            | display vlan                       |
 | 进入接口                      | interface GigabitEthernet <接口号> |
 | 把当前接口的模式设置成 access | port link-type \<模式>             |
-| 把当前接口加入VLAN            | port default  vlan \<vlan_id>      |
+| 把当前接口加入VLAN            | port default  vlan <vlan_id>       |
 | 退到系统视图                  | quit                               |
 
 交换机的接口模式：
@@ -110,14 +110,14 @@ VID  Status  Property      MAC-LRN Statistics Description
 
 ![image-20240623165936797](./03-Vlan%E4%B8%8EACL/image-20240623165936797.png)
 
-| 功能                                | 命令                                  |
-| ----------------------------------- | ------------------------------------- |
-| 进入系统配置视图                    | system-view                           |
-| 进入接口                            | interface GigabitEthernet <接口号>    |
-| 把当前接口的模式设置成 access\trunk | port link-type <模式>                 |
-| 把当前接口加入VLAN                  | port default  vlan \<vlan_id>         |
-| 设置当前接口允许通过的VLAN          | port trunk allow-pass vlan \<vlan_id> |
-| 退到系统视图                        | quit                                  |
+| 功能                                | 命令                                 |
+| ----------------------------------- | ------------------------------------ |
+| 进入系统配置视图                    | system-view                          |
+| 进入接口                            | interface GigabitEthernet <接口号>   |
+| 把当前接口的模式设置成 access\trunk | port link-type <模式>                |
+| 把当前接口加入VLAN                  | port default  vlan <vlan_id>         |
+| 设置当前接口允许通过的VLAN          | port trunk allow-pass vlan <vlan_id> |
+| 退到系统视图                        | quit                                 |
 
 LSW2 创建配置 VLAN 的步骤与 LSW1一样，这里省略....
 
@@ -147,16 +147,16 @@ LSW2 创建配置 VLAN 的步骤与 LSW1一样，这里省略....
 
 ![image-20240623182957497](./03-Vlan%E4%B8%8EACL/image-20240623182957497.png)
 
-| 功能                                | 命令                                  |
-| ----------------------------------- | ------------------------------------- |
-| 进入系统配置视图                    | system-view                           |
-| 进入接口                            | interface GigabitEthernet <接口号>    |
-| 把当前接口的模式设置成 access\trunk | port link-type <模式>                 |
-| 把当前接口加入VLAN                  | port default  vlan \<vlan_id>         |
-| 设置当前接口允许通过的VLAN          | port trunk allow-pass vlan \<vlan_id> |
-| 进入 VLANIF 接口                    | interface vlanif  \<vlan_id>          |
-| 配置IP地址                          | ip  addr \<ip> \<mask>                |
-| 退到系统视图                        | quit                                  |
+| 功能                                | 命令                                 |
+| ----------------------------------- | ------------------------------------ |
+| 进入系统配置视图                    | system-view                          |
+| 进入接口                            | interface GigabitEthernet <接口号>   |
+| 把当前接口的模式设置成 access\trunk | port link-type <模式>                |
+| 把当前接口加入VLAN                  | port default  vlan <vlan_id>         |
+| 设置当前接口允许通过的VLAN          | port trunk allow-pass vlan <vlan_id> |
+| 进入 VLANIF 接口                    | interface vlanif  <vlan_id>          |
+| 配置IP地址                          | ip  addr <ip> <mask>                 |
+| 退到系统视图                        | quit                                 |
 
 LSW1、LSW2的 vlan 与 trunk 配置见以上步骤，以下只配置与 LSW3 新增的配置....
 
@@ -207,3 +207,63 @@ VLANIF接口是网络层接口，创建VLANIF接口前要先创建了对应的VL
 [Huawei-Vlanif20]ip addr 192.168.2.254 255.255.255.0
 ```
 
+## 1.4 配置单臂路由连通不同的VLAN
+
+使用一台路由器，实现两个VLAN的通信。基本原理是将一个物理接口拓展成两个子接口，并分别关联不同的VLAN。
+
+![image-20240624174732785](./03-Vlan%E4%B8%8EACL/image-20240624174732785.png)
+
+| 功能                                | 命令                                          |
+| ----------------------------------- | --------------------------------------------- |
+| 进入系统配置视图                    | system-view                                   |
+| 进入接口                            | interface GigabitEthernet <接口号>            |
+| 把当前接口的模式设置成 access\trunk | port link-type <模式>                         |
+| 把当前接口加入VLAN                  | port default  vlan <vlan_id>                  |
+| 设置当前接口允许通过的VLAN          | port trunk allow-pass vlan <vlan_id>          |
+| 将物理接口创建子接口                | interface GigabitEthernet <接口号>.<子接口号> |
+| 指定子接口关联VLAN                  | dot1q termination vid <vlan_id>               |
+| 开启ARP广播                         | arp broadcast enable                          |
+| 配置IP地址                          | ip  addr <ip> <mask>                          |
+| 退到系统视图                        | quit                                          |
+
+- 配置 LSW1 交换机，创建VLAN
+
+```cmd
+# 创建vlan
+[Huawei]vlan 10
+[Huawei]vlan 20
+
+# 配置接口1的vlan
+[Huawei]interface GigabitEthernet 0/0/1
+[Huawei-GigabitEthernet0/0/1]port link-type access 
+[Huawei-GigabitEthernet0/0/1]port default vlan 10
+
+# 配置接口2的vlan
+[Huawei]interface GigabitEthernet 0/0/2
+[Huawei-GigabitEthernet0/0/2]port link-type access 
+[Huawei-GigabitEthernet0/0/2]port default vlan 20
+
+# 配置接口3的trunk
+[Huawei]interface GigabitEthernet 0/0/3
+[Huawei-GigabitEthernet0/0/3]port link-type trunk 
+[Huawei-GigabitEthernet0/0/3]port trunk allow-pass vlan 10
+[Huawei-GigabitEthernet0/0/3]port trunk allow-pass vlan 20
+```
+
+- 配置 AR1 路由器
+
+```cmd
+# 创建.10子接口，并关联 vlan 10，设置IP作为客户端的网关
+[Huawei]interface GigabitEthernet 0/0/0.10
+[Huawei-GigabitEthernet0/0/0.10]dot1q termination vid 10
+[Huawei-GigabitEthernet0/0/0.10]arp broadcast enable
+[Huawei-GigabitEthernet0/0/0.10]ip addr 192.168.1.254 255.255.255.0
+
+# 创建.20子接口，并关联 vlan 20，设置IP作为客户端的网关
+[Huawei]interface GigabitEthernet 0/0/0.20
+[Huawei-GigabitEthernet0/0/0.20]dot1q termination vid 20
+[Huawei-GigabitEthernet0/0/0.20]arp broadcast enable
+[Huawei-GigabitEthernet0/0/0.20]ip addr 192.168.2.254 255.255.255.0
+```
+
+# 二、ACL
