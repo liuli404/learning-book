@@ -20,7 +20,8 @@ markdown_extensions:
         baselevel: 2
 nav:
     - 计算机基础:
-        - '计算机概述': 'Computer System/01-计算机概述.md'
+        - '计算机硬件系统': 'Computer System/01-计算机硬件系统.md'
+        - '计算机操作系统': 'Computer System/02-计算机软件系统.md'
     - 网络基础:
         - '网络基础': 'Datacom/01-网络基础.md'
         - '路由器基础': 'Datacom/02-路由器基础.md'
