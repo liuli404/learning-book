@@ -110,6 +110,26 @@ mount /dev/sda1 /mnt/file
 命令（空格）[选项]（空格）[参数]
 ```
 
+选项：用于启用或关闭命令的某个或某些功能，选项有以下几种风格。
+
+- 短选项：UNIX 风格选项，-c 例如：-l, -h 
+
+  ```bash
+  [root@centos8 ~]#free -h
+  ```
+
+- 长选项：GNU风格选项，--word 例如：--all, --human
+
+  ```bash
+  [root@centos8 ~]#free --human
+  ```
+
+- BSD风格选项： 一个字母，例如：a，使用相对较少
+
+  ```bash
+  [root@centos8 ~]#ps a
+  ```
+
 但是有些命令比较特殊，可能没有选项也没有参数
 
 ```bash
@@ -338,5 +358,42 @@ hostnamectl --pretty set-hostname 主机名称（包含特殊字符）
 hostnamectl --pretty set-hostname "yunwei's server01"
 # 查看灵活的主机名称
 hostnamectl --pretty
+```
+
+## 3.14 echo 命令
+
+主要功能：echo 命令可以将后面跟的字符进行输出
+
+基本语法：`echo [-neE][字符串]`
+
+选项：
+
+- -E （默认）不支持 \ 解释功能 
+- -n 不自动换行 
+- -e 启用 \ 字符的解释功能
+
+**echo 控制输出颜色**
+
+格式：`echo -e "\e[31m Hello World \e[0m"`
+
+```bash
+# 字符背景颜色范围: 40--47                   
+40:黑                       
+41:红                        
+42:绿
+43:黄
+44:蓝
+45:紫
+46:深绿                      
+47:白色
+# 字体颜色: 30--37
+30: 黑
+31: 红
+32: 绿
+33: 黄
+34: 蓝
+35: 紫
+36: 深绿
+37: 白色
 ```
 

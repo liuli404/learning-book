@@ -26,7 +26,7 @@ nav:
         - '网络基础': 'Datacom/01-网络基础.md'
         - '路由器基础': 'Datacom/02-路由器基础.md'
         - 'VLAN与ACL': 'Datacom/03-Vlan与ACL.md'
-    - Linux 基础: 
+    - Linux: 
         - '入门命令': 'Linux/1-1-Linux 基本命令.md'
         - '文件管理': 'Linux/1-2-Linux 文件管理.md'
         - '用户管理': 'Linux/1-3-Linux 用户管理.md'
@@ -45,7 +45,7 @@ nav:
         - 'Redis 缓存数据库': 'Linux/3-2-Redis.md'
         - 'Nginx 服务器': 'Linux/3-3-Nginx.md'
         - 'Kafka 消息队列': 'Linux/3-4-Kafka.md'
-    - Shell 编程:
+    - Shell:
         - '概述': 'Shell/01-Shell 概述.md'
         - '编辑器': 'Shell/02-编辑器.md'
         - '脚本设计': 'Shell/03-脚本设计.md'
@@ -59,18 +59,20 @@ nav:
         - '正则表达式': 'Shell/11-正则表达式.md'
         - '输入与输出': 'Shell/12-输入与输出.md'
         - '高级应用': 'Shell/13-Shell 高级应用.md'
-    - Docker 容器:
+    - Docker:
         - 'Docker 架构与安装': 'Docker/01-Docker 架构与安装.md'
-    - Python 编程:
+    - BigData:
+        - 'HDFS安装配置': 'BigData/02-HDFS安装配置.md'
+    - Python:
         - 'Python 基础': 'Python/index.html'
         - 'Django 基础使用': 'Python/Django01/04_Web框架之Django一.md'
         - 'Django 类视图与模板': 'Python/Django02/05_Web框架之Django二.md'
         - 'Django ORM使用': 'Python/Django03/06_Web框架之Django三.md'
-    - Web 编程:
+    - Web:
         - 'HTML\CSS': 'Web/HTML-CSS/01_Web开发基础之HTML+CSS.md'
         - 'JavaScript': 'Web/JavaScript/02_Web开发基础之JavaScript.md'
         - 'jQuery\Bootstrap\Ajax': 'Web/jQuery-Bootstrap-Ajax/03_Web开发基础之综合应用.md'
-    - Go 编程:
+    - Go:
         - '开发环境安装': 'Go/01-Go 开发环境安装配置.md'
         - '语法基础': 'Go/02-Go 语法基础.md'
         - '数据类型': 'Go/03-Go 数据类型.md'

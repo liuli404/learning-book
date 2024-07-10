@@ -63,7 +63,7 @@ EOF
 echo "0" > /proc/sys/vm/swappiness
 ```
 
-# 配置阿里云 YUM 源
+# 配置阿里 YUM 源
 
 ```bash
 mv /etc/yum.repos.d/CentOS-* /tmp/ && \
@@ -71,6 +71,30 @@ curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos
 curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo && \
 yum clean all && yum makecache 
 ```
+
+# 安装 Docker 
+
+```bash
+yum install -y yum-utils device-mapper-persistent-data lvm2 \
+&& yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo \
+&& yum makecache fast \
+&& yum -y install docker-ce \
+&& systemctl start docker && systemctl enable docker \
+&& yum install -y bash-completion \
+&& source /usr/share/bash-completion/bash_completion \
+&& source /usr/share/bash-completion/completions/docker
+```
+
+# 安装 Docker compose
+
+```bash
+curl -SL https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose \
+&& chmod +x /usr/local/bin/docker-compose \
+&& ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose \
+&& docker-compose --version
+```
+
+
 
 # 打印各种时间格式
 
