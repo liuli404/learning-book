@@ -61,8 +61,6 @@ nav:
         - '高级应用': 'Shell/13-Shell 高级应用.md'
     - Docker:
         - 'Docker 架构与安装': 'Docker/01-Docker 架构与安装.md'
-    - BigData:
-        - 'HDFS安装配置': 'BigData/02-HDFS安装配置.md'
     - Python:
         - 'Python 基础': 'Python/index.html'
         - 'Django 基础使用': 'Python/Django01/04_Web框架之Django一.md'
@@ -99,3 +97,7 @@ nav:
         - 'MySQL开发与Gorm': 'Go/24-MySQL开发与Gorm.md'
     - SQL:
         - '标准SQL': 'SQL/01-SQL.md'
+    - 大数据:
+        - 'HDFS 安装搭建': 'BigData/02-HDFS 安装配置.md'
+        - 'HDFS 文件系统操作': 'BigData/03-HDFS 文件系统操作.md'
+        
