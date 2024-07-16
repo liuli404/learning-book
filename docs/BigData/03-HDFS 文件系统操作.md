@@ -20,8 +20,8 @@ HDFS作为分布式存储的文件系统，有其对数据的路径表达方式�
 
 关于HDFS文件系统的操作命令，Hadoop提供了2套命令体系。
 
-- hadoop命令（老版本用法），用法：hadoop fs [generic 选项]
-- hdfs命令（新版本用法），用法：hdfs dfs [generic 选项]
+- hadoop命令（老版本用法），用法：`hadoop fs [generic 选项]`
+- hdfs命令（新版本用法），用法：`hdfs dfs [generic 选项]`
 
 两者在文件系统操作上，用法完全一致，用哪个都可以。
 
