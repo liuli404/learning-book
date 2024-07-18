@@ -99,7 +99,8 @@ nav:
         - '标准SQL': 'SQL/01-SQL.md'
     - 大数据:
         - 'HDFS 分布式文件系统': 'BigData/01-HDFS 分布式文件系统.md'
-        - 'HDFS 安装搭建': 'BigData/02-HDFS 安装配置.md'
+        - 'HDFS 部署搭建': 'BigData/02-HDFS 安装配置.md'
         - 'HDFS 文件系统操作': 'BigData/03-HDFS 文件系统操作.md'
         - 'MapReduce&YARN 分布式计算': 'BigData/04-MapReduce & YARN.md'
+        - 'MapReduce&YARN 部署搭建': 'BigData/05-MapReduce&YARN 部署搭建.md'
         
