@@ -262,15 +262,16 @@ export HADOOP_LOG_DIR=$HADOOP_HOME/logs
 </configuration>
 ```
 
-- 属性1：
-  - name：fs.defaultFS
-    - HDFS 文件系统的网络通讯路径
-  - value：hdfs://master:8020
-    - namenode 为 master，namenode 通讯端口为 8020
-- 属性2：
-  - name：io.file.buffer.size
-    - io操作文件缓冲区大小
-  - value：131072 bit
+属性1：
+- name：fs.defaultFS
+  - HDFS 文件系统的网络通讯路径
+- value：hdfs://master:8020
+  - namenode 为 master，namenode 通讯端口为 8020
+
+属性2：
+- name：io.file.buffer.size
+  - io操作文件缓冲区大小
+- value：131072 bit
 
 ### 3.2.4 hdfs-site.xml 文件
 
@@ -308,36 +309,41 @@ export HADOOP_LOG_DIR=$HADOOP_HOME/logs
 </configuration> 
 ```
 
-- 属性1：
-  - name：dfs.datanode.data.dir.perm
-    - hdfs文件系统，默认创建的文件权限设置
-  - value：700
-    - 即：rwx------
-- 属性2：
-  - name：dfs.namenode.name.dir
-    - NameNode元数据的存储位置
-  - value：/data/nn
-    - 在 master 节点的 /data/nn 目录下
-- 属性3：
-  - name：dfs.namenode.hosts
-    - NameNode允许哪几个节点的DataNode连接（即允许加入集群）
-  - value：node1,node2,node3
-    - 这三台服务器被授权
-- 属性4：
-  - name：dfs.datanode.data.dir
-    - DataNode的数据存储目录
-  - value：/data/dn
-    - 在 node 节点的 /data/dn 目录下
-- 属性5：
-  - name：dfs.blocksize
-    - hdfs文件默认块大小
-  - value：268435456
-    - 258MB
-- 属性6：
-  - name：dfs.namenode.handler.count
-    - namenode 处理的并发线程数
-  - value：100
-    - 以100个并行度处理文件系统的管理任务
+属性1：
+- name：dfs.datanode.data.dir.perm
+  - hdfs文件系统，默认创建的文件权限设置
+- value：700
+  - 即：rwx------
+
+属性2：
+- name：dfs.namenode.name.dir
+  - NameNode元数据的存储位置
+- value：/data/nn
+  - 在 master 节点的 /data/nn 目录下
+
+属性3：
+- name：dfs.namenode.hosts
+  - NameNode允许哪几个节点的DataNode连接（即允许加入集群）
+- value：node1,node2,node3
+  - 这三台服务器被授权
+
+属性4：
+- name：dfs.datanode.data.dir
+  - DataNode的数据存储目录
+- value：/data/dn
+  - 在 node 节点的 /data/dn 目录下
+
+属性5：
+- name：dfs.blocksize
+  - hdfs文件默认块大小
+- value：268435456
+  - 258MB
+
+属性6：
+- name：dfs.namenode.handler.count
+  - namenode 处理的并发线程数
+- value：100
+  - 以100个并行度处理文件系统的管理任务
 
 ### 3.2.5 hadoop 环境变量
 
@@ -414,13 +420,14 @@ stop-dfs.sh
 ```
 
 除了一键启停外，也可以单独控制进程的启停。
-1. `$HADOOP_HOME/sbin/hadoop-daemon.sh`，此脚本可以单独控制**所在机器**的进程的启停
+
+`$HADOOP_HOME/sbin/hadoop-daemon.sh`，此脚本可以单独控制**所在机器**的进程的启停
 
   ```bash
   hadoop-daemon.sh (start|status|stop) (namenode|secondarynamenode|datanode)
   ```
 
-2. `$HADOOP_HOME/bin/hdfs`，此程序也可以用以单独控制**所在机器**的进程的启停
+`$HADOOP_HOME/bin/hdfs`，此程序也可以用以单独控制**所在机器**的进程的启停
 
   ```bash
   hdfs --daemon (start|status|stop) (namenode|secondarynamenode|datanode)
