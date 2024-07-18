@@ -2,10 +2,10 @@
 
 | IP            | 主机名 | 组件                        |
 | ------------- | ------ | --------------------------- |
-| 192.168.6.100 | master | NameNode、SecondaryNameNode |
-| 192.168.6.101 | node1  | DataNode                    |
-| 192.168.6.102 | node2  | DataNode                    |
-| 192.168.6.103 | node3  | DataNode                    |
+| 192.168.1.100 | master | NameNode、SecondaryNameNode |
+| 192.168.1.101 | node1  | DataNode                    |
+| 192.168.1.102 | node2  | DataNode                    |
+| 192.168.1.103 | node3  | DataNode                    |
 
 # 二、服务器初始化
 
@@ -49,14 +49,14 @@ hostnamectl set-hostname node2
 hostnamectl set-hostname node3
 ```
 
-添加 hosts 主机映射
+添加 hosts 主机映射，客户端的windows也同样配置
 
 ```bash
-cat > /etc/hosts << EOF
-192.168.6.100 master
-192.168.6.101 node1
-192.168.6.102 node2
-192.168.6.103 node3
+cat >> /etc/hosts << EOF
+192.168.1.100 master
+192.168.1.101 node1
+192.168.1.102 node2
+192.168.1.103 node3
 EOF
 ```
 
@@ -172,38 +172,31 @@ ssh-copy-id node3
 
 # 三、HDFS 安装
 
-HDFS 软件使用 hadoop 普通用户安装，可以在 master 节点上配置完毕，然后使用 scp 将配置后的软件包分发拷贝到其他节点。
-
-```bash
-# 确保以hadoop用户执行
-su - hadoop
-```
-
 ## 3.1 JDK1.8 安装
 
-官网下载 JDK 安装包，上传到服务器进行解压
+官网下载 JDK 安装包，上传到各节点服务器，进行解压
 
 ```bash
-tar -zxvf jdk-8u361-linux-x64.tar.gz -C /opt
+tar -zxvf jdk-8u361-linux-x64.tar.gz -C /opt/
 ```
 
 配置环境变量
 
 ```bash
-vim ~/.bashrc
+vim /etc/profile
 ```
 
 文件尾部追加环境变量
 
 ```bash
-export JAVA_HOME=/opt/jdk-8u361-linux-x64
+export JAVA_HOME=/opt/jdk1.8.0_361
 export PATH=$JAVA_HOME/bin:$PATH
 ```
 
 刷新文件，立即加载环境变量
 
 ```bash
-source ~/.bashrc
+source /etc/profile
 ```
 
 查看jdk版本
@@ -215,18 +208,20 @@ javac -version
 
 ## 3.2 HDFS 安装
 
-上传 hadoop 安装包到 master 节点，解压并进行配置。
+上传 hadoop 安装包到各节点，解压并进行配置。
 
 ```bash
 tar -zxvf hadoop-3.3.4.tar.gz -C /opt/
 ```
 
-HDFS 集群主要配置文件如下，这些文件均存在$HADOOP_HOME/etc/hadoop目录中：
+HDFS 集群主要配置文件如下，这些文件均存在`$HADOOP_HOME/etc/hadoop`目录中：
 
 - workers：配置从节点（DataNode）有哪些
 - hadoop-env.sh：配置 Hadoop 的相关环境变量
 - core-site.xml：Hadoop 核心配置文件
 - hdfs-site.xml：HDFS 核心配置文件
+
+**也可以先配置 master 节点的配置，然后分发配置好的文件到各节点。**
 
 ### 3.2.1 workers 文件
 
@@ -245,7 +240,7 @@ node3
 # HADOOP_CONF_DIR，指明 Hadoop 配置文件目录位置
 # HADOOP_LOG_DIR，指明 Hadoop 运行日志目录位置
 
-export JAVA_HOME=/opt/jdk-8u361-linux-x64
+export JAVA_HOME=/opt/jdk1.8.0_361
 export HADOOP_HOME=/opt/hadoop-3.3.4
 export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 export HADOOP_LOG_DIR=$HADOOP_HOME/logs
@@ -349,7 +344,7 @@ export HADOOP_LOG_DIR=$HADOOP_HOME/logs
 添加 PATH 环境变量只是为了使用脚本方便，如果习惯写脚本的绝对路径可不配。
 
 ```bash
-vim ~/.bashrc
+vim /etc/profile
 ```
 
 文件尾部追加环境变量
@@ -362,27 +357,44 @@ export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 刷新文件，立即加载环境变量
 
 ```bash
-source ~/.bashrc
+source /etc/profile
 ```
 
-## 3.3 启动 HDFS
-
-注意：启动前需将 jdk 目录、hadoop 目录、bashrc 文件， scp 到其他node 节点上，并刷新环境变量文件。
+将修改后的配置文件， scp 到其他 node 节点上。
 
 ```bash
-scp -r /opt/jdk-8u361-linux-x64 /opt/jdk-8u361-linux-x64 ~/.bashrc hadoop@node1:/opt/
-scp -r /opt/jdk-8u361-linux-x64 /opt/jdk-8u361-linux-x64 ~/.bashrc hadoop@node2:/opt/
-scp -r /opt/jdk-8u361-linux-x64 /opt/jdk-8u361-linux-x64 ~/.bashrc hadoop@node3:/opt/
+cd /opt/hadoop-3.3.4/etc/hadoop
+scp -r workers hadoop-env.sh hdfs-site.xml core-site.xml node1:`pwd`
+scp -r workers hadoop-env.sh hdfs-site.xml core-site.xml node2:`pwd`
+scp -r workers hadoop-env.sh hdfs-site.xml core-site.xml node3:`pwd`
 ```
 
 创建数据存放目录
 
 ```bash
-# master 
-mkdir -p /data/nn
+# 提前准备好数据盘，挂盘、创建目录 
+mkdir /data/
+mkfs.ext4 /dev/sdb
+echo "/dev/sdb /data ext4 defaults 0 0" >> /etc/fstab
+mount -a
 
-# node1、node2、node3
-mkdir -p /data/dn
+# master,namenode程序存放元数据目录
+mkdir /data/nn
+
+# node1、node2、node3,datanode程序存放真实数据目录
+mkdir /data/dn
+
+# 授权目录给 hadoop 用户
+chown -R hadoop:hadoop /opt
+chown -R hadoop:hadoop /data
+```
+
+### 3.3 启动 HDFS
+
+切换回 hadoop 用户
+
+```bash
+su - hadoop
 ```
 
 格式化文件系统
@@ -414,7 +426,20 @@ stop-dfs.sh
   hdfs --daemon (start|status|stop) (namenode|secondarynamenode|datanode)
   ```
 
-启动完成后，可以在浏览器打开：http://master:9870，即可查看到hdfs文件系统的管理网页。
+启动完成后，可以使用`jps`命令查看节点上的角色
+
+```bash
+# master 节点
+SecondaryNameNode
+NameNode
+
+# node 节点
+DataNode
+```
+
+在浏览器打开：http://master:9870，即可查看到hdfs文件系统的管理网页。
+
+![image-20240718153534392](./02-HDFS%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/image-20240718153534392.png)
 
 ## 3.4 其他配置
 
