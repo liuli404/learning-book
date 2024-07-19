@@ -103,4 +103,5 @@ nav:
         - 'HDFS 文件系统操作': 'BigData/03-HDFS 文件系统操作.md'
         - 'MapReduce&YARN 分布式计算': 'BigData/04-MapReduce & YARN.md'
         - 'MapReduce&YARN 部署搭建': 'BigData/05-MapReduce&YARN 部署搭建.md'
-        
+        - 'Hive 分布式SQL计算': 'BigData/06-Hive 分布式SQL计算.md'
+        - 'Hive 部署搭建': 'BigData/07-Hive 安装部署.md'
