@@ -19,6 +19,10 @@ docker/docker
 ```bash
 cp docker/* /usr/bin/
 ```
+## 启动 dockerd
+```bash
+dockerd &
+```
 ## 创建守护进程文件
 ```bash
 cat > /etc/systemd/system/docker.service << EOF
@@ -30,7 +34,7 @@ Wants=network-online.target
 
 [Service]
 Type=notify
-ExecStart=/usr/bin/dockerd --exec-opt native.cgroupdriver=systemd
+ExecStart=/usr/bin/dockerd
 ExecReload=/bin/kill -s HUP $MAINPID
 LimitNOFILE=infinity
 LimitNPROC=infinity
