@@ -59,6 +59,10 @@ nav:
         - '正则表达式': 'Shell/11-正则表达式.md'
         - '输入与输出': 'Shell/12-输入与输出.md'
         - '高级应用': 'Shell/13-Shell 高级应用.md'
+    - KVM:
+        - '虚拟化概述': 'KVM/01-虚拟化概述.md'
+        - 'KVM安装': 'KVM/02-KVM安装.md'
+        - '创建虚拟机': 'KVM/03-创建虚拟机.md'
     - Docker:
         - 'Docker 架构与安装': 'Docker/01-Docker 架构与安装.md'
     - Python:
@@ -105,3 +109,4 @@ nav:
         - 'MapReduce&YARN 部署搭建': 'BigData/05-MapReduce&YARN 部署搭建.md'
         - 'Hive 分布式SQL计算': 'BigData/06-Hive 分布式SQL计算.md'
         - 'Hive 部署搭建': 'BigData/07-Hive 安装部署.md'
+        - 'Hive SQL操作': 'BigData/08-Hive SQL语法大全.md'

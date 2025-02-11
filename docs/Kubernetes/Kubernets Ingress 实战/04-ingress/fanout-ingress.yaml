@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fanout-ingress
+  namespace: nginx-space
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: nginx.ingress.com
+    http:
+      paths:
+      - path: /game(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-web1-service
+            port:
+              number: 80
+      - path: /web(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-web2-service
+            port:
+              number: 80

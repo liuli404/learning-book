@@ -15,7 +15,8 @@ if ! crontab -l |grep ntpdate &>/dev/null ; then
 fi
 
 # 禁用 selinux
-setenforce 0 && sed -i '/SELINUX/{s/permissive/disabled/}' /etc/selinux/config
+setenforce 0
+sed -i "s#SELINUX=enforcing#SELINUX=disabled#g" /etc/selinux/config
 
 # 关闭防火墙
 if egrep "7.[0-9]" /etc/redhat-release &>/dev/null; then

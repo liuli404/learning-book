@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: wordpress
+    namespace: wordpress-space
+    labels:
+        app: wordpress
+        tier: frontend
+spec:
+    selector:
+        matchLabels:
+            app: wordpress
+            tier: frontend-pod
+    strategy:
+        type: Recreate 
+    template:
+        metadata:
+            labels:
+                app: wordpress
+                tier: frontend-pod
+        spec:
+            containers:
+              - image: harbor.test.digitalchina.com/lamp/wordpress:latest
+                name: wordpress
+                env:
+                  - name: WORDPRESS_DB_HOST
+                    value: mysql
+                  - name: WORDPRESS_DB_PASSWORD
+                    valueFrom:
+                        secretKeyRef:
+                            name: mysql-pass
+                            key: password
+                  - name: WORDPRESS_DB_USER
+                    valueFrom:
+                        configMapKeyRef:
+                            name: mysql-config
+                            key: dbuser
+                ports:
+                  - containerPort: 80
+                    name: wordpress
+                volumeMounts:
+                  - name: wordpress-persistent-storage
+                    mountPath: /var/www/html
+            volumes:
+              - name: wordpress-persistent-storage
+                persistentVolumeClaim:
+                    claimName: wordpress-pv-claim

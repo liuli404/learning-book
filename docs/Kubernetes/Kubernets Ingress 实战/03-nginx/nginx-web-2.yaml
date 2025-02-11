@@ -1,0 +1,44 @@
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: nginx-web2
+  namespace: nginx-space 
+spec: 
+  replicas: 3 
+  strategy:
+    type: RollingUpdate 
+    rollingUpdate: 
+      maxSurge: 1 
+      maxUnavailable: 0 
+  selector: 
+    matchLabels: 
+      app: nginx-web2
+  template: 
+    metadata: 
+      labels: 
+        app: nginx-web2
+    spec: 
+      restartPolicy: Always 
+      containers: 
+      - name: nginx-web1-container 
+        image: nginx:latest
+        imagePullPolicy: IfNotPresent 
+        ports: 
+        - name: nginx-port 
+          containerPort: 80 
+          protocol: TCP 
+--- 
+apiVersion: v1 
+kind: Service 
+metadata: 
+  name: nginx-web2-service 
+  namespace: nginx-space 
+  labels: 
+    name: nginx-web2-service 
+spec: 
+  selector: 
+    app: nginx-web2
+  ports: 
+    - protocol: TCP 
+      port: 80 
+      name: http

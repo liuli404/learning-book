@@ -329,15 +329,15 @@ Transaction isolation: TRANSACTION_REPEATABLE_READ
 
 一款开源的数据库管理软件，下载地址：https://dbeaver.io/download/
 
-1. 新建Hive连接
+**1、新建Hive连接**
 
 ![image-20240719175017979](./07-Hive%20%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/image-20240719175017979.png)
 
-2. 配置 hive 库连接
+**2、配置 hive 库连接**
 
 ![image-20240719175143586](./07-Hive%20%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/image-20240719175143586.png)
 
-3. 下载驱动
+**3、下载驱动**
 
 测试连接时，会提示让下载驱动，联网点击下载即可。
 
@@ -347,9 +347,9 @@ Transaction isolation: TRANSACTION_REPEATABLE_READ
 
 ![image-20240719175704707](./07-Hive%20%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/image-20240719175704707.png)
 
-4. 手动添加驱动步骤
+**4、手动添加驱动步骤**
 
-   编辑驱动设置 → 库 → 添加文件 → 选择驱动文件 → 确定
+编辑驱动设置 → 库 → 添加文件 → 选择驱动文件 → 确定
 
 ![image-20240719180158701](./07-Hive%20%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/image-20240719180158701.png)
 

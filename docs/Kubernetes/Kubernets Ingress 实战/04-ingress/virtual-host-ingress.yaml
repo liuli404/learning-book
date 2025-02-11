@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: virtual-host-ingress
+  namespace: nginx-space
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: game.ingress.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: nginx-web1-service
+            port:
+              number: 80
+  - host: web.ingress.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: nginx-web2-service
+            port:
+              number: 80
