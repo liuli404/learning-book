@@ -22,9 +22,9 @@ nav:
     - 计算机基础:
         - '计算机硬件系统': 'Computer System/01-计算机硬件系统.md'
         - '计算机操作系统': 'Computer System/02-计算机软件系统.md'
-    - 网络基础:
+    - 网络:
         - '网络基础': 'Datacom/01-网络基础.md'
-        - '路由器基础': 'Datacom/02-路由器基础.md'
+        - '路由基础': 'Datacom/02-路由器基础.md'
         - 'VLAN与ACL': 'Datacom/03-Vlan与ACL.md'
     - Linux: 
         - '常用脚本': 'Linux/常用脚本.md'
@@ -64,6 +64,9 @@ nav:
         - '虚拟化概述': 'KVM/01-虚拟化概述.md'
         - 'KVM安装': 'KVM/02-KVM安装.md'
         - '创建虚拟机': 'KVM/03-创建虚拟机.md'
+        - '管理虚拟机': 'KVM/04-管理虚拟机.md'
+        - '管理虚拟存储': 'KVM/05-管理虚拟存储.md'
+        - '管理虚拟网络': 'KVM/06-管理虚拟网络.md'
     - Docker:
         - 'Docker 架构与安装': 'Docker/01-Docker 架构与安装.md'
     - Python:
