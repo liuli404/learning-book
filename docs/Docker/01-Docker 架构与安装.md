@@ -18,7 +18,7 @@ Docker 仓库(Registry)：保存镜像的仓库，官方仓库:  https://hub.doc
 
 Docker 镜像(Images):  镜像可以理解为创建实例使用的模板，本质上就是一些程序文件的集合
 
-## 1.2 Docker 核心技术
+## 1.2 Docker 底层技术
 
 Docker 是用Go语言编写的，利用Linux内核的几个特性来提供其功能。Docker使用一种名为名称空间的技术来提供容器的隔离工作，
 
@@ -39,9 +39,51 @@ Docker 是用Go语言编写的，利用Linux内核的几个特性来提供其功
   | Net Namespace  | 提供网络隔离能力               | 每个net namespace 有独立的network devices, IP  addresses, IP routing tables, /proc/net 目录。 | 2.6.29   |
   | User Namespace | 提供用户/用户组隔离能力        | 每个container 可以有不同的user 和group id, 也就是说可以在container 内部用container 内部的 用户执行程序而非Host 上的用户。 | 3.8      |
 
-  
-
 - CGroup
+
+  CGroup的全程为 Linux Control Group，也是内核中的一个功能，在内核层默认已经开启。CGroup最主要的一个功能就是可以限制一个进程使用的资源上限，包括CPU、内存、磁盘、网络带宽等。
+
+  使用CGroup就可以限制容器的资源上限，防止因容器内部程序异常将宿主机资源占完。
+
+## 1.3 Docker 与 Podman
+
+Podman即Pod Manager tool，是一个为 Kubernetes 而生的开源的容器管理工具，原来是 CRI-O（即容器运行时接口CRI 和开放容器计划OCI）项目的一部分，后来被分离成一个单独的项目叫 libpod。其可在大多数Linux平台 上使用，它是一种**无守护程序**的容器引擎，用于在Linux系统上开发，管理和运行任何符合Open  Container Initiative（OCI）标准的容器和容器镜像。
+
+Podman 提供了一个与 Docker 兼容的命令行前端，Podman 里面87%的指令都和Docker CLI 相同，因 此可以简单地为Docker CLI别名。
+
+ Podman 和docker不同之处：
+
+- docker 需要在系统上运行一个守护进程(docker daemon)，这会产生一定的开销；而 podman 不 需要。
+
+- 启动容器的方式不同: docker cli 命令通过API跟 docker Engine 才会调用 Docker Engine(引擎) 交互告诉它我想创建一个container，然后 container 的 process(进程)不会是 OCI container runtime(runc) 来启动一个container。这代表 Docker CLI 的 child process(子进程)，而是 Engine 的 child process 。
+
+  Podman 是直接给 OCI containner runtime(runc) 进行交互来创建container的，所以 container process 直接是podman的child process 。
+
+- 因为docke有docker daemon，所以docker启动的容器支持--restart 策略，但是podman不支持
+
+- docker需要使用root用户来创建容器。 这可能会产生安全风险，尤其是当用户知道docker run命令的--privileged选项时。podman既可以由root用户运行，也可以由非特权用户运行。
+
+## 1.4 容器相关技术
+
+为了保证容器生态的标准性和健康可持续发展，包括Linux 基金会、Docker、微软、红帽、谷歌和IBM 等公司在2015年6月共同成立了一个叫Open Container Initiative（OCI）的组织，其目的就是制定开放的标准的容器规范。
+
+目前OCI一共发布了两个规范，分别是 **runtime spec** 和 **image format spec**，有了这两个规范，不同的容器公司开发的容器只要兼容这两个规范，就可以保证容器的可移植性和相互可操作性。
+
+- Container Runtime 容器运行时
+
+  runtime 是真正运行容器的地方，因此为了运行不同的容器runtime需要和操作系统内核紧密合作相互在支持，以便为容器提供相应的运行环境，对于容器运行时主要有两个级别：Low Level(使用接近内核层) 和 High Level(使用接近用户层)目前，市面上常用的容器引擎有很多，主要有下图的那几种：
+
+  ![img](./01-Docker%20%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%AE%89%E8%A3%85/06fde9d32b8e2215efc709e2107ae4ae9da313.png)
+
+  **runc**：早期libcontainer是Docker公司控制的一个开源项目，OCI的成立后，Docker把libcontainer 项目移交给了OCI组织，runc就是在libcontainer的基础上进化而来，是目前Docker默认的runtime，runc遵守OCI规范。
+
+  **lxc**：linux上早期的runtime，在 2013 年 Docker 刚发布的时候，就是采用lxc作为runtime, Docker 把 LXC 复杂的容器创建与使用方式简化为 Docker 自己的一套命令体系。随着Docker的发展，原有的LXC不能满足Docker的需求，比如跨平台功能。
+
+  **rkt**:  是CoreOS开发的容器runtime，也符合OCI规范，所以使用rkt runtime也可以运行Docker容 器
+
+## 1.5 Docker 的运行机制
+
+![image-20250304200242880](./01-Docker%20%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%AE%89%E8%A3%85/image-20250304200242880.png)
 
 
 
@@ -49,6 +91,185 @@ Docker 是用Go语言编写的，利用Linux内核的几个特性来提供其功
 
 ## 2.1 Rocky 系统安装
 
+Rocky 8.10/9.5 安装docker 命令：
+
+```bash
+# 将阿里云仓库添加到YUM源:
+curl https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -o /etc/yum.repos.d/docker-ce.repo
+# 更新yum源
+dnf clean all && dnf makecache
+```
+
+安装 docker-ce 最新版
+
+```bash
+# 安装最新版docker
+dnf install -y docker-ce
+# 启用dockerd服务
+systemctl enable --now docker
+```
+
+安装 docker-ce 指定版本
+
+```bash
+# 列出可用版本
+dnf list docker-ce --showduplicates | sort -r
+# 选择所需版本并安装：
+VERSION_STRING=26.1.2-1.el8
+dnf install -y docker-ce-$VERSION_STRING docker-ce-cli-$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+# 启用dockerd服务
+systemctl enable --now docker
+```
+
+卸载旧版本
+
+```bash
+# 卸载Docker Engine、CLI、containerd和Docker Compose软件包：
+dnf remove -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+# 删除主机上的镜像、容器、卷或自定义配置文件：
+rm -rf /var/lib/docker
+rm -rf /var/lib/containerd
+```
+
 ## 2.2 Ubuntu 系统安装
 
-## 2.3 二进制离线安装
+Ubuntu 20.04/22.04/24.04 安装docker 命令：
+
+```bash
+# 添加Docker的官方GPG密钥:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# 将阿里云仓库添加到Apt源:
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# 更新Apt源
+sudo apt-get update
+```
+
+安装 docker-ce 最新版
+
+```bash
+sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+安装 docker-ce 指定版本
+
+```bash
+# 列出可用版本：
+apt-cache madison docker-ce | awk '{ print $3 }'
+# 选择所需版本并安装：
+VERSION_STRING=5:28.0.1-1~ubuntu.24.04~noble
+sudo apt-get -y install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+卸载旧版本
+
+```bash
+# 卸载Docker Engine、CLI、containerd和Docker Compose软件包：
+sudo apt-get -y purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+# 删除主机上的镜像、容器、卷或自定义配置文件：
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
+# 删除apt源文件和密钥
+sudo rm /etc/apt/sources.list.d/docker.list
+sudo rm /etc/apt/keyrings/docker.asc
+```
+
+## 2.3 CentOS 系统安装
+
+CentOS 7.9 安装docker 命令：
+
+```bash
+# 将阿里云仓库添加到YUM源:
+curl https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -o /etc/yum.repos.d/docker-ce.repo
+# 更新yum源
+yum clean all && yum makecache
+```
+
+安装 docker-ce 最新版
+
+```bash
+# 安装最新版docker
+yum install -y docker-ce
+# 启用dockerd服务
+systemctl enable --now docker
+```
+
+安装 docker-ce 指定版本
+
+```bash
+# 列出可用版本
+yum list docker-ce --showduplicates | sort -r
+# 选择所需版本并安装：
+VERSION_STRING=20.10.21-3.el7
+yum install -y docker-ce-$VERSION_STRING docker-ce-cli-$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+# 启用dockerd服务
+systemctl enable --now docker
+```
+
+卸载旧版本
+
+```bash
+# 卸载Docker Engine、CLI、containerd和Docker Compose软件包：
+yum remove -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+# 删除主机上的镜像、容器、卷或自定义配置文件：
+rm -rf /var/lib/docker
+rm -rf /var/lib/containerd
+```
+
+## 2.4 二进制离线安装
+
+使用编译后的二进制可执行程序安装，适用于无法上网或无法通过包安装方式安装的主机上安装docker。
+
+官方地址：https://download.docker.com/linux/static/stable/
+
+阿里云地址：https://mirrors.aliyun.com/docker-ce/linux/static/stable/x86_64/
+
+```bash
+# 将 tgz 包下载到主机上
+wget https://mirrors.aliyun.com/docker-ce/linux/static/stable/x86_64/docker-28.0.1.tgz
+# 解压包
+tar -xvf docker-28.0.1.tgz
+# 将二进制程序放到bin目录
+cp docker/* /usr/bin/
+
+# 编写 systemd 守护进程文件
+cat > /lib/systemd/system/docker.service << EOF
+[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network-online.target firewalld.service
+Wants=network-online.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/dockerd -H unix://var/run/docker.sock
+ExecReload=/bin/kill -s HUP \$MAINPID
+TimeoutStartSec=0
+RestartSec=2
+Restart=on-failure
+StartLimitBurst=3
+StartLimitInterval=60s
+LimitNPROC=infinity
+LimitCORE=infinity
+TasksMax=infinity
+Delegate=yes
+KillMode=process
+OOMScoreAdjust=-500
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# 载入配置
+systemctl daemon-reload
+# 启动docker
+systemctl enable --now docker
+```
+
+# 三、Docker 基本配置
+

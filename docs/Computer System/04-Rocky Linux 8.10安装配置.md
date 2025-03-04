@@ -4,13 +4,13 @@ Rocky Linux 是继 CentOS 停止维护后的替代产品，维护者声称100%�
 
 下载地址：https://rockylinux.org/zh-CN/download
 
-Rocky Linux一共两个版本：9系列、8系列，选择适合的CPU架构，点击DVD ISO下载即可，本文下载8.10 版本。
+Rocky Linux一共两个版本：9系列、8系列，分别对应 CentOS 的9系列与8系列，点击DVD ISO下载即可，本文下载8.10 版本。
 
 ![image-20250304142405020](./04-Rocky%20Linux%208.10%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/image-20250304142405020.png)
 
 # 二、系统安装
 
-大部分与CentOS一直，由于是新版本，GUI界面更符合现代审美
+大部分与CentOS一致，由于是新版本，GUI界面更符合现代审美
 
 ![image-20250304142631063](./04-Rocky%20Linux%208.10%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/image-20250304142631063.png)
 
