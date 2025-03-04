@@ -22,6 +22,9 @@ nav:
     - 计算机基础:
         - '计算机硬件系统': 'Computer System/01-计算机硬件系统.md'
         - '计算机操作系统': 'Computer System/02-计算机软件系统.md'
+        - 'CentOS 7.9安装配置': 'Computer System/03-CentOS 7.9安装配置.md'
+        - 'Rocky 8.10安装配置': 'Computer System/04-Rocky Linux 8.10安装配置.md'
+        - 'Ubuntu 24.04安装配置': 'Computer System/05-Ubuntu 24.04安装配置.md'
     - 网络:
         - '网络基础': 'Datacom/01-网络基础.md'
         - '路由基础': 'Datacom/02-路由器基础.md'
