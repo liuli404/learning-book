@@ -26,7 +26,7 @@ nav:
         - '系统安装-Rocky 8.10': 'Computer System/04-Rocky Linux 8.10安装配置.md'
         - '系统安装-Rocky 9.5': 'Computer System/06-Rocky Linux 9.5安装配置.md'
         - '系统安装-Ubuntu 24.04': 'Computer System/05-Ubuntu 24.04安装配置.md'
-        
+        - '系统安装-Alpine 3.21': 'Computer System/07-Alpine 3.21安装配置.md'
     - 网络:
         - '网络基础': 'Datacom/01-网络基础.md'
         - '路由基础': 'Datacom/02-路由器基础.md'
@@ -73,7 +73,14 @@ nav:
         - '管理虚拟存储': 'KVM/05-管理虚拟存储.md'
         - '管理虚拟网络': 'KVM/06-管理虚拟网络.md'
     - Docker:
-        - 'Docker 架构与安装': 'Docker/01-Docker 架构与安装.md'
+        - 'Docker 介绍与安装': 'Docker/01-Docker 架构与安装.md'
+        - 'Docker 容器操作': 'Docker/02-Docker 容器操作.md'
+        - 'Docker 镜像操作': 'Docker/03-Docker 镜像操作.md'
+        - 'Docker 镜像制作': 'Docker/04-Docker 镜像制作.md'
+        - 'Docker 数据卷管理': 'Docker/05-Docker 数据卷管理.md'
+        - 'Docker 网络管理': 'Docker/06-Docker 网络管理.md'
+        - 'Docker 镜像仓库': 'Docker/07-Docker 镜像仓库.md'
+        - 'Docker Compose编排': 'Docker/08-Docker Compose编排.md'
     - Python:
         - 'Python 基础': 'Python/index.html'
         - 'Django 基础使用': 'Python/Django01/04_Web框架之Django一.md'

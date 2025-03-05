@@ -81,6 +81,8 @@ Podman 提供了一个与 Docker 兼容的命令行前端，Podman 里面87%的�
 
   **rkt**:  是CoreOS开发的容器runtime，也符合OCI规范，所以使用rkt runtime也可以运行Docker容 器
 
+
+
 ## 1.5 Docker 的运行机制
 
 ![image-20250304200242880](./01-Docker%20%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%AE%89%E8%A3%85/image-20250304200242880.png)
@@ -273,3 +275,166 @@ systemctl enable --now docker
 
 # 三、Docker 基本配置
 
+Docker 的配置文件路径 `/etc/docker/daemon.json`，需要自己创建。
+
+## 3.1 配置镜像加速器
+
+新安装的 docker 拉取镜像默认使用的镜像仓库是官方：https://registry-1.docker.io/v2/。
+
+国内环境已经无法访问该地址了，会报错误：`docker: Error response from daemon: Get "https://registry-1.docker.io/v2/": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)`。
+
+为了能够正常拉取镜像，需要配置一些国内的镜像加速器，配置文件添加以下配置，加速器地址可以配置多个（目前网上免费的加速网址越来越少了，我这里用的是华为云提供的）：
+
+```json
+{
+    "registry-mirrors": [
+        "https://bcfc90e243c74121b46a3bb4a05d160a.mirror.swr.myhuaweicloud.com"
+    ]
+}
+```
+
+重启 docker 服务器
+
+```bash
+systemctl restart docker
+```
+
+使用 `docker info` 命令可以查看配置的镜像加速器地址：
+
+```bash
+ Registry Mirrors:
+  https://bcfc90e243c74121b46a3bb4a05d160a.mirror.swr.myhuaweicloud.com
+```
+
+## 3.2 开启 daemon 远程监听
+
+如果docker cli 客户端与daemon服务端不在同一主机，可以开启daemon的监听功能，客户端与服务端远程通信。
+
+```bash
+# 编辑docker.service文件，ExecStart追加 -H tcp://127.0.0.1:2375
+ExecStart=/usr/bin/dockerd -H fd:// -H tcp://127.0.0.1:2375
+
+# 或者daemon.json文件添加
+{
+  "hosts": ["unix://var/run/docker.sock", "tcp://0.0.0.0:2375"]
+}
+```
+
+重启 docker 服务器
+
+```bash
+systemctl daemon-reload
+systemctl restart docker
+```
+
+远程客户端连接命令：
+
+```bash
+docker -H 192.168.100.14 images
+```
+
+该方法无法做认证，任何客户端都可以从监听的地址和端口连上服务端，并不安全。
+
+## 3.3 添加可信的私有仓库
+
+**insecure-registries** 允许用户指定一个或多个不安全的镜像仓库地址。这些仓库不使用HTTPS进行通信，因此不需要SSL证书验证。
+
+```json
+{
+    "insecure-registries": ["harbor.domain.io"]
+}
+```
+
+重启 docker 服务器
+
+```bash
+systemctl restart docker
+```
+
+## 3.4 修改 docker 的数据目录
+
+docker 的默认目录为 : `/var/lib/docker`，如果想修改到指定目录，则添加以下配置：
+
+```json
+{
+    "data-root": "/data/docker"
+}
+```
+
+如果有数据，可以将原docker目录移到新位置。
+
+重启 docker 服务器
+
+```bash
+systemctl restart docker
+```
+
+## 3.5 容器日志配置
+
+通过修改配置可以控制每个容器的输出日志大小，防止撑爆磁盘：
+
+- json-file：日志被格式化为JSON。也是Docker的默认日志记录驱动程序。其他driver类型见[官网](https://docs.docker.com/engine/logging/configure/#supported-logging-drivers)
+
+- max-size：指定容器日志文件的最大值
+- max-file：指定容器日志文件的个数，循环写入日志文件
+
+```json
+{
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "30m",
+        "max-file": "3"
+    }
+}
+```
+
+重启 docker 服务器
+
+```bash
+systemctl restart docker
+```
+
+## 3.6 daemon重启不影响容器
+
+默认情况下，当Docker守护进程终止时，它会关闭所有正在运行的容器。
+
+可以配置守护进程，以便在守护进程不可用时容器保持运行。此功能称为 Live restore。
+
+Live restore功能有助于减少由于守护进程崩溃、计划停机或升级而导致的容器停机时间。
+
+```json
+{
+  "live-restore": true
+}
+```
+
+重启 docker 服务器
+
+```bash
+systemctl restart docker
+```
+
+## 3.7  配置代理
+
+通过配置网络代理，同样可以拉取国内无法访问的镜像。（前提是得有一个代理提供商 :D）
+
+```json
+{
+    "proxies": {
+        "default": {
+            "httpProxy": "http://proxy.example.com:3128",
+            "httpsProxy": "https://proxy.example.com:3129",
+            "noProxy": "*.test.example.com,.example.org,127.0.0.0/8"
+        },
+        "tcp://docker-daemon1.example.com": {
+            "noProxy": "*.internal.example.net"
+        }
+    }
+}
+```
+
+重启 docker 服务器
+
+```bash
+systemctl restart docker
+```
