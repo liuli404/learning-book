@@ -145,3 +145,35 @@ EOF
 apt update
 ```
 
+## 3.3 修改IP
+
+编辑网卡配置文件
+
+```bash
+vi /etc/netplan/50-cloud-init.yaml
+```
+
+修改配置内容
+
+```bash
+network:
+  version: 2
+  ethernets:
+    ens33:
+      addresses:
+      - "192.168.100.13/24"
+      nameservers:
+        addresses:
+        - 114.114.114.114
+        search: []
+      routes:
+      - to: "default"
+        via: "192.168.100.2"
+```
+
+应用网卡配置
+
+```bash
+netplan apply
+```
+

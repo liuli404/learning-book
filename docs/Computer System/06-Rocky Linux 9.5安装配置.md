@@ -149,3 +149,43 @@ EOF
 # 保存后加载配置
 sysctl -p
 ```
+
+## 3.3 修改IP
+
+编辑网卡配置文件
+
+```bash
+vi /etc/NetworkManager/system-connections/ens160.nmconnection
+```
+
+内容如下
+
+```bash
+[connection]
+id=ens160
+uuid=4818095d-3706-3312-a040-773be61843dc
+type=ethernet
+autoconnect-priority=-999
+interface-name=ens160
+timestamp=1741125965
+
+[ethernet]
+
+[ipv4]
+address1=192.168.100.14/24,192.168.100.2
+dns=114.114.114.114;
+method=manual
+
+[ipv6]
+addr-gen-mode=eui64
+method=auto
+
+[proxy]
+```
+
+重启网卡生效
+
+```bash
+nmcli connection down ens160 && nmcli connection up ens160 
+```
+

@@ -177,3 +177,33 @@ UseDNS no
 systemctl restart sshd
 ```
 
+## 3.3 修改IP
+
+编辑网卡配置文件，网卡名是啥 `ifcfg-` 后面跟的就是啥
+
+```bash
+vi /etc/sysconfig/network-scripts/ifcfg-ens33
+```
+
+配置文件内容
+
+```bash
+TYPE="Ethernet"
+BOOTPROTO="static"
+DEFROUTE="yes"
+NAME="ens33"
+UUID="bb8b4b4c-7924-4ad2-b1c0-7cd9a0c84ffa"
+DEVICE="ens33"
+ONBOOT="yes"
+IPADDR="192.168.100.11"
+PREFIX="24"
+GATEWAY="192.168.100.2"
+DNS1="114.114.114.114"
+```
+
+重启生效
+
+```bash
+systemctl restart network
+```
+
