@@ -72,7 +72,7 @@ https://mirrors.aliyun.com/alpine/v3.21/community
 
 ![image-20250305191335545](./07-Alpine%203.21%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/image-20250305191335545.png)
 
-添加用户与ssh，不创建普通用户，运行root使用ssh远程登录
+添加用户与ssh，不创建普通用户，允许root使用ssh远程登录
 
 ![image-20250305173758982](./07-Alpine%203.21%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/image-20250305173758982.png)
 

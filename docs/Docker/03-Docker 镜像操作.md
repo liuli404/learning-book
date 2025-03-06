@@ -16,8 +16,7 @@
 "Data": {
     "MergedDir": "/data/docker/overlay2/e831d05f5b3c32def3c0362e4a3028d30e579f24fddf6110427611b756c3dbe6/merged",
     "UpperDir": "/data/docker/overlay2/e831d05f5b3c32def3c0362e4a3028d30e579f24fddf6110427611b756c3dbe6/diff",
-    "WorkDir": 
-"/data/docker/overlay2/e831d05f5b3c32def3c0362e4a3028d30e579f24fddf6110427611b756c3dbe6/work"
+    "WorkDir": "/data/docker/overlay2/e831d05f5b3c32def3c0362e4a3028d30e579f24fddf6110427611b756c3dbe6/work"
 }
 ```
 
