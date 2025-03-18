@@ -921,7 +921,7 @@ docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
         TX packets 0  bytes 0 (0.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
-## 测试容器网络互通
+## 4.3 测试容器网络互通
 
 ```bash
 docker run -it -d --name test centos:latest
